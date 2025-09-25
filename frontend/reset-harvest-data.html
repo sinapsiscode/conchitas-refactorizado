@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Datos de Cosecha - Conchas de Abanico</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #059669;
+        }
+        .danger {
+            background: #dc2626;
+        }
+        .danger:hover {
+            background: #b91c1c;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+        .message.show {
+            display: block;
+        }
+        .message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+        .info {
+            background: #e0f2fe;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #7dd3fc;
+            color: #075985;
+        }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎣 Reset de Datos para Cosecha</h1>
+        
+        <div class="info">
+            <strong>ℹ️ Información:</strong>
+            <p>Esta herramienta resetea y regenera datos para habilitar el flujo completo de planificación de cosecha.</p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>✅ Agrega líneas de cultivo con sistemas a los lotes</li>
+                <li>✅ Asegura que lotes tengan tallas ≥75mm para cosecha</li>
+                <li>✅ Configura el sistema de cultivo suspendido</li>
+                <li>✅ Habilita el botón "+ Planificar Cosecha"</li>
+                <li>🔄 Regenera toda la estructura de datos</li>
+            </ul>
+        </div>
+
+        <button onclick="regenerateHarvestData()">
+            🎣 Regenerar Datos para Cosecha
+        </button>
+        
+        <button onclick="resetHarvestData()">
+            🔄 Solo Resetear Cosechas
+        </button>
+
+        <button onclick="clearAllAndReload()" class="danger">
+            🗑️ Limpiar TODO y Recargar
+        </button>
+
+        <div id="message" class="message"></div>
+
+        <script>
+            function showMessage(text, type = 'success') {
+                const messageEl = document.getElementById('message');
+                messageEl.textContent = text;
+                messageEl.className = `message show ${type}`;
+            }
+
+            function regenerateHarvestData() {
+                try {
+                    // Limpiar la versión del seeder para forzar regeneración completa
+                    localStorage.removeItem('conchas-abanico:seedVersion');
+                    
+                    // También limpiar sectores y lotes para que se regeneren con líneas
+                    const keysToDelete = [
+                        'conchas-abanico:sectors',
+                        'conchas-abanico:harvestPlans',
+                        'conchas-abanico:harvestCostCategories',
+                        'conchas-abanico:income',
+                        'conchas-abanico:incomeRecords',
+                        'conchas-abanico:pricing'
+                    ];
+                    
+                    keysToDelete.forEach(key => {
+                        localStorage.removeItem(key);
+                        console.log(`Eliminado: ${key}`);
+                    });
+                    
+                    showMessage('✅ Datos regenerados con líneas y sistemas para cosecha. Recargando...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
+                } catch (error) {
+                    showMessage(`❌ Error: ${error.message}`, 'error');
+                }
+            }
+
+            function resetHarvestData() {
+                try {
+                    // Limpiar específicamente datos de cosecha e ingresos
+                    const keysToDelete = [
+                        'conchas-abanico:harvestPlans',
+                        'conchas-abanico:harvestCostCategories',
+                        'conchas-abanico:income',
+                        'conchas-abanico:incomeRecords',
+                        'conchas-abanico:pricing'
+                    ];
+                    
+                    keysToDelete.forEach(key => {
+                        localStorage.removeItem(key);
+                        console.log(`Eliminado: ${key}`);
+                    });
+                    
+                    showMessage('✅ Datos de cosecha reseteados. Recargando página...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
+                } catch (error) {
+                    showMessage(`❌ Error: ${error.message}`, 'error');
+                }
+            }
+
+            function clearAllAndReload() {
+                if (confirm('⚠️ ¿Estás seguro? Esto eliminará TODOS los datos almacenados localmente.')) {
+                    try {
+                        // Limpiar todo el localStorage
+                        const keysToDelete = [];
+                        for (let i = 0; i < localStorage.length; i++) {
+                            const key = localStorage.key(i);
+                            if (key && (key.startsWith('conchas-abanico:') || key === 'mock_users' || key === 'mockAuthToken')) {
+                                keysToDelete.push(key);
+                            }
+                        }
+                        
+                        keysToDelete.forEach(key => {
+                            localStorage.removeItem(key);
+                            console.log(`Eliminado: ${key}`);
+                        });
+                        
+                        showMessage(`✅ Storage completamente limpiado (${keysToDelete.length} items). Recargando...`, 'success');
+                        
+                        setTimeout(() => {
+                            window.location.href = '/';
+                        }, 1500);
+                    } catch (error) {
+                        showMessage(`❌ Error: ${error.message}`, 'error');
+                    }
+                }
+            }
+
+            // Mostrar info del storage actual
+            window.addEventListener('load', () => {
+                console.log('📦 Estado actual del storage:');
+                let harvestData = 0;
+                let otherData = 0;
+                
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.includes('harvest')) harvestData++;
+                    else if (key && key.startsWith('conchas-abanico:')) otherData++;
+                }
+                
+                console.log(`- Datos de cosecha: ${harvestData} colecciones`);
+                console.log(`- Otros datos: ${otherData} colecciones`);
+                console.log('Usa los botones para resetear según necesites.');
+            });
+        </script>
+    </div>
+</body>
+</html>
