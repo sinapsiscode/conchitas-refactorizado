@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useSectorStore } from '../../stores/sectorStore'
+import { useAuthStore, useSectorStore } from '../../stores' // Importación centralizada
 import { UI_TEXTS } from '../../constants/ui'
 import { calculateMetrics } from '../../utils/metrics'
 import StatCard from '../../components/common/StatCard'

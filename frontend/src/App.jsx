@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from './stores/authStore'
-import { seedData } from './services/mock/seeder'
+import { useAuthStore } from './stores' // Importación centralizada
 import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
 import LoginPage from './pages/auth/LoginPage'
@@ -35,9 +34,20 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   useEffect(() => {
-    seedData()
+    // seedData() // Ya no necesario con JSON Server
     initializeAuth()
   }, [initializeAuth])
+
+  // Establecer página correcta después de la inicialización
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      if (user.role === 'investor') {
+        setCurrentPage('investor-dashboard')
+      } else {
+        setCurrentPage('dashboard')
+      }
+    }
+  }, [isAuthenticated, user])
   
   const handleLoginSuccess = (action, loggedInUser) => {
     if (action === 'register') {

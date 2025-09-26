@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mockAPI } from '../../services/mock/server'
+// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - usar JSON Server personalizado
 import { UI_TEXTS } from '../../constants/ui'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'

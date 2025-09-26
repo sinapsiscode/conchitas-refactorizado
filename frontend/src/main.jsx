@@ -2,20 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './styles/index.css'
-import { MockDB } from './services/mock/db.js'
-import { seedData } from './services/mock/seeder.js'
+import './utils/cleanupStorage' // Limpiar localStorage viejo al iniciar
 
-// Función global para resetear la base de datos mock
-window.resetMockDB = () => {
-  console.log('🔄 Resetting mock database...')
-  MockDB.clearAll()
-  seedData()
-  console.log('✅ Mock database reset complete. Please refresh the page.')
-  return 'Database reset. Please refresh the page to see changes.'
+// Función global para limpiar localStorage (útil para debugging)
+window.clearAuth = () => {
+  console.log('🔄 Limpiando autenticación...')
+  localStorage.removeItem('token')
+  localStorage.removeItem('user')
+  // Limpiar también datos viejos de MockAPI
+  Object.keys(localStorage)
+    .filter(key => key.startsWith('conchas-abanico:'))
+    .forEach(key => localStorage.removeItem(key))
+  console.log('✅ Autenticación limpiada. Por favor recarga la página.')
+  window.location.reload()
 }
 
-console.log('🛠️ Development utils available:')
-console.log('• resetMockDB() - Reset the mock database')
+console.log('🛠️ Utilidades de desarrollo:')
+console.log('• clearAuth() - Limpiar autenticación y recargar')
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from '../../stores/authStore'
+import { useAuthStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import Swal from 'sweetalert2'
