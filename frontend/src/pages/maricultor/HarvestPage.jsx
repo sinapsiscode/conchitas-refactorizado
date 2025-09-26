@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import { useAuthStore } from '../../stores'
-import { useSectorStore } from '../../stores'
-import { useHarvestStore } from '../../stores'
+import { useHarvestStore } from '../../stores/harvestStoreNew'
 import { UI_TEXTS } from '../../constants/ui'
 import StatCard from '../../components/common/StatCard'
 import EmptyState from '../../components/common/EmptyState'
@@ -17,8 +16,7 @@ const MySwal = withReactContent(Swal)
 
 const HarvestPage = () => {
   const { user } = useAuthStore()
-  const { sectors, fetchSectors } = useSectorStore()
-  const { harvestPlans, pricing, fetchHarvestPlans, fetchPricing, createHarvestPlan, updateHarvestPlan, deleteHarvestPlan, loading } = useHarvestStore()
+  const { harvestPlans, pricing, sectors: harvestSectors, fetchHarvestPlans, fetchPricing, fetchSectorsWithLots, createHarvestPlan, updateHarvestPlan, deleteHarvestPlan, loading } = useHarvestStore()
   const [showLotSelectionModal, setShowLotSelectionModal] = useState(false)
   const [showPlanningModal, setShowPlanningModal] = useState(false)
   const [showExecutionModal, setShowExecutionModal] = useState(false)
@@ -32,33 +30,35 @@ const HarvestPage = () => {
   useEffect(() => {
     if (user?.id) {
       console.log('🏗️ [HarvestPage] Loading data for user:', user.id)
-      fetchSectors(user.id)
+      fetchSectorsWithLots(user.id)
       fetchHarvestPlans(user.id)
       fetchPricing()
     } else {
       console.warn('⚠️ [HarvestPage] No user ID available for data loading')
     }
-  }, [user?.id, fetchSectors, fetchHarvestPlans, fetchPricing])
+  }, [user?.id, fetchSectorsWithLots, fetchHarvestPlans, fetchPricing])
 
   // Log de cambios en estados principales
   useEffect(() => {
     console.log('📊 [HarvestPage] State updated:', {
-      sectorsCount: sectors.length,
-      harvestPlansCount: harvestPlans.length,
-      pricingCount: pricing.length,
+      harvestSectorsCount: harvestSectors?.length || 0,
+      harvestPlansCount: harvestPlans?.length || 0,
+      pricingCount: pricing?.length || 0,
       loading,
       activeTab
     })
-  }, [sectors.length, harvestPlans.length, pricing.length, loading, activeTab])
+  }, [harvestSectors?.length || 0, harvestPlans?.length || 0, pricing?.length || 0, loading, activeTab])
   
   
   // Obtener líneas con sistemas listos para cosecha basado en talla mínima
   const readyLines = useMemo(() => {
     console.log('🏭 [HarvestPage] Calculating ready lines with min size:', minSizeThreshold)
-    
-    const linesWithSystems = []
-    
-    sectors.forEach(sector => {
+
+    const linesWithSystems = [];
+
+    if (!harvestSectors) return [];
+
+    harvestSectors.forEach(sector => {
       // Procesar cada lote del sector
       (sector.lots || []).forEach(lot => {
         // Solo procesar lotes con cultivo suspendido que tengan líneas
@@ -118,7 +118,7 @@ const HarvestPage = () => {
     
     console.log('📍 [HarvestPage] Found', linesWithSystems.length, 'lines ready for harvest')
     return linesWithSystems
-  }, [sectors, minSizeThreshold]) // Recalcular cuando cambien los sectores o el umbral de talla
+  }, [harvestSectors, minSizeThreshold]) // Recalcular cuando cambien los sectores o el umbral de talla
 
   // Filtrar planes por estado
   const plannedHarvests = harvestPlans.filter(plan => plan.status === 'planned')
@@ -476,7 +476,7 @@ const HarvestPage = () => {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {upcomingHarvests.map((plan) => {
-                      const sector = sectors.find(s => s.id === plan.sectorId)
+                      const sector = harvestSectors?.find(s => s.id === plan.sectorId)
                       const lot = sector?.lots?.find(l => l.id === plan.lotId)
                       
                       return (
@@ -514,7 +514,7 @@ const HarvestPage = () => {
                                     return `${manojos.toLocaleString()} manojos`
                                   } else {
                                     // Si no hay cantidad, mostrar información del lote
-                                    const sector = sectors.find(s => s.id === plan.sectorId)
+                                    const sector = harvestSectors?.find(s => s.id === plan.sectorId)
                                     const lot = sector?.lots?.find(l => l.id === plan.lotId)
                                     if (lot?.currentQuantity > 0) {
                                       const fallbackManojos = Math.round(lot.currentQuantity / 96)
@@ -533,7 +533,7 @@ const HarvestPage = () => {
                                   if (quantity > 0) {
                                     return `${quantity.toLocaleString()} unidades`
                                   } else {
-                                    const sector = sectors.find(s => s.id === plan.sectorId)
+                                    const sector = harvestSectors?.find(s => s.id === plan.sectorId)
                                     const lot = sector?.lots?.find(l => l.id === plan.lotId)
                                     if (lot?.currentQuantity > 0) {
                                       return `~${lot.currentQuantity.toLocaleString()} unidades (est.)`
@@ -636,7 +636,7 @@ const HarvestPage = () => {
                     {/* Harvest indicators */}
                     <div className="space-y-0.5">
                       {harvests.slice(0, 2).map((plan) => {
-                        const sector = sectors.find(s => s.id === plan.sectorId)
+                        const sector = harvestSectors?.find(s => s.id === plan.sectorId)
                         return (
                           <div
                             key={plan.id}
@@ -725,7 +725,7 @@ const HarvestPage = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {completedHarvests.map((plan) => {
-                    const sector = sectors.find(s => s.id === plan.sectorId)
+                    const sector = harvestSectors?.find(s => s.id === plan.sectorId)
                     const revenue = calculateEstimatedRevenue(plan)
                     
                     return (
@@ -794,7 +794,7 @@ const HarvestPage = () => {
         isOpen={showDetailModal}
         onClose={handleCloseDetailModal}
         harvestPlan={selectedPlan}
-        sector={selectedPlan ? sectors.find(s => s.id === selectedPlan.sectorId) : null}
+        sector={selectedPlan ? harvestSectors?.find(s => s.id === selectedPlan.sectorId) : null}
         pricing={pricing}
       />
     </div>

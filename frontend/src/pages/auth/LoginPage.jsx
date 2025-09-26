@@ -83,7 +83,11 @@ const LoginPage = ({ onLoginSuccess }) => {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="mx-auto h-10 w-10 text-3xl sm:h-12 sm:w-12 sm:text-4xl">🐚</div>
+          <img
+            src="/logo.png"
+            alt="Logo Conchas de Abanico"
+            className="mx-auto h-12 w-12 sm:h-16 sm:w-16 object-contain"
+          />
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900 sm:mt-6 sm:text-3xl">
             {UI_TEXTS.auth.login}
           </h2>
@@ -102,7 +106,7 @@ const LoginPage = ({ onLoginSuccess }) => {
                 className="w-full btn-secondary text-left flex items-center space-x-2 py-2 sm:space-x-3 sm:py-3"
                 disabled={loading}
               >
-                <div className="text-xl sm:text-2xl">🐚</div>
+                <img src="/logo.png" alt="Maricultor" className="w-6 h-6 sm:w-8 sm:h-8 object-contain" />
                 <div className="flex-1">
                   <div className="text-sm font-medium sm:text-base">Maricultor 1</div>
                   <div className="text-xs text-gray-600 sm:text-sm">Juan - 12.5 hectáreas</div>

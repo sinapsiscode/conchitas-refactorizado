@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHarvestStore } from '../../stores'
+import { useHarvestStore } from '../../stores/harvestStoreNew'
 import { useInventoryStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'
@@ -8,7 +8,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
-  const { updateHarvestPlan, loading, harvestCostCategories, fetchHarvestCostCategories } = useHarvestStore()
+  const { updateHarvestPlan, loading, costCategories, loadConfigurations } = useHarvestStore()
   const { inventory, fetchInventory } = useInventoryStore()
   
   const [executeForm, setExecuteForm] = useState({
@@ -33,10 +33,10 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
 
   useEffect(() => {
     if (isOpen && user?.id) {
-      fetchHarvestCostCategories()
+      loadConfigurations()
       fetchInventory(user.id)
     }
-  }, [isOpen, user?.id, fetchHarvestCostCategories, fetchInventory])
+  }, [isOpen, user?.id, loadConfigurations, fetchInventory])
 
   useEffect(() => {
     if (selectedPlan) {
@@ -121,7 +121,7 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
 
   const calculateTotalActualCost = () => {
     return Object.entries(executeForm.actualCosts).reduce((total, [categoryId, costData]) => {
-      const category = harvestCostCategories.find(c => c.id === categoryId)
+      const category = costCategories.find(c => c.id === categoryId)
       const quantity = parseFloat(costData.quantity || 0)
       const unitCost = parseFloat(costData.unitCost || category?.estimatedCost || 0)
       return total + (quantity * unitCost)
@@ -137,7 +137,6 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
     const actualQuantity = totalUnidades
 
     const executeData = {
-      id: selectedPlan.id,
       actualDate: executeForm.actualDate,
       actualQuantity,
       actualCosts: executeForm.actualCosts,
@@ -148,7 +147,7 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
     }
 
     try {
-      const result = await updateHarvestPlan(executeData)
+      const result = await updateHarvestPlan(selectedPlan.id, executeData)
 
       if (result.success) {
         MySwal.fire({
@@ -334,13 +333,13 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
               {(() => {
                 // Combinar categorías planificadas con las activas del store
                 const plannedCostIds = Object.keys(selectedPlan?.plannedCosts || {})
-                const activeCategoryIds = harvestCostCategories.filter(c => c.isActive).map(c => c.id)
+                const activeCategoryIds = (costCategories || []).filter(c => c.isActive).map(c => c.id)
 
                 // Crear lista unificada sin duplicados
                 const allCategoryIds = [...new Set([...plannedCostIds, ...activeCategoryIds])]
 
                 return allCategoryIds.map(categoryId => {
-                  const category = harvestCostCategories.find(c => c.id === categoryId)
+                  const category = (costCategories || []).find(c => c.id === categoryId)
                   const costData = executeForm.actualCosts[categoryId] || {}
                   const plannedData = selectedPlan?.plannedCosts?.[categoryId] || {}
                   const isPlannedCategory = plannedCostIds.includes(categoryId)
@@ -382,7 +381,7 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
                           <div className="bg-white rounded p-2 border border-blue-100">
                             <p className="text-gray-600 font-medium">Cantidad</p>
                             <p className="text-blue-700 font-bold text-sm">
-                              {plannedData.quantity} {category.unit}
+                              {plannedData.quantity} {categoryInfo.unit}
                             </p>
                           </div>
                           <div className="bg-white rounded p-2 border border-blue-100">

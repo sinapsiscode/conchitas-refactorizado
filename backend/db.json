@@ -126,36 +126,875 @@
       "id": "sectors-1758873727716",
       "createdAt": "2025-09-26T08:02:07.716Z",
       "updatedAt": "2025-09-26T08:02:07.716Z"
+    },
+    {
+      "id": "sectors-1758900315065",
+      "name": "TINCHERA NORTE",
+      "location": "asfasf",
+      "hectares": 2,
+      "userId": "maricultor-001",
+      "createdAt": "2025-09-26T15:25:15.065Z",
+      "updatedAt": "2025-09-26T15:25:15.065Z"
     }
   ],
   "batteries": [
     {
-      "id": "a115",
-      "sectorId": null,
+      "id": "bat-A",
       "name": "Batería A",
-      "totalLines": 50,
-      "status": "active"
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.703Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
     },
     {
-      "name": "Battery Test",
+      "id": "bat-B",
+      "name": "Batería B",
       "sectorId": "sector-001",
-      "totalLines": 20,
-      "id": "wtkDTDT"
+      "capacity": 100,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "bat-C",
+      "name": "Batería C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "bat-D",
+      "name": "Batería D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "bat-E",
+      "name": "Batería E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "batteries-1758900341474",
+      "sectorId": "sectors-1758900315065",
+      "letter": "S",
+      "name": "Batería S",
+      "description": "efafawfaw",
+      "status": "active",
+      "totalLines": 0,
+      "createdAt": "2025-09-26T15:25:41.474Z",
+      "updatedAt": "2025-09-26T15:25:41.474Z"
     }
   ],
   "cultivationLines": [
     {
-      "name": "Line A-1",
-      "batteryId": "a115",
+      "id": "line-1",
+      "name": "Línea A-1",
+      "code": "A-1",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
       "status": "active",
-      "id": 1
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
     },
     {
-      "name": "Line Test",
-      "batteryId": "test",
+      "id": "line-2",
+      "name": "Línea A-2",
+      "code": "A-2",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
       "status": "active",
-      "updated": true,
-      "id": 2
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-3",
+      "name": "Línea A-3",
+      "code": "A-3",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-4",
+      "name": "Línea A-4",
+      "code": "A-4",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-5",
+      "name": "Línea A-5",
+      "code": "A-5",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-6",
+      "name": "Línea A-6",
+      "code": "A-6",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-7",
+      "name": "Línea A-7",
+      "code": "A-7",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-8",
+      "name": "Línea A-8",
+      "code": "A-8",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-9",
+      "name": "Línea A-9",
+      "code": "A-9",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-10",
+      "name": "Línea A-10",
+      "code": "A-10",
+      "batteryId": "bat-A",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-11",
+      "name": "Línea B-1",
+      "code": "B-1",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-12",
+      "name": "Línea B-2",
+      "code": "B-2",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-13",
+      "name": "Línea B-3",
+      "code": "B-3",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-14",
+      "name": "Línea B-4",
+      "code": "B-4",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-15",
+      "name": "Línea B-5",
+      "code": "B-5",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-16",
+      "name": "Línea B-6",
+      "code": "B-6",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-17",
+      "name": "Línea B-7",
+      "code": "B-7",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-18",
+      "name": "Línea B-8",
+      "code": "B-8",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-19",
+      "name": "Línea B-9",
+      "code": "B-9",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-20",
+      "name": "Línea B-10",
+      "code": "B-10",
+      "batteryId": "bat-B",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-21",
+      "name": "Línea C-1",
+      "code": "C-1",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-22",
+      "name": "Línea C-2",
+      "code": "C-2",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-23",
+      "name": "Línea C-3",
+      "code": "C-3",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-24",
+      "name": "Línea C-4",
+      "code": "C-4",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-25",
+      "name": "Línea C-5",
+      "code": "C-5",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-26",
+      "name": "Línea C-6",
+      "code": "C-6",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-27",
+      "name": "Línea C-7",
+      "code": "C-7",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-28",
+      "name": "Línea C-8",
+      "code": "C-8",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-29",
+      "name": "Línea C-9",
+      "code": "C-9",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-30",
+      "name": "Línea C-10",
+      "code": "C-10",
+      "batteryId": "bat-C",
+      "sectorId": "sector-001",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-31",
+      "name": "Línea D-1",
+      "code": "D-1",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-32",
+      "name": "Línea D-2",
+      "code": "D-2",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-33",
+      "name": "Línea D-3",
+      "code": "D-3",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-34",
+      "name": "Línea D-4",
+      "code": "D-4",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-35",
+      "name": "Línea D-5",
+      "code": "D-5",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-36",
+      "name": "Línea D-6",
+      "code": "D-6",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-37",
+      "name": "Línea D-7",
+      "code": "D-7",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-38",
+      "name": "Línea D-8",
+      "code": "D-8",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-39",
+      "name": "Línea D-9",
+      "code": "D-9",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-40",
+      "name": "Línea D-10",
+      "code": "D-10",
+      "batteryId": "bat-D",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-41",
+      "name": "Línea E-1",
+      "code": "E-1",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-42",
+      "name": "Línea E-2",
+      "code": "E-2",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-43",
+      "name": "Línea E-3",
+      "code": "E-3",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-44",
+      "name": "Línea E-4",
+      "code": "E-4",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-45",
+      "name": "Línea E-5",
+      "code": "E-5",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-46",
+      "name": "Línea E-6",
+      "code": "E-6",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-47",
+      "name": "Línea E-7",
+      "code": "E-7",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-48",
+      "name": "Línea E-8",
+      "code": "E-8",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-49",
+      "name": "Línea E-9",
+      "code": "E-9",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "id": "line-50",
+      "name": "Línea E-10",
+      "code": "E-10",
+      "batteryId": "bat-E",
+      "sectorId": "sector-002",
+      "capacity": 100,
+      "systems": 100,
+      "floorsPerSystem": 10,
+      "totalCapacity": 1000,
+      "currentOccupancy": 0,
+      "status": "active",
+      "isActive": true,
+      "createdAt": "2025-09-26T13:50:45.704Z",
+      "updatedAt": "2025-09-26T13:50:45.704Z"
     }
   ],
   "lots": [
@@ -168,12 +1007,467 @@
       "currentQuantity": 22000,
       "expectedMonthlyMortality": 5,
       "cost": 8500,
-      "averageSize": 45,
-      "maxSize": 55,
-      "minSize": 35,
+      "averageSize": 89,
+      "maxSize": 99,
+      "minSize": 79,
       "status": "growing",
       "createdAt": "2024-06-01T00:00:00.000Z",
-      "updatedAt": "2025-09-26T00:40:25.368Z"
+      "updatedAt": "2025-09-26T00:40:25.368Z",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "Línea A-1",
+      "lineId": "line-1",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lot-002",
@@ -184,12 +1478,467 @@
       "currentQuantity": 28500,
       "expectedMonthlyMortality": 3,
       "cost": 12000,
-      "averageSize": 38,
-      "maxSize": 48,
-      "minSize": 28,
+      "averageSize": 96,
+      "maxSize": 106,
+      "minSize": 86,
       "status": "growing",
       "createdAt": "2024-07-15T00:00:00.000Z",
-      "updatedAt": "2025-09-26T00:40:25.369Z"
+      "updatedAt": "2025-09-26T00:40:25.369Z",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "Línea A-2",
+      "lineId": "line-2",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lot-003",
@@ -200,12 +1949,467 @@
       "currentQuantity": 19000,
       "expectedMonthlyMortality": 4,
       "cost": 7000,
-      "averageSize": 32,
-      "maxSize": 42,
-      "minSize": 22,
+      "averageSize": 91,
+      "maxSize": 101,
+      "minSize": 81,
       "status": "seeded",
       "createdAt": "2024-08-01T00:00:00.000Z",
-      "updatedAt": "2025-09-26T00:40:25.369Z"
+      "updatedAt": "2025-09-26T00:40:25.369Z",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "Línea A-3",
+      "lineId": "line-3",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "lot-004",
@@ -216,12 +2420,467 @@
       "currentQuantity": 31000,
       "expectedMonthlyMortality": 6,
       "cost": 15000,
-      "averageSize": 52,
-      "maxSize": 65,
-      "minSize": 40,
+      "averageSize": 93,
+      "maxSize": 103,
+      "minSize": 83,
       "status": "growing",
       "createdAt": "2024-05-15T00:00:00.000Z",
-      "updatedAt": "2025-09-26T00:40:25.369Z"
+      "updatedAt": "2025-09-26T00:40:25.369Z",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "Línea A-4",
+      "lineId": "line-4",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "05d2",
@@ -240,13 +2899,929 @@
         "A-1",
         "A-2",
         "A-3"
+      ],
+      "cultivationSystem": "Cultivo suspendido",
+      "averageSize": 91,
+      "maxSize": 101,
+      "minSize": 81,
+      "lineName": "Línea A-5",
+      "lineId": "line-5",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        }
       ]
     },
     {
       "name": "Lote Test",
       "sectorId": "sector-001",
       "initialQuantity": 10000,
-      "id": "0_zBx1P"
+      "id": "0_zBx1P",
+      "cultivationSystem": "Cultivo suspendido",
+      "averageSize": 96,
+      "maxSize": 106,
+      "minSize": 86,
+      "lineName": "Línea A-6",
+      "lineId": "line-6",
+      "systems": [
+        {
+          "systemNumber": 1,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 2,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 3,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 4,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 5,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 6,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 7,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 8,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        },
+        {
+          "systemNumber": 9,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": false
+            }
+          ]
+        },
+        {
+          "systemNumber": 10,
+          "floors": [
+            {
+              "floorNumber": 1,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 2,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 3,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 4,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 5,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 6,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 7,
+              "isOccupied": true
+            },
+            {
+              "floorNumber": 8,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 9,
+              "isOccupied": false
+            },
+            {
+              "floorNumber": 10,
+              "isOccupied": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "monitoring": [
@@ -299,6 +3874,15 @@
       "mortality": 15,
       "observations": "Condiciones óptimas para el cultivo",
       "userId": null
+    },
+    {
+      "id": "20fe",
+      "lotId": "lot-001",
+      "date": "2024-11-15",
+      "averageSize": 48,
+      "minSize": 38,
+      "maxSize": 58,
+      "observations": "Prueba desde API"
     }
   ],
   "expenses": [
@@ -403,6 +3987,65 @@
       },
       "userId": "user-1",
       "id": "qQZytMI"
+    },
+    {
+      "id": "harvests-1758903759497",
+      "sectorId": "sector-001",
+      "lotId": "lot-002",
+      "plannedDate": "2025-09-29",
+      "estimatedQuantity": 28500,
+      "estimatedMortality": 12,
+      "notes": "",
+      "plannedCosts": {
+        "cat-harvest-001": {
+          "quantity": "2",
+          "unitCost": "2"
+        },
+        "cat-harvest-002": {
+          "quantity": "11",
+          "unitCost": "2"
+        },
+        "cat-harvest-003": {
+          "quantity": "2",
+          "unitCost": "2"
+        },
+        "cat-harvest-004": {
+          "quantity": "1",
+          "unitCost": "2"
+        },
+        "cat-harvest-005": {
+          "quantity": "2"
+        }
+      },
+      "inventoryToUse": [],
+      "status": "completed",
+      "survivalQuantity": 25080,
+      "totalPlannedCost": 32,
+      "type": "plan",
+      "createdAt": "2025-09-26T16:22:39.497Z",
+      "updatedAt": "2025-09-26T17:07:32.756Z",
+      "actualDate": "2025-09-26",
+      "actualQuantity": 864,
+      "actualCosts": {},
+      "totalActualCost": 0,
+      "inventoryUsed": []
+    },
+    {
+      "id": "harvests-1758906995167",
+      "sectorId": "sector-001",
+      "lotId": "lot-001",
+      "plannedDate": "2025-09-27",
+      "estimatedQuantity": 22000,
+      "estimatedMortality": 15,
+      "notes": "",
+      "plannedCosts": {},
+      "inventoryToUse": [],
+      "status": "planned",
+      "survivalQuantity": 18700,
+      "totalPlannedCost": 0,
+      "type": "plan",
+      "createdAt": "2025-09-26T17:16:35.167Z",
+      "updatedAt": "2025-09-26T17:16:35.167Z"
     }
   ],
   "income": [],
@@ -452,7 +4095,7 @@
       "roi": 0,
       "createdAt": "2025-09-26T06:15:26.492Z",
       "updatedAt": "2025-09-26T06:15:26.492Z",
-      "id": 1
+      "id": "1"
     },
     {
       "investorId": "O-6Ns4_",
@@ -588,6 +4231,35 @@
       "isActive": true,
       "createdAt": "2025-09-26T09:12:13.702Z",
       "updatedAt": "2025-09-26T09:12:13.702Z"
+    },
+    {
+      "id": "origin-007",
+      "code": "semillero_local",
+      "name": "Semillero Local",
+      "description": "Semillas producidas localmente",
+      "quality": "media",
+      "price": 12,
+      "mortality": 15,
+      "monthlyGrowthRate": 3.5,
+      "monthlyMortalityRate": 1.5,
+      "pricePerUnit": 0.13,
+      "pricePerBundle": 12,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:02:41.672Z",
+      "updatedAt": "2025-09-26T13:02:41.730Z"
+    },
+    {
+      "id": "seedOrigins-1758900256337",
+      "name": "parissssssss",
+      "monthlyGrowthRate": 2,
+      "monthlyMortalityRate": 2,
+      "pricePerBundle": 23,
+      "bundleSize": 96,
+      "description": "asfasfasfasf",
+      "isActive": true,
+      "pricePerUnit": 0.23958333333333334,
+      "createdAt": "2025-09-26T15:24:16.337Z",
+      "updatedAt": "2025-09-26T15:24:48.640Z"
     }
   ],
   "projections": [],
@@ -1196,33 +4868,33 @@
   "lotStatuses": [
     {
       "id": "status-lot-001",
-      "code": "planned",
-      "label": "Planificado",
-      "description": "Lote planificado pero no iniciado",
+      "code": "seeded",
+      "label": "Sembrado",
+      "description": "Lote sembrado recientemente",
       "order": 1,
       "isActive": true,
-      "createdAt": "2025-09-26T08:33:56.523Z",
-      "updatedAt": "2025-09-26T08:33:56.523Z"
+      "createdAt": "2025-09-26T09:26:38.713Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
     },
     {
       "id": "status-lot-002",
       "code": "growing",
-      "label": "En Crecimiento",
+      "label": "Crecimiento",
       "description": "Lote en proceso de crecimiento",
       "order": 2,
       "isActive": true,
-      "createdAt": "2025-09-26T08:33:56.523Z",
-      "updatedAt": "2025-09-26T08:33:56.523Z"
+      "createdAt": "2025-09-26T09:26:38.714Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
     },
     {
       "id": "status-lot-003",
       "code": "ready",
-      "label": "Listo para Cosecha",
+      "label": "Listo",
       "description": "Lote listo para ser cosechado",
       "order": 3,
       "isActive": true,
-      "createdAt": "2025-09-26T08:33:56.523Z",
-      "updatedAt": "2025-09-26T08:33:56.523Z"
+      "createdAt": "2025-09-26T09:26:38.714Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
     },
     {
       "id": "status-lot-004",
@@ -1231,8 +4903,8 @@
       "description": "Lote ya cosechado",
       "order": 4,
       "isActive": true,
-      "createdAt": "2025-09-26T08:33:56.523Z",
-      "updatedAt": "2025-09-26T08:33:56.523Z"
+      "createdAt": "2025-09-26T09:26:38.714Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
     },
     {
       "id": "status-lot-005",
@@ -1241,8 +4913,18 @@
       "description": "Lote cancelado por algún problema",
       "order": 5,
       "isActive": true,
-      "createdAt": "2025-09-26T08:33:56.523Z",
-      "updatedAt": "2025-09-26T08:33:56.523Z"
+      "createdAt": "2025-09-26T09:26:38.714Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
+    },
+    {
+      "id": "status-lot-006",
+      "code": "planned",
+      "label": "Planificado",
+      "description": "Lote planificado pero no iniciado",
+      "order": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:26:38.714Z",
+      "updatedAt": "2025-09-26T09:26:38.714Z"
     }
   ],
   "measurementUnits": [
@@ -1934,6 +5616,46 @@
       "isActive": true,
       "createdAt": "2025-09-26T08:53:48.504Z",
       "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "presentation-005",
+      "code": "malla15kg",
+      "name": "Malla 15 Kg",
+      "editable": true,
+      "order": 5,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.570Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "presentation-006",
+      "code": "balde10kg",
+      "name": "Balde 10 Kg",
+      "editable": true,
+      "order": 6,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "presentation-007",
+      "code": "saco50kg",
+      "name": "Saco 50 Kg",
+      "editable": true,
+      "order": 7,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "presentation-008",
+      "code": "tina200kg",
+      "name": "Tina 200 Kg",
+      "editable": true,
+      "order": 8,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
     }
   ],
   "presentationMeasures": [
@@ -2048,6 +5770,215 @@
       "isActive": true,
       "createdAt": "2025-09-26T08:53:48.504Z",
       "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-010",
+      "presentationCode": "malla15kg",
+      "code": "10-20",
+      "name": "10-20",
+      "pricePerKg": 0,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-011",
+      "presentationCode": "malla15kg",
+      "code": "20-30",
+      "name": "20-30",
+      "pricePerKg": 0,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-012",
+      "presentationCode": "malla15kg",
+      "code": "30-40",
+      "name": "30-40",
+      "pricePerKg": 0,
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-013",
+      "presentationCode": "malla15kg",
+      "code": "40-50",
+      "name": "40-50",
+      "pricePerKg": 0,
+      "order": 4,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-014",
+      "presentationCode": "malla15kg",
+      "code": "50-60",
+      "name": "50-60",
+      "pricePerKg": 0,
+      "order": 5,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-015",
+      "presentationCode": "malla15kg",
+      "code": "60-70",
+      "name": "60-70",
+      "pricePerKg": 0,
+      "order": 6,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-016",
+      "presentationCode": "malla15kg",
+      "code": "70-80",
+      "name": "70-80",
+      "pricePerKg": 0,
+      "order": 7,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-017",
+      "presentationCode": "malla15kg",
+      "code": "80-90",
+      "name": "80-90",
+      "pricePerKg": 0,
+      "order": 8,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-018",
+      "presentationCode": "malla15kg",
+      "code": "90-100",
+      "name": "90-100",
+      "pricePerKg": 0,
+      "order": 9,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-019",
+      "presentationCode": "malla15kg",
+      "code": "100-110",
+      "name": "100-110",
+      "pricePerKg": 0,
+      "order": 10,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-020",
+      "presentationCode": "malla15kg",
+      "code": "110-120",
+      "name": "110-120",
+      "pricePerKg": 0,
+      "order": 11,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-021",
+      "presentationCode": "malla15kg",
+      "code": "120+",
+      "name": "120+",
+      "pricePerKg": 0,
+      "order": 12,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-022",
+      "presentationCode": "balde10kg",
+      "code": "10-20",
+      "name": "10-20",
+      "pricePerKg": 0,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-023",
+      "presentationCode": "balde10kg",
+      "code": "20-30",
+      "name": "20-30",
+      "pricePerKg": 0,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-024",
+      "presentationCode": "balde10kg",
+      "code": "30-40",
+      "name": "30-40",
+      "pricePerKg": 0,
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-025",
+      "presentationCode": "saco50kg",
+      "code": "10-20",
+      "name": "10-20",
+      "pricePerKg": 0,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-026",
+      "presentationCode": "saco50kg",
+      "code": "20-30",
+      "name": "20-30",
+      "pricePerKg": 0,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-027",
+      "presentationCode": "tina200kg",
+      "code": "10-20",
+      "name": "10-20",
+      "pricePerKg": 0,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
+    },
+    {
+      "id": "measure-028",
+      "presentationCode": "tina200kg",
+      "code": "20-30",
+      "name": "20-30",
+      "pricePerKg": 0,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T13:03:57.571Z",
+      "updatedAt": "2025-09-26T13:03:57.571Z"
     }
   ],
   "defaultSeedOriginParameters": [
@@ -2076,6 +6007,195 @@
       "isActive": true,
       "createdAt": "2025-09-26T09:12:13.702Z",
       "updatedAt": "2025-09-26T09:12:13.702Z"
+    }
+  ],
+  "monitoringPageConfig": [
+    {
+      "id": "monitoring-page-config",
+      "title": "Monitoreo de Siembras",
+      "subtitle": "Supervisa y rastrea el crecimiento de todas las siembras activas",
+      "loadingMessage": "Cargando monitoreo...",
+      "noDataTitle": "No hay siembras para monitorear",
+      "noDataMessage": "Crea siembras en la sección de Siembras para comenzar el monitoreo y seguimiento.",
+      "noDataIcon": "🔍",
+      "tableTitle": "Tabla de Siembras por Sector",
+      "tableSubtitle": "Haz clic en \"Ver Detalles\" para acceder al monitoreo detallado de cada lote",
+      "fallbackTexts": {
+        "sectorNotFound": "Sector no encontrado",
+        "locationNotAvailable": "Ubicación no disponible",
+        "noLocation": "Sin ubicación",
+        "noMeasurements": "Sin mediciones",
+        "initialQuantity": "inicial",
+        "currentQuantity": "actual"
+      },
+      "currency": {
+        "locale": "es-PE",
+        "currency": "PEN"
+      },
+      "dateFormat": {
+        "locale": "es-PE"
+      },
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    }
+  ],
+  "lotStatusColors": [
+    {
+      "id": "lot-status-color-1",
+      "statusCode": "seeded",
+      "colorClass": "bg-blue-100 text-blue-800",
+      "bgColor": "bg-blue-100",
+      "textColor": "text-blue-800",
+      "isActive": true,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "lot-status-color-2",
+      "statusCode": "growing",
+      "colorClass": "bg-green-100 text-green-800",
+      "bgColor": "bg-green-100",
+      "textColor": "text-green-800",
+      "isActive": true,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "lot-status-color-3",
+      "statusCode": "ready",
+      "colorClass": "bg-yellow-100 text-yellow-800",
+      "bgColor": "bg-yellow-100",
+      "textColor": "text-yellow-800",
+      "isActive": true,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "lot-status-color-4",
+      "statusCode": "harvested",
+      "colorClass": "bg-gray-100 text-gray-800",
+      "bgColor": "bg-gray-100",
+      "textColor": "text-gray-800",
+      "isActive": true,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    }
+  ],
+  "monitoringTableHeaders": [
+    {
+      "id": "header-1",
+      "key": "lotInfo",
+      "label": "Información del Lote",
+      "sortable": false,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-2",
+      "key": "entryDate",
+      "label": "Fecha Siembra",
+      "sortable": true,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-3",
+      "key": "lines",
+      "label": "Líneas/Sistemas",
+      "sortable": false,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-4",
+      "key": "quantity",
+      "label": "Cantidad",
+      "sortable": true,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 4,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-5",
+      "key": "measurements",
+      "label": "Última Medición",
+      "sortable": false,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 5,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-6",
+      "key": "status",
+      "label": "Estado",
+      "sortable": true,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 6,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.062Z"
+    },
+    {
+      "id": "header-7",
+      "key": "actions",
+      "label": "Acciones",
+      "sortable": false,
+      "width": "w-auto",
+      "isActive": true,
+      "order": 7,
+      "createdAt": "2025-09-26T15:16:39.062Z",
+      "updatedAt": "2025-09-26T15:16:39.063Z"
+    }
+  ],
+  "monitoringStatCards": [
+    {
+      "id": "stat-card-1",
+      "key": "activeLots",
+      "title": "Siembras Activas",
+      "subtitle": "En seguimiento",
+      "icon": "🔍",
+      "color": "primary",
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T15:16:39.063Z",
+      "updatedAt": "2025-09-26T15:16:39.063Z"
+    },
+    {
+      "id": "stat-card-2",
+      "key": "totalSpecimens",
+      "title": "Total Ejemplares",
+      "subtitle": "En monitoreo",
+      "icon": "🐚",
+      "color": "secondary",
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T15:16:39.063Z",
+      "updatedAt": "2025-09-26T15:16:39.063Z"
+    },
+    {
+      "id": "stat-card-3",
+      "key": "sectorsWithLots",
+      "title": "Sectores con Siembras",
+      "subtitle": "Activos",
+      "icon": "🏭",
+      "color": "green",
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T15:16:39.063Z",
+      "updatedAt": "2025-09-26T15:16:39.063Z"
     }
   ]
 }

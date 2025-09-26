@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHarvestStore } from '../../stores'
+import { useHarvestStore } from '../../stores/harvestStoreNew'
 import { useInventoryStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import {
@@ -14,7 +14,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
-  const { harvestCostCategories, fetchHarvestCostCategories, createHarvestPlan, loading } = useHarvestStore()
+  const { costCategories: harvestCostCategories, loadConfigurations, createHarvestPlan, loading } = useHarvestStore()
   const { inventory, fetchInventory } = useInventoryStore()
   
   const [planForm, setPlanForm] = useState({
@@ -43,16 +43,16 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
   useEffect(() => {
     if (isOpen && user?.id) {
       console.log('📝 [HarvestPlanningModal] Modal opened, loading data for user:', user.id)
-      fetchHarvestCostCategories()
+      loadConfigurations()
       fetchInventory(user.id)
     } else {
       console.log('📝 [HarvestPlanningModal] Modal closed or no user ID')
     }
-  }, [isOpen, user?.id, fetchHarvestCostCategories, fetchInventory])
+  }, [isOpen, user?.id, loadConfigurations, fetchInventory])
 
   useEffect(() => {
     // Inicializar con las categorías del store
-    if (harvestCostCategories.length > 0 && customCostCategories.length === 0) {
+    if (harvestCostCategories && harvestCostCategories.length > 0 && customCostCategories.length === 0) {
       setCustomCostCategories(harvestCostCategories)
     }
   }, [harvestCostCategories, customCostCategories.length])

@@ -943,15 +943,15 @@ const IncomePage = () => {
       costPerUnit: filteredStats.totalHarvested > 0 ? totalCosts / filteredStats.totalHarvested : 0,
       profitPerUnit: filteredStats.totalHarvested > 0 ? netProfit / filteredStats.totalHarvested : 0,
 
-      // Métricas por manojo (96 conchas)
-      revenuePerManojo: filteredStats.totalHarvested > 0 ? (totalRevenues / filteredStats.totalHarvested) * 96 : 0,
-      costPerManojo: filteredStats.totalHarvested > 0 ? (totalCosts / filteredStats.totalHarvested) * 96 : 0,
-      profitPerManojo: filteredStats.totalHarvested > 0 ? (netProfit / filteredStats.totalHarvested) * 96 : 0,
+      // Métricas por manojo
+      revenuePerManojo: filteredStats.totalHarvested > 0 ? (totalRevenues / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MANOJO : 0,
+      costPerManojo: filteredStats.totalHarvested > 0 ? (totalCosts / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MANOJO : 0,
+      profitPerManojo: filteredStats.totalHarvested > 0 ? (netProfit / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MANOJO : 0,
 
-      // Métricas por malla (288 conchas)
-      revenuePerMalla: filteredStats.totalHarvested > 0 ? (totalRevenues / filteredStats.totalHarvested) * 288 : 0,
-      costPerMalla: filteredStats.totalHarvested > 0 ? (totalCosts / filteredStats.totalHarvested) * 288 : 0,
-      profitPerMalla: filteredStats.totalHarvested > 0 ? (netProfit / filteredStats.totalHarvested) * 288 : 0
+      // Métricas por malla
+      revenuePerMalla: filteredStats.totalHarvested > 0 ? (totalRevenues / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MALLA : 0,
+      costPerMalla: filteredStats.totalHarvested > 0 ? (totalCosts / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MALLA : 0,
+      profitPerMalla: filteredStats.totalHarvested > 0 ? (netProfit / filteredStats.totalHarvested) * CONVERSIONS.CONCHITAS_POR_MALLA : 0
     }
   }, [completedHarvests, expenses, sectors, filteredStats.totalHarvested, calculateEstimatedRevenue])
 
@@ -1166,9 +1166,9 @@ const IncomePage = () => {
           title="Total Cosechado"
           value={
             <div>
-              <div>{Math.round(filteredStats.totalHarvested / 96).toLocaleString()}</div>
+              <div>{Math.round(filteredStats.totalHarvested / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()}</div>
               <div className="text-xs opacity-75">
-                ({Math.round(filteredStats.totalHarvested / 288)} mallas)
+                ({Math.round(filteredStats.totalHarvested / CONVERSIONS.CONCHITAS_POR_MALLA)} mallas)
               </div>
             </div>
           }
@@ -1265,16 +1265,16 @@ const IncomePage = () => {
                         <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           <div className="space-y-1">
                             <div className="font-medium text-green-700">
-                              📦 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / 96).toLocaleString()} manojos
-                              <span className="text-xs text-gray-500 ml-1">(96 conchas c/u)</span>
+                              📦 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()} manojos
+                              <span className="text-xs text-gray-500 ml-1">({CONVERSIONS.CONCHITAS_POR_MANOJO} conchas c/u)</span>
                             </div>
                             <div className="text-sm text-blue-700">
-                              🦪 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / 111).toLocaleString()} conchitas
-                              <span className="text-xs text-gray-500 ml-1">(1kg = 111 conchas)</span>
+                              🦪 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / CONVERSIONS.CONCHITAS_POR_KG).toLocaleString()} conchitas
+                              <span className="text-xs text-gray-500 ml-1">(1kg = {CONVERSIONS.CONCHITAS_POR_KG} conchas)</span>
                             </div>
                             <div className="text-xs text-gray-500">
-                              🎯 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / 288)} mallas
-                              <span className="text-xs text-gray-400 ml-1">(288 conchas c/u)</span>
+                              🎯 {Math.round((plan.actualQuantity || plan.estimatedQuantity || 0) / CONVERSIONS.CONCHITAS_POR_MALLA)} mallas
+                              <span className="text-xs text-gray-400 ml-1">({CONVERSIONS.CONCHITAS_POR_MALLA} conchas c/u)</span>
                             </div>
                             <div className="text-xs text-gray-400">
                               Total: {Math.ceil(plan.actualQuantity || plan.estimatedQuantity || 0).toLocaleString()} unidades
@@ -1538,10 +1538,10 @@ const IncomePage = () => {
                     <div className="bg-blue-50 rounded p-2">
                       <div className="font-medium text-blue-800">Cantidad Total</div>
                       <div className="text-blue-600">
-                        {Math.round(data.totalQuantity / 96).toLocaleString()} manojos
+                        {Math.round(data.totalQuantity / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()} manojos
                       </div>
                       <div className="text-xs text-blue-500">
-                        ({Math.round(data.totalQuantity / 288)} mallas)
+                        ({Math.round(data.totalQuantity / CONVERSIONS.CONCHITAS_POR_MALLA)} mallas)
                       </div>
                     </div>
                     <div className="bg-green-50 rounded p-2">
@@ -1550,9 +1550,9 @@ const IncomePage = () => {
                     </div>
                     <div className="bg-purple-50 rounded p-2">
                       <div className="font-medium text-purple-800">Precio por Manojo</div>
-                      <div className="text-purple-600">{formatCurrency(data.totalRevenue / Math.round(data.totalQuantity / 96))}</div>
+                      <div className="text-purple-600">{formatCurrency(data.totalRevenue / Math.round(data.totalQuantity / CONVERSIONS.CONCHITAS_POR_MANOJO))}</div>
                       <div className="text-xs text-purple-500">
-                        {formatCurrency(data.totalRevenue / (data.totalQuantity / 288))}/malla
+                        {formatCurrency(data.totalRevenue / (data.totalQuantity / CONVERSIONS.CONCHITAS_POR_MALLA))}/malla
                       </div>
                     </div>
                   </div>
@@ -1763,12 +1763,12 @@ const IncomePage = () => {
             
             {/* Análisis por Malla - PRINCIPAL */}
             <div className="mb-6">
-              <h4 className="text-lg font-semibold text-purple-700 mb-3">🎯 Por Malla (3 manojos = 288 unidades) - PRINCIPAL</h4>
+              <h4 className="text-lg font-semibold text-purple-700 mb-3">🎯 Por Malla ({CONVERSIONS.MANOJOS_POR_MALLA} manojos = {CONVERSIONS.CONCHITAS_POR_MALLA} unidades) - PRINCIPAL</h4>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-4 sm:gap-4">
                 <div className="bg-purple-100 rounded-lg p-4 border-2 border-purple-300">
                   <div className="text-purple-800 text-sm font-semibold mb-2">Total Mallas</div>
                   <div className="text-2xl font-bold text-purple-900">
-                    {Math.round(incomeStatementData.totalQuantityHarvested / 288)}
+                    {Math.round(incomeStatementData.totalQuantityHarvested / CONVERSIONS.CONCHITAS_POR_MALLA)}
                   </div>
                   <div className="text-xs text-purple-700 font-medium">mallas</div>
                 </div>
@@ -1804,12 +1804,12 @@ const IncomePage = () => {
 
             {/* Análisis por Manojo - SECUNDARIO */}
             <div className="mb-6">
-              <h4 className="text-md font-medium text-blue-600 mb-3">📦 Por Manojo (96 unidades)</h4>
+              <h4 className="text-md font-medium text-blue-600 mb-3">📦 Por Manojo ({CONVERSIONS.CONCHITAS_POR_MANOJO} unidades)</h4>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-4 sm:gap-4">
                 <div className="bg-blue-50 rounded-lg p-4">
                   <div className="text-blue-700 text-sm mb-2">Total Manojos</div>
                   <div className="text-xl font-bold text-blue-900">
-                    {Math.round(incomeStatementData.totalQuantityHarvested / 96).toLocaleString()}
+                    {Math.round(incomeStatementData.totalQuantityHarvested / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()}
                   </div>
                   <div className="text-xs text-blue-600">manojos</div>
                 </div>
@@ -1879,13 +1879,13 @@ const IncomePage = () => {
                 <div className="text-gray-600">Cosechas Realizadas</div>
               </div>
               <div className="text-center">
-                <div className="font-medium text-green-700">{Math.round(incomeStatementData.totalQuantityHarvested / 96).toLocaleString()}</div>
-                <div className="text-gray-600">Manojos (96 c/u)</div>
-                <div className="text-xs text-gray-500">{Math.round(incomeStatementData.totalQuantityHarvested / 288)} mallas</div>
+                <div className="font-medium text-green-700">{Math.round(incomeStatementData.totalQuantityHarvested / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()}</div>
+                <div className="text-gray-600">Manojos ({CONVERSIONS.CONCHITAS_POR_MANOJO} c/u)</div>
+                <div className="text-xs text-gray-500">{Math.round(incomeStatementData.totalQuantityHarvested / CONVERSIONS.CONCHITAS_POR_MALLA)} mallas</div>
               </div>
               <div className="text-center">
-                <div className="font-medium text-blue-700">{Math.round(incomeStatementData.totalQuantityHarvested / 111).toLocaleString()}</div>
-                <div className="text-gray-600">Conchitas (1kg=111)</div>
+                <div className="font-medium text-blue-700">{Math.round(incomeStatementData.totalQuantityHarvested / CONVERSIONS.CONCHITAS_POR_KG).toLocaleString()}</div>
+                <div className="text-gray-600">Conchitas (1kg={CONVERSIONS.CONCHITAS_POR_KG})</div>
                 <div className="text-xs text-gray-500">{Math.ceil(incomeStatementData.totalQuantityHarvested).toLocaleString()} unidades</div>
               </div>
               <div className="text-center">
@@ -1897,14 +1897,14 @@ const IncomePage = () => {
               <div className="text-center">
                 <div className="font-medium text-gray-900">
                   {completedHarvests.length > 0
-                    ? Math.round((incomeStatementData.totalQuantityHarvested / completedHarvests.length) / 96).toLocaleString()
+                    ? Math.round((incomeStatementData.totalQuantityHarvested / completedHarvests.length) / CONVERSIONS.CONCHITAS_POR_MANOJO).toLocaleString()
                     : '0'
                   }
                 </div>
                 <div className="text-gray-600">Promedio Manojos/Cosecha</div>
                 <div className="text-xs text-gray-500">
                   ({completedHarvests.length > 0
-                    ? Math.round((incomeStatementData.totalQuantityHarvested / completedHarvests.length) / 288)
+                    ? Math.round((incomeStatementData.totalQuantityHarvested / completedHarvests.length) / CONVERSIONS.CONCHITAS_POR_MALLA)
                     : 0
                   } mallas)
                 </div>

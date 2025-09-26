@@ -38,7 +38,11 @@ const Header = ({ onToggleMobileMenu, isMobileMenuOpen }) => {
 
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-1 sm:space-x-2">
-                <span className="text-xl sm:text-2xl">🐚</span>
+                <img
+                  src="/logo.png"
+                  alt="Logo Conchas de Abanico"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                />
                 <h1 className="text-base font-bold text-slate-900 hidden sm:block sm:text-lg md:text-xl tracking-tight">
                   {UI_TEXTS.app.title}
                 </h1>

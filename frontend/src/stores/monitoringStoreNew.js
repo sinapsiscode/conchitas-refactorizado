@@ -47,15 +47,19 @@ export const useMonitoringStore = create((set, get) => ({
 
   // Crear nuevo registro de monitoreo
   createMonitoringRecord: async (recordData) => {
+    console.log('🔧 monitoringStore.createMonitoringRecord - Datos recibidos:', recordData);
     set({ loading: true, error: null });
     try {
+      console.log('📡 Llamando a monitoringService.create...');
       const newRecord = await monitoringService.create(recordData);
+      console.log('✅ Registro creado exitosamente:', newRecord);
       set((state) => ({
         monitoringRecords: [...state.monitoringRecords, newRecord],
         loading: false
       }));
       return { success: true, data: newRecord };
     } catch (error) {
+      console.error('❌ Error en createMonitoringRecord:', error);
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
@@ -156,6 +160,12 @@ export const useMonitoringStore = create((set, get) => ({
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
+  },
+
+  // Alias para mantener compatibilidad con LotMonitoringPage
+  createMonitoring: async (recordData) => {
+    const store = get();
+    return await store.createMonitoringRecord(recordData);
   },
 
   // Limpiar errores

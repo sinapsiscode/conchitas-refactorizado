@@ -34,7 +34,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
   })
   
   // Encontrar la siembra específica
-  const seeding = lots.find(l => l.id === lotId) || sectors.flatMap(s => s.lots || []).find(l => l.id === lotId)
+  const seeding = lots.find(l => l.id === lotId)
   const sector = sectors.find(s => s.id === seeding?.sectorId)
   
   useEffect(() => {
@@ -57,7 +57,10 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
   // Centralized function to get seed origin parameters with validation
   const getSeedOriginParameters = () => {
     if (!seeding || !seeding.origin) {
-      console.warn('Seeding or origin not found for parameter calculation')
+      // Only warn if it's a real issue, not during initial load
+      if (seeding) {
+        console.warn('Seeding or origin not found for parameter calculation')
+      }
       return {
         monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
         monthlyMortalityRate: defaultParams?.monthlyMortalityRate || 5.0,
@@ -71,7 +74,10 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     const seedOrigin = seedOrigins.find(origin => origin.name === seeding.origin)
 
     if (!seedOrigin) {
-      console.warn(`Seed origin "${seeding.origin}" not found in seedOrigins database`)
+      // Only warn if seedOrigins has been loaded (not empty)
+      if (seedOrigins.length > 0) {
+        console.warn(`Seed origin "${seeding.origin}" not found in seedOrigins database`)
+      }
       return {
         monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
         monthlyMortalityRate: parseFloat(seeding.expectedMonthlyMortality) || defaultParams?.monthlyMortalityRate || 5.0,
@@ -364,8 +370,10 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
       }
     }
     
+    console.log('🚀 Enviando datos de medición:', measurementData)
     const result = await createMonitoring(measurementData)
-    
+    console.log('📊 Resultado de createMonitoring:', result)
+
     if (result.success) {
       MySwal.fire({
         icon: 'success',

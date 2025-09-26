@@ -11,6 +11,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const SeedingPage = () => {
+  console.log('🚨 SEEDING PAGE SE ESTÁ EJECUTANDO 🚨')
   const { user } = useAuthStore()
   const {
     sectors,
@@ -21,6 +22,9 @@ const SeedingPage = () => {
     fetchCultivationLines,
     loading
   } = useSectorStore()
+
+  // Debug: monitorear cambios en cultivationLines
+  console.log('🔧 cultivationLines en SeedingPage:', cultivationLines?.length || 0, cultivationLines)
   const { seedOrigins, fetchSeedOrigins } = useSeedOriginStore()
   const { inventory, fetchInventory } = useInventoryStore()
   const {
@@ -97,10 +101,9 @@ const SeedingPage = () => {
           await fetchBatteries(sector.id)
         }
 
-        // Cargar líneas de todos los sectores (esto cargará las líneas de todas las baterías)
-        for (const sector of sectors) {
-          await fetchCultivationLines(sector.id)
-        }
+        // Cargar TODAS las líneas de cultivo sin filtros para el select
+        const result = await fetchCultivationLines()
+        console.log('🔍 Líneas cargadas:', result)
       }
     }
 
@@ -1864,7 +1867,9 @@ const SeedingPage = () => {
                                 }}
                               >
                                 <option value="">Seleccionar línea</option>
-                                {cultivationLines.map(line => {
+                                {(() => {
+                                  console.log('🔍 Renderizando select con líneas:', cultivationLines?.length || 0)
+                                  return cultivationLines.map(line => {
                                   const occupied = line.occupiedSystems?.length || 0
                                   const total = line.totalSystems || 100
                                   const available = total - occupied
@@ -1883,7 +1888,8 @@ const SeedingPage = () => {
                                       {isAlreadySelected && ' (✓ Ya seleccionada)'}
                                     </option>
                                   )
-                                })}
+                                })
+                                })()}
                               </select>
                             </div>
 
