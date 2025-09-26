@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuthStore } from '../../stores/authStore'
+import { useAuthStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 
 const Sidebar = ({ currentPage, onPageChange, isMobileOpen, setIsMobileOpen }) => {

@@ -1,17 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useSectorStore } from '../../stores/sectorStore'
-import { useHarvestStore } from '../../stores/harvestStore'
-import { useExpenseStore } from '../../stores/expenseStore'
-import { useInvestmentStore } from '../../stores/investmentStore'
-import { useMonitoringStore } from '../../stores/monitoringStore'
-import { useSeedOriginStore } from '../../stores/seedOriginStore'
+import { useAuthStore } from '../../stores'
+import { useSectorStore } from '../../stores'
+import { useHarvestStore } from '../../stores'
+import { useExpenseStore } from '../../stores'
+import { useInvestmentStore } from '../../stores'
+import { useMonitoringStore } from '../../stores'
+import { useSeedOriginStore } from '../../stores'
 import StatCard from '../../components/common/StatCard'
 import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import { exportToPDF } from '../../utils/exportPDF'
 import * as XLSX from 'xlsx'
-import { mockAPI } from '../../services/mock/server'
+// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 
 const ReportsPage = () => {
   const { user } = useAuthStore()
@@ -72,7 +72,7 @@ const ReportsPage = () => {
           await Promise.all(promises)
 
           // Cargar siembras (lotes), baterías y líneas de cultivo
-          const sectorsWithLotsResponse = await mockAPI.getAllSectors()
+          // const sectorsWithLotsResponse = await mockAPI.getAllSectors() // TODO: Migrar a nuevo store con JSON Server
           const sectorsWithLots = sectorsWithLotsResponse.data || []
 
           // Extraer todos los lotes (siembras) de todos los sectores
@@ -90,12 +90,12 @@ const ReportsPage = () => {
 
           for (const sector of sectorsWithLots) {
             try {
-              const batteriesResponse = await mockAPI.getBatteries(sector.id)
+              // const batteriesResponse = await mockAPI.getBatteries(sector.id) // TODO: Migrar a nuevo store con JSON Server
               if (batteriesResponse.data) {
                 allBatteries.push(...batteriesResponse.data)
               }
 
-              const linesResponse = await mockAPI.getCultivationLines(sector.id)
+              // const linesResponse = await mockAPI.getCultivationLines(sector.id) // TODO: Migrar a nuevo store con JSON Server
               if (linesResponse.data) {
                 allCultivationLines.push(...linesResponse.data)
               }

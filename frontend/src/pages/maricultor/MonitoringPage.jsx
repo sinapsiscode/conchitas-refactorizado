@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useSectorStore } from '../../stores/sectorStore'
+import { useAuthStore } from '../../stores'
+import { useSectorStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import StatCard from '../../components/common/StatCard'
 import EmptyState from '../../components/common/EmptyState'

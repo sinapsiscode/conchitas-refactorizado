@@ -21,5 +21,6 @@ export { useNotificationStore } from './notificationStoreNew';
 export { useSeedOriginStore } from './seedOriginStoreNew';
 export { useProjectionStore } from './projectionStoreNew';
 export { useIncomeStatementClosureStore } from './incomeStatementClosureStoreNew';
+export { useSeedingStore } from './seedingStoreNew';
 
 // 🎉 MIGRACIÓN COMPLETADA - TODOS LOS STORES USAN JSON SERVER

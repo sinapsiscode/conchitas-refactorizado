@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
+import { useAuthStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import NotificationBell from '../notifications/NotificationBell'
 

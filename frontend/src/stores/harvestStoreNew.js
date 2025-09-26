@@ -20,6 +20,13 @@ export const useHarvestStore = create((set, get) => ({
     { id: 'packaging', name: 'Empaquetado', defaultCost: 15 },
     { id: 'other', name: 'Otros', defaultCost: 10 }
   ],
+  pricing: [
+    { sizeCategory: 'XS', pricePerUnit: 0.50, isActive: true },
+    { sizeCategory: 'S', pricePerUnit: 0.75, isActive: true },
+    { sizeCategory: 'M', pricePerUnit: 1.00, isActive: true },
+    { sizeCategory: 'L', pricePerUnit: 1.25, isActive: true },
+    { sizeCategory: 'XL', pricePerUnit: 1.50, isActive: true }
+  ],
   pricingData: [
     { sizeCategory: 'XS', pricePerUnit: 0.50, isActive: true },
     { sizeCategory: 'S', pricePerUnit: 0.75, isActive: true },
@@ -146,6 +153,23 @@ export const useHarvestStore = create((set, get) => ({
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
+  },
+
+  // Obtener planes de cosecha (alias para compatibilidad)
+  fetchHarvestPlans: async (userId) => {
+    return get().fetchHarvests(userId);
+  },
+
+  // Obtener datos de precios
+  fetchPricing: async () => {
+    // Los precios ya están definidos en el estado inicial
+    // Esta función existe para compatibilidad
+    return { success: true, data: get().pricing };
+  },
+
+  // Obtener sectores (alias para fetchSectorsWithLots)
+  fetchSectors: async (userId) => {
+    return get().fetchSectorsWithLots(userId);
   },
 
   // Actualizar plan de cosecha

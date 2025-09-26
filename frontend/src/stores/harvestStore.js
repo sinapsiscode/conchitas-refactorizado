@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useHarvestStore = create((set, get) => ({
   harvestPlans: [],
@@ -13,7 +13,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.getHarvestPlans(userId, sectorId)
+      // const response = await MockAPI.getHarvestPlans(userId, sectorId) // TODO: Migrar a nuevo store con JSON Server
       console.log('📋 [HarvestStore] Harvest plans fetched successfully:', response.data.length, 'plans')
       console.log('📋 [HarvestStore] DETAILED PLANS DATA:')
       response.data.forEach((plan, index) => {
@@ -53,7 +53,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.createHarvestPlan(planData)
+      // const response = await MockAPI.createHarvestPlan(planData) // TODO: Migrar a nuevo store con JSON Server
       const newPlan = response.data
       console.log('💾 [HarvestStore] Harvest plan created successfully:', newPlan.id)
       console.log('💾 [HarvestStore] Created plan estimatedQuantity:', newPlan.estimatedQuantity, 'type:', typeof newPlan.estimatedQuantity)
@@ -81,7 +81,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getPricing()
+      // const response = await MockAPI.getPricing() // TODO: Migrar a nuevo store con JSON Server
       
       set({
         pricing: response.data,
@@ -106,7 +106,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getHarvestCostCategories()
+      // const response = await MockAPI.getHarvestCostCategories() // TODO: Migrar a nuevo store con JSON Server
       console.log('💰 [HarvestStore] Cost categories fetched:', response.data.length, 'categories')
       
       set({
@@ -133,7 +133,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateHarvestPlan(updateData)
+      // const response = await MockAPI.updateHarvestPlan(updateData) // TODO: Migrar a nuevo store con JSON Server
       const updatedPlan = response.data
       console.log('✏️ [HarvestStore] Harvest plan updated successfully:', updatedPlan.id)
       
@@ -184,7 +184,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.deleteHarvestPlan(planId)
+      // const response = await MockAPI.deleteHarvestPlan(planId) // TODO: Migrar a nuevo store con JSON Server
       console.log('🗑️ [HarvestStore] Harvest plan deleted successfully:', planId)
       
       set((state) => ({
@@ -209,7 +209,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createPricing(pricingData)
+      // const response = await MockAPI.createPricing(pricingData) // TODO: Migrar a nuevo store con JSON Server
       const newPricing = response.data
       
       set((state) => ({
@@ -272,7 +272,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.createHarvestCostCategory(categoryData)
+      // const response = await MockAPI.createHarvestCostCategory(categoryData) // TODO: Migrar a nuevo store con JSON Server
       console.log('💰 [HarvestStore] Category created successfully:', response.data)
 
       set((state) => ({
@@ -298,7 +298,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.updateHarvestCostCategory(categoryId, updateData)
+      // const response = await MockAPI.updateHarvestCostCategory(categoryId, updateData) // TODO: Migrar a nuevo store con JSON Server
       console.log('💰 [HarvestStore] Category updated successfully:', response.data)
 
       set((state) => ({
@@ -326,7 +326,7 @@ export const useHarvestStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.deleteHarvestCostCategory(categoryId)
+      // const response = await MockAPI.deleteHarvestCostCategory(categoryId) // TODO: Migrar a nuevo store con JSON Server
       console.log('💰 [HarvestStore] Category deleted successfully:', categoryId)
 
       set((state) => ({

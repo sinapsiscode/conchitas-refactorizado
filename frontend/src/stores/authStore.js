@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useAuthStore = create((set, get) => ({
   user: null,
@@ -31,7 +31,7 @@ export const useAuthStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.authenticate(email, password)
+      // const response = await MockAPI.authenticate(email, password) // TODO: Migrar a nuevo store con JSON Server
       const { user, token } = response.data
       
       localStorage.setItem('token', token)
@@ -60,7 +60,7 @@ export const useAuthStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.register(userData)
+      // const response = await MockAPI.register(userData) // TODO: Migrar a nuevo store con JSON Server
       
       set({
         loading: false,

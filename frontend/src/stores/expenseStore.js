@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useExpenseStore = create((set, get) => ({
   expenses: [],
@@ -17,7 +17,7 @@ export const useExpenseStore = create((set, get) => ({
     set({ loading: true, error: null, filters })
     
     try {
-      const response = await MockAPI.getExpenses(filters)
+      // const response = await MockAPI.getExpenses(filters) // TODO: Migrar a nuevo store con JSON Server
       
       set({
         expenses: response.data,
@@ -41,7 +41,7 @@ export const useExpenseStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createExpense(expenseData)
+      // const response = await MockAPI.createExpense(expenseData) // TODO: Migrar a nuevo store con JSON Server
       const newExpense = response.data
       
       set((state) => ({

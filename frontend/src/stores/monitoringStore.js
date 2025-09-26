@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useMonitoringStore = create((set, get) => ({
   monitoringRecords: [],
@@ -15,7 +15,7 @@ export const useMonitoringStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getMonitoring(lotId, startDate, endDate)
+      // const response = await MockAPI.getMonitoring(lotId, startDate, endDate) // TODO: Migrar a nuevo store con JSON Server
       
       set({
         monitoringRecords: response.data,
@@ -40,7 +40,7 @@ export const useMonitoringStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getAllMonitoring()
+      // const response = await MockAPI.getAllMonitoring() // TODO: Migrar a nuevo store con JSON Server
       
       set({
         monitoringRecords: response.data,
@@ -64,7 +64,7 @@ export const useMonitoringStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createMonitoring(monitoringData)
+      // const response = await MockAPI.createMonitoring(monitoringData) // TODO: Migrar a nuevo store con JSON Server
       const newRecord = response.data
       
       set((state) => ({
@@ -88,7 +88,7 @@ export const useMonitoringStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateMonitoring(recordId, additionalData)
+      // const response = await MockAPI.updateMonitoring(recordId, additionalData) // TODO: Migrar a nuevo store con JSON Server
       const updatedRecord = response.data
       
       set((state) => ({

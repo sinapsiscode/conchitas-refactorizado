@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useIncomeStore = create((set, get) => ({
   incomeRecords: [],
@@ -11,7 +11,7 @@ export const useIncomeStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getIncomeRecords(userId, filters)
+      // const response = await MockAPI.getIncomeRecords(userId, filters) // TODO: Migrar a nuevo store con JSON Server
       console.log('💰 [IncomeStore] Income records fetched successfully:', response.data.length, 'records')
       
       set({
@@ -51,7 +51,7 @@ export const useIncomeStore = create((set, get) => ({
         }
       }
       
-      const response = await MockAPI.createIncomeRecord(incomeData)
+      // const response = await MockAPI.createIncomeRecord(incomeData) // TODO: Migrar a nuevo store con JSON Server
       const newRecord = response.data
       console.log('💾 [IncomeStore] Income record created successfully:', newRecord.id)
       
@@ -91,7 +91,7 @@ export const useIncomeStore = create((set, get) => ({
         }
       }
       
-      const response = await MockAPI.updateIncomeRecord(updateData)
+      // const response = await MockAPI.updateIncomeRecord(updateData) // TODO: Migrar a nuevo store con JSON Server
       const updatedRecord = response.data
       console.log('✏️ [IncomeStore] Income record updated successfully:', updatedRecord.id)
       
@@ -120,7 +120,7 @@ export const useIncomeStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.deleteIncomeRecord(recordId)
+      // const response = await MockAPI.deleteIncomeRecord(recordId) // TODO: Migrar a nuevo store con JSON Server
       console.log('🗑️ [IncomeStore] Income record deleted successfully:', recordId)
       
       set((state) => ({

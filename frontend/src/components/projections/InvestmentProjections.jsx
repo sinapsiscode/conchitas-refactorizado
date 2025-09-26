@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useProjectionStore } from '../../stores/projectionStore'
+import { useAuthStore } from '../../stores'
+import { useProjectionStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import ProjectionForm from './ProjectionForm'
 import ProjectionResults from './ProjectionResults'

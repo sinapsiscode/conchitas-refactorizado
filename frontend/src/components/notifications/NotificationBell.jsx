@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useNotificationStore } from '../../stores/notificationStore'
-import { useAuthStore } from '../../stores/authStore'
+import { useNotificationStore } from '../../stores'
+import { useAuthStore } from '../../stores'
 import NotificationCenter from './NotificationCenter'
 
 const NotificationBell = () => {

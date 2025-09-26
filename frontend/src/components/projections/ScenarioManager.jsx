@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useProjectionStore } from '../../stores/projectionStore'
+import { useProjectionStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import Swal from 'sweetalert2'
 

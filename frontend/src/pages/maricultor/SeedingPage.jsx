@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useSectorStore } from '../../stores/sectorStore'
-import { useSeedOriginStore } from '../../stores/seedOriginStore'
-import { useInventoryStore } from '../../stores/inventoryStore'
-import { mockAPI } from '../../services/mock/server'
+import { useAuthStore, useSectorStore, useSeedOriginStore, useInventoryStore, useSeedingStore } from '../../stores'
+// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import SystemSelector from '../../components/seeding/SystemSelector'
@@ -22,12 +19,17 @@ const SeedingPage = () => {
     fetchSectors,
     fetchBatteries,
     fetchCultivationLines,
-    createLot,
-    updateLot,
     loading
   } = useSectorStore()
   const { seedOrigins, fetchSeedOrigins } = useSeedOriginStore()
   const { inventory, fetchInventory } = useInventoryStore()
+  const {
+    lots,
+    fetchLots,
+    createLot,
+    updateLot,
+    loading: lotsLoading
+  } = useSeedingStore()
   const [showSeedingForm, setShowSeedingForm] = useState(false)
   const [showBatterySelector, setShowBatterySelector] = useState(false)
   const [selectedSector, setSelectedSector] = useState(null)

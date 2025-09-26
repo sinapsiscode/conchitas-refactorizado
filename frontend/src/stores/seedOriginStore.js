@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useSeedOriginStore = create((set, get) => ({
   seedOrigins: [],
@@ -10,7 +10,7 @@ export const useSeedOriginStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getSeedOrigins()
+      // const response = await MockAPI.getSeedOrigins() // TODO: Migrar a nuevo store con JSON Server
       
       set({
         seedOrigins: response.data,
@@ -39,7 +39,7 @@ export const useSeedOriginStore = create((set, get) => ({
         pricePerUnit: originData.pricePerBundle / (originData.bundleSize || 96)
       }
       
-      const response = await MockAPI.createSeedOrigin(dataWithComputedPrice)
+      // const response = await MockAPI.createSeedOrigin(dataWithComputedPrice) // TODO: Migrar a nuevo store con JSON Server
       const newOrigin = response.data
       
       set((state) => ({
@@ -68,7 +68,7 @@ export const useSeedOriginStore = create((set, get) => ({
         pricePerUnit: updatedData.pricePerBundle ? updatedData.pricePerBundle / (updatedData.bundleSize || 96) : updatedData.pricePerUnit
       }
       
-      const response = await MockAPI.updateSeedOrigin(originId, dataWithComputedPrice)
+      // const response = await MockAPI.updateSeedOrigin(originId, dataWithComputedPrice) // TODO: Migrar a nuevo store con JSON Server
       const updatedOrigin = response.data
       
       set((state) => ({
@@ -94,7 +94,7 @@ export const useSeedOriginStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      await MockAPI.deleteSeedOrigin(originId)
+      // await MockAPI.deleteSeedOrigin(originId) // TODO: Migrar a nuevo store con JSON Server
       
       set((state) => ({
         seedOrigins: state.seedOrigins.filter(origin => origin.id !== originId),

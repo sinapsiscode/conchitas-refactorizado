@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useProjectionStore } from '../../stores/projectionStore'
+import { useProjectionStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 
 const ProjectionForm = ({ projection, onSubmit, onCalculate, isEdit = false }) => {

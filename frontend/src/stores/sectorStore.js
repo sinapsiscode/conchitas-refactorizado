@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useSectorStore = create((set, get) => ({
   sectors: [],
@@ -21,7 +21,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getSectors(userId, page, limit)
+      // const response = await MockAPI.getSectors(userId, page, limit) // TODO: Migrar a nuevo store con JSON Server
       
       set({
         sectors: response.data.sectors,
@@ -46,7 +46,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getAllSectors()
+      // const response = await MockAPI.getAllSectors() // TODO: Migrar a nuevo store con JSON Server
       
       set({
         sectors: response.data,
@@ -70,7 +70,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createSector(sectorData)
+      // const response = await MockAPI.createSector(sectorData) // TODO: Migrar a nuevo store con JSON Server
       const newSector = { ...response.data, lots: [] }
       
       set((state) => ({
@@ -95,7 +95,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.getBatteries(sectorId)
+      // const response = await MockAPI.getBatteries(sectorId) // TODO: Migrar a nuevo store con JSON Server
 
       set({
         batteries: response.data,
@@ -119,7 +119,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.createBattery(batteryData)
+      // const response = await MockAPI.createBattery(batteryData) // TODO: Migrar a nuevo store con JSON Server
       const newBattery = response.data
 
       set((state) => ({
@@ -143,7 +143,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.updateBattery(batteryId, batteryData)
+      // const response = await MockAPI.updateBattery(batteryId, batteryData) // TODO: Migrar a nuevo store con JSON Server
       const updatedBattery = response.data
 
       set((state) => ({
@@ -169,7 +169,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      await MockAPI.deleteBattery(batteryId)
+      // await MockAPI.deleteBattery(batteryId) // TODO: Migrar a nuevo store con JSON Server
 
       set((state) => ({
         batteries: state.batteries.filter(battery => battery.id !== batteryId),
@@ -192,7 +192,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createLot(lotData)
+      // const response = await MockAPI.createLot(lotData) // TODO: Migrar a nuevo store con JSON Server
       const newLot = response.data
       
       set((state) => ({
@@ -220,7 +220,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.getCultivationLines(sectorId, batteryId)
+      // const response = await MockAPI.getCultivationLines(sectorId, batteryId) // TODO: Migrar a nuevo store con JSON Server
 
       set({
         cultivationLines: response.data,
@@ -244,7 +244,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createCultivationLine(lineData)
+      // const response = await MockAPI.createCultivationLine(lineData) // TODO: Migrar a nuevo store con JSON Server
       const newLine = response.data
       
       set((state) => ({
@@ -268,7 +268,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateCultivationLine(lineId, lineData)
+      // const response = await MockAPI.updateCultivationLine(lineId, lineData) // TODO: Migrar a nuevo store con JSON Server
       const updatedLine = response.data
       
       set((state) => ({
@@ -294,7 +294,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      await MockAPI.deleteCultivationLine(lineId)
+      // await MockAPI.deleteCultivationLine(lineId) // TODO: Migrar a nuevo store con JSON Server
       
       set((state) => ({
         cultivationLines: state.cultivationLines.filter(line => line.id !== lineId),
@@ -317,7 +317,7 @@ export const useSectorStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateLot(lotId, lotData)
+      // const response = await MockAPI.updateLot(lotId, lotData) // TODO: Migrar a nuevo store con JSON Server
       const updatedLot = response.data
       
       set((state) => ({
@@ -398,7 +398,7 @@ export const useSectorStore = create((set, get) => ({
         currentQuantity: newQuantity
       }
       
-      const response = await MockAPI.updateCultivationLine(lineId, updatedLineData)
+      // const response = await MockAPI.updateCultivationLine(lineId, updatedLineData) // TODO: Migrar a nuevo store con JSON Server
       const updatedLine = response.data
       
       // Actualizar estado local

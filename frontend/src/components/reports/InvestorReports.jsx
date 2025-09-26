@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useInvestmentStore } from '../../stores/investmentStore'
+import { useAuthStore } from '../../stores'
+import { useInvestmentStore } from '../../stores'
 import { reportService } from '../../services/reports/reportService'
 import { UI_TEXTS } from '../../constants/ui'
 import Swal from 'sweetalert2'

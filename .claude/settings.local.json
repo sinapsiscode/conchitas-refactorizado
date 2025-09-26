@@ -6,7 +6,9 @@
       "Bash(json-server:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(xargs sed:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

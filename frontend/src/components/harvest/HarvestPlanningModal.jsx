@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useHarvestStore } from '../../stores/harvestStore'
-import { useInventoryStore } from '../../stores/inventoryStore'
+import { useHarvestStore } from '../../stores'
+import { useInventoryStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import {
   getAllConversionsFromManojos,

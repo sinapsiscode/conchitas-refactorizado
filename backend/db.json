@@ -41,6 +41,20 @@
       "totalHectares": 0,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "investor-test-001",
+      "email": "inversor.prueba@example.com",
+      "password": "password123",
+      "firstName": "Carlos",
+      "lastName": "Mendoza",
+      "role": "investor",
+      "status": "approved",
+      "phone": "+51 999 888 777",
+      "location": "Lima",
+      "totalHectares": 0,
+      "createdAt": "2025-09-26T06:15:26.406Z",
+      "updatedAt": "2025-09-26T06:15:26.407Z"
     }
   ],
   "sectors": [
@@ -73,10 +87,54 @@
       "status": "active",
       "createdAt": "2024-02-01T00:00:00.000Z",
       "updatedAt": "2024-02-01T00:00:00.000Z"
+    },
+    {
+      "name": "Sector Test",
+      "hectares": 5,
+      "userId": "user-1",
+      "status": "active",
+      "id": "DnSA3C0"
+    },
+    {
+      "name": "Norteee",
+      "location": "pisco",
+      "hectares": 23,
+      "userId": "maricultor-001",
+      "id": "sectors-1758866283561",
+      "createdAt": "2025-09-26T05:58:03.561Z",
+      "updatedAt": "2025-09-26T05:58:03.561Z"
     }
   ],
-  "batteries": [],
-  "cultivationLines": [],
+  "batteries": [
+    {
+      "id": "a115",
+      "sectorId": null,
+      "name": "Batería A",
+      "totalLines": 50,
+      "status": "active"
+    },
+    {
+      "name": "Battery Test",
+      "sectorId": "sector-001",
+      "totalLines": 20,
+      "id": "wtkDTDT"
+    }
+  ],
+  "cultivationLines": [
+    {
+      "name": "Line A-1",
+      "batteryId": "a115",
+      "status": "active",
+      "id": 1
+    },
+    {
+      "name": "Line Test",
+      "batteryId": "test",
+      "status": "active",
+      "updated": true,
+      "id": 2
+    }
+  ],
   "lots": [
     {
       "id": "lot-001",
@@ -141,6 +199,31 @@
       "status": "growing",
       "createdAt": "2024-05-15T00:00:00.000Z",
       "updatedAt": "2025-09-26T00:40:25.369Z"
+    },
+    {
+      "id": "05d2",
+      "sectorId": null,
+      "batteryId": "a115",
+      "name": "Lote Test Integración",
+      "seedOrigin": "Laboratorio Test",
+      "seedDate": "2025-09-26T04:44:12.074Z",
+      "initialQuantity": 50000,
+      "currentQuantity": 50000,
+      "mortalityRate": 0,
+      "status": "active",
+      "userId": null,
+      "systemsUsed": 10,
+      "linesCultivation": [
+        "A-1",
+        "A-2",
+        "A-3"
+      ]
+    },
+    {
+      "name": "Lote Test",
+      "sectorId": "sector-001",
+      "initialQuantity": 10000,
+      "id": "0_zBx1P"
     }
   ],
   "monitoring": [
@@ -181,6 +264,18 @@
       "observations": "Ligero aumento de temperatura",
       "createdAt": "2024-11-08T00:00:00.000Z",
       "updatedAt": "2024-11-08T00:00:00.000Z"
+    },
+    {
+      "id": "9b40",
+      "lotId": "05d2",
+      "date": "2025-09-26T04:44:12.595Z",
+      "waterTemperature": 28.5,
+      "oxygenLevel": 6.8,
+      "phLevel": 8.1,
+      "salinity": 35.2,
+      "mortality": 15,
+      "observations": "Condiciones óptimas para el cultivo",
+      "userId": null
     }
   ],
   "expenses": [
@@ -213,14 +308,163 @@
       "date": "2024-11-10",
       "createdAt": "2024-11-10T00:00:00.000Z",
       "updatedAt": "2024-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "fb41",
+      "category": "Alimentación",
+      "description": "Compra de alimento balanceado - 50 kg",
+      "amount": 1250,
+      "date": "2025-09-26T04:44:13.109Z",
+      "paymentMethod": "Transferencia",
+      "supplier": "Alimentos Marinos SAC",
+      "sectorId": null,
+      "userId": null
+    },
+    {
+      "id": "861e",
+      "category": "Mantenimiento",
+      "description": "Reparación de boyas y cuerdas",
+      "amount": 850,
+      "date": "2025-09-26T04:44:13.121Z",
+      "paymentMethod": "Efectivo",
+      "supplier": "Servicios Marítimos Norte",
+      "sectorId": null,
+      "userId": null
+    },
+    {
+      "amount": 600,
+      "id": "KCWTgOb"
     }
   ],
-  "harvests": [],
+  "harvests": [
+    {
+      "id": "b64f",
+      "lotId": "05d2",
+      "plannedDate": "2025-10-26T04:44:13.664Z",
+      "status": "planned",
+      "estimatedQuantity": 45000,
+      "userId": null,
+      "sizes": {
+        "small": 20,
+        "medium": 40,
+        "large": 30,
+        "extraLarge": 10
+      }
+    },
+    {
+      "lotId": "lot-1",
+      "plannedDate": "2025-09-26T05:13:49.078Z",
+      "status": "planned",
+      "estimatedQuantity": 1000,
+      "actualQuantity": null,
+      "actualDate": null,
+      "sizes": {
+        "small": 0,
+        "medium": 0,
+        "large": 0,
+        "extraLarge": 0
+      },
+      "userId": "user-1",
+      "id": "qQZytMI"
+    }
+  ],
   "income": [],
-  "inventory": [],
-  "investments": [],
-  "notifications": [],
-  "seedOrigins": [],
+  "inventory": [
+    {
+      "id": "26ca",
+      "name": "Cabo de 12mm",
+      "category": "Materiales",
+      "quantity": 200,
+      "unit": "metros",
+      "minimumStock": 50,
+      "location": "Bodega Principal",
+      "userId": null
+    },
+    {
+      "category": "2",
+      "name": "Mallas ",
+      "description": "Perusalem",
+      "origin": "national",
+      "quantity": 2,
+      "unit": "kg",
+      "unitCost": 3,
+      "minStock": 0,
+      "location": "2afgasfgas",
+      "supplier": "afgafgasfasf",
+      "lastPurchaseDate": "2025-10-01",
+      "status": "disponible",
+      "assignedTo": "",
+      "assignmentDate": "",
+      "assignmentNotes": "",
+      "totalValue": 6,
+      "id": "inventory-1758867799626",
+      "createdAt": "2025-09-26T06:23:19.626Z",
+      "updatedAt": "2025-09-26T06:23:19.626Z"
+    }
+  ],
+  "investments": [
+    {
+      "investorId": "investor-test-001",
+      "userId": "maricultor-001",
+      "amount": 50000,
+      "status": "active",
+      "description": "Inversión inicial de Carlos Mendoza",
+      "investorEmail": "inversor.prueba@example.com",
+      "investorName": "Carlos Mendoza",
+      "returns": 0,
+      "roi": 0,
+      "createdAt": "2025-09-26T06:15:26.492Z",
+      "updatedAt": "2025-09-26T06:15:26.492Z",
+      "id": 1
+    }
+  ],
+  "notifications": [
+    {
+      "id": "fbdc",
+      "userId": null,
+      "type": "info",
+      "title": "Test de Integración",
+      "message": "El sistema está funcionando correctamente con JSON Server",
+      "read": false,
+      "createdAt": "2025-09-26T04:44:14.753Z"
+    }
+  ],
+  "seedOrigins": [
+    {
+      "id": "7144",
+      "name": "Laboratorio Test",
+      "type": "laboratory",
+      "location": "Piura",
+      "certification": "ISO 9001",
+      "userId": null
+    },
+    {
+      "name": "gaa",
+      "monthlyGrowthRate": 12,
+      "monthlyMortalityRate": 2,
+      "pricePerBundle": 22,
+      "bundleSize": 96,
+      "description": "asfasfasf",
+      "isActive": true,
+      "pricePerUnit": 0.22916666666666666,
+      "createdAt": "2025-09-26T05:01:11.079Z",
+      "updatedAt": "2025-09-26T05:01:11.079Z",
+      "id": "seedOrigins-1758862871079"
+    },
+    {
+      "name": "peruuuuuUUUUUUUUUUU",
+      "monthlyGrowthRate": 2,
+      "monthlyMortalityRate": 1,
+      "pricePerBundle": 22.99,
+      "bundleSize": 96,
+      "description": "afasfasfasf",
+      "isActive": true,
+      "pricePerUnit": 0.23947916666666666,
+      "createdAt": "2025-09-26T06:13:42.322Z",
+      "updatedAt": "2025-09-26T06:13:42.322Z",
+      "id": "seedOrigins-1758867222322"
+    }
+  ],
   "projections": [],
   "incomeStatementClosures": [],
   "distributions": [],

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
-import { MockDB } from '../services/mock/db.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
+// import { MockDB } from '../services/mock/db.js' // DESACTIVADO - Migrado a JSON Server
 import { generateUUID } from '../utils/uuid.js'
 
 export const useInventoryStore = create((set, get) => ({
@@ -14,7 +14,7 @@ export const useInventoryStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getInventory()
+      // const response = await MockAPI.getInventory() // TODO: Migrar a nuevo store con JSON Server
       const categories = MockDB.get('inventoryCategories')
       
       set({
@@ -92,7 +92,7 @@ export const useInventoryStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createInventoryItem(itemData)
+      // const response = await MockAPI.createInventoryItem(itemData) // TODO: Migrar a nuevo store con JSON Server
       const newItem = response.data
       
       set((state) => ({
@@ -116,7 +116,7 @@ export const useInventoryStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateInventoryItem(itemId, updates)
+      // const response = await MockAPI.updateInventoryItem(itemId, updates) // TODO: Migrar a nuevo store con JSON Server
       const updatedItem = response.data
       
       set((state) => ({
@@ -142,7 +142,7 @@ export const useInventoryStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.createInventoryMovement(movementData)
+      // const response = await MockAPI.createInventoryMovement(movementData) // TODO: Migrar a nuevo store con JSON Server
       const movement = response.data
       
       set((state) => ({

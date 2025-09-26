@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useInvestmentStore } from '../../stores/investmentStore'
-import { useSectorStore } from '../../stores/sectorStore'
+import { useAuthStore } from '../../stores'
+import { useInvestmentStore } from '../../stores'
+import { useSectorStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
-import { mockAPI } from '../../services/mock/server'
+// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import StatCard from '../common/StatCard'
 import EmptyState from '../common/EmptyState'
 import LoadingSpinner from '../common/LoadingSpinner'
@@ -181,7 +181,7 @@ const MyInvestments = ({ onNavigate }) => {
 
     // Obtener distribuciones para mostrar información de cosecha específica del lote
     try {
-      const distributionsResponse = await mockAPI.getDistributions({ lotId: investment.lotId })
+      // const distributionsResponse = await mockAPI.getDistributions({ lotId: investment.lotId }) // TODO: Migrar a nuevo store con JSON Server
       const distributions = distributionsResponse.data || []
 
       // Filtrar solo las distribuciones de esta inversión específica

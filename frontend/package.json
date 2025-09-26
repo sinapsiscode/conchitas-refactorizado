@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"json-server ../backend/db.json --port 4077\" \"vite\"",
+    "dev": "vite",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "json-server ../backend/db.json --port 4077"
+    "server": "json-server ../backend/db.json --port 4077",
+    "dev:full": "concurrently \"json-server ../backend/db.json --port 4077\" \"vite\""
   },
   "dependencies": {
     "@react-pdf/renderer": "3.4.4",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHarvestStore } from '../../stores/harvestStore'
+import { useHarvestStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'

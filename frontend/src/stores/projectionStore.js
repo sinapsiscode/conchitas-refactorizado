@@ -1,7 +1,7 @@
 import { create } from 'zustand'
-import { mockAPI } from '../services/mock/server'
+// import { mockAPI } from '../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import { projectionService } from '../services/projections/projectionService'
-import { ProjectionParametersSchema } from '../services/mock/schemas/projection'
+// import { ProjectionParametersSchema } from '../services/mock/schemas/projection' // DESACTIVADO - Migrado a JSON Server
 
 export const useProjectionStore = create((set, get) => ({
   projections: [],

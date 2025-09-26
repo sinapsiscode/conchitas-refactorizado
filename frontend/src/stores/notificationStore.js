@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { mockAPI } from '../services/mock/server'
+// import { mockAPI } from '../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 
 export const useNotificationStore = create((set, get) => ({
   notifications: [],
@@ -11,7 +11,7 @@ export const useNotificationStore = create((set, get) => ({
   fetchNotifications: async (userId, filters = {}) => {
     set({ loading: true, error: null })
     try {
-      const response = await mockAPI.getNotifications(userId, filters)
+      // const response = await mockAPI.getNotifications(userId, filters) // TODO: Migrar a nuevo store con JSON Server
       const notifications = response.data || []
       
       // Calculate unread count
@@ -33,7 +33,7 @@ export const useNotificationStore = create((set, get) => ({
   // Get unread count only
   fetchUnreadCount: async (userId) => {
     try {
-      const response = await mockAPI.getUnreadCount(userId)
+      // const response = await mockAPI.getUnreadCount(userId) // TODO: Migrar a nuevo store con JSON Server
       const count = response.data?.count || 0
       
       set({ unreadCount: count })
@@ -47,7 +47,7 @@ export const useNotificationStore = create((set, get) => ({
   // Mark notification as read
   markAsRead: async (notificationId) => {
     try {
-      const response = await mockAPI.markNotificationAsRead(notificationId)
+      // const response = await mockAPI.markNotificationAsRead(notificationId) // TODO: Migrar a nuevo store con JSON Server
       const updatedNotification = response.data
       
       set(state => ({
@@ -68,7 +68,7 @@ export const useNotificationStore = create((set, get) => ({
   markAllAsRead: async (userId) => {
     set({ loading: true, error: null })
     try {
-      await mockAPI.markAllNotificationsAsRead(userId)
+      // await mockAPI.markAllNotificationsAsRead(userId) // TODO: Migrar a nuevo store con JSON Server
       
       set(state => ({
         notifications: state.notifications.map(n => ({
@@ -90,7 +90,7 @@ export const useNotificationStore = create((set, get) => ({
   // Delete notification
   deleteNotification: async (notificationId) => {
     try {
-      await mockAPI.deleteNotification(notificationId)
+      // await mockAPI.deleteNotification(notificationId) // TODO: Migrar a nuevo store con JSON Server
       
       set(state => {
         const deletedNotification = state.notifications.find(n => n.id === notificationId)
@@ -112,7 +112,7 @@ export const useNotificationStore = create((set, get) => ({
   // Create a new notification (for testing or manual creation)
   createNotification: async (notificationData) => {
     try {
-      const response = await mockAPI.createNotification(notificationData)
+      // const response = await mockAPI.createNotification(notificationData) // TODO: Migrar a nuevo store con JSON Server
       const newNotification = response.data
       
       set(state => ({

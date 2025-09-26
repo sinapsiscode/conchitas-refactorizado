@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { useSeedOriginStore } from '../../stores/seedOriginStore'
+import { useAuthStore } from '../../stores'
+import { useSeedOriginStore } from '../../stores'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import EmptyState from '../../components/common/EmptyState'
 import Swal from 'sweetalert2'

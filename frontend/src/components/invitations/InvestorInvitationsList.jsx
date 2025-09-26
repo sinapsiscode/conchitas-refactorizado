@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from '../../stores/authStore'
-import { mockAPI } from '../../services/mock/server'
+import { useAuthStore } from '../../stores'
+// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import { UI_TEXTS } from '../../constants/ui'
 import InvestmentInvitationCard from './InvestmentInvitationCard'
 import LoadingSpinner from '../common/LoadingSpinner'
@@ -21,7 +21,7 @@ const InvestorInvitationsList = () => {
   const fetchInvitations = async () => {
     setLoading(true)
     try {
-      const result = await mockAPI.getInvestorInvitations(user.id, 'investor')
+      // const result = await mockAPI.getInvestorInvitations(user.id, 'investor') // TODO: Migrar a nuevo store con JSON Server
       if (result.success) {
         setInvitations(result.data)
       }

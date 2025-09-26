@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSectorStore } from '../../stores/sectorStore'
+import { useSectorStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import EmptyState from '../common/EmptyState'
 import Modal from '../common/Modal'

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { mockAPI } from '../services/mock/server'
+// import { mockAPI } from '../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 
 export const useInvestmentStore = create((set, get) => ({
   investments: [],
@@ -19,7 +19,7 @@ export const useInvestmentStore = create((set, get) => ({
         filters.maricultorId = userId
       }
       
-      const investments = await mockAPI.getInvestments(filters)
+      // const investments = await mockAPI.getInvestments(filters) // TODO: Migrar a nuevo store con JSON Server
       set({ investments, loading: false })
       return { success: true, data: investments }
     } catch (error) {
@@ -32,7 +32,7 @@ export const useInvestmentStore = create((set, get) => ({
   fetchInvestmentsByLot: async (lotId) => {
     set({ loading: true, error: null })
     try {
-      const investments = await mockAPI.getInvestmentsByLot(lotId)
+      // const investments = await mockAPI.getInvestmentsByLot(lotId) // TODO: Migrar a nuevo store con JSON Server
       set({ investments, loading: false })
       return { success: true, data: investments }
     } catch (error) {
@@ -45,7 +45,7 @@ export const useInvestmentStore = create((set, get) => ({
   createInvestment: async (investmentData) => {
     set({ loading: true, error: null })
     try {
-      const newInvestment = await mockAPI.createInvestment(investmentData)
+      // const newInvestment = await mockAPI.createInvestment(investmentData) // TODO: Migrar a nuevo store con JSON Server
       set(state => ({
         investments: [...state.investments, newInvestment],
         loading: false
@@ -61,7 +61,7 @@ export const useInvestmentStore = create((set, get) => ({
   updateInvestment: async (investmentId, updates) => {
     set({ loading: true, error: null })
     try {
-      const updatedInvestment = await mockAPI.updateInvestment(investmentId, updates)
+      // const updatedInvestment = await mockAPI.updateInvestment(investmentId, updates) // TODO: Migrar a nuevo store con JSON Server
       set(state => ({
         investments: state.investments.map(inv =>
           inv.id === investmentId ? updatedInvestment : inv
@@ -79,7 +79,7 @@ export const useInvestmentStore = create((set, get) => ({
   deleteInvestment: async (investmentId) => {
     set({ loading: true, error: null })
     try {
-      await mockAPI.deleteInvestment(investmentId)
+      // await mockAPI.deleteInvestment(investmentId) // TODO: Migrar a nuevo store con JSON Server
       set(state => ({
         investments: state.investments.filter(inv => inv.id !== investmentId),
         loading: false
@@ -113,7 +113,7 @@ export const useInvestmentStore = create((set, get) => ({
   distributeReturns: async (lotId, distributionData) => {
     set({ loading: true, error: null })
     try {
-      const result = await mockAPI.distributeInvestmentReturns(lotId, distributionData)
+      // const result = await mockAPI.distributeInvestmentReturns(lotId, distributionData) // TODO: Migrar a nuevo store con JSON Server
       
       // Update local state with distributed returns
       set(state => ({
@@ -190,7 +190,7 @@ export const useInvestmentStore = create((set, get) => ({
   fetchInvestorReturns: async (investorId) => {
     set({ loading: true, error: null })
     try {
-      const response = await mockAPI.getInvestorReturns(investorId)
+      // const response = await mockAPI.getInvestorReturns(investorId) // TODO: Migrar a nuevo store con JSON Server
       const { distributions, investments, summary } = response.data
       
       set({ 
@@ -211,7 +211,7 @@ export const useInvestmentStore = create((set, get) => ({
   fetchDistributions: async (filters = {}) => {
     set({ loading: true, error: null })
     try {
-      const response = await mockAPI.getDistributions(filters)
+      // const response = await mockAPI.getDistributions(filters) // TODO: Migrar a nuevo store con JSON Server
       set({ 
         distributions: response.data || [],
         loading: false 
@@ -227,7 +227,7 @@ export const useInvestmentStore = create((set, get) => ({
   getDistributionById: async (distributionId) => {
     set({ loading: true, error: null })
     try {
-      const response = await mockAPI.getDistributionById(distributionId)
+      // const response = await mockAPI.getDistributionById(distributionId) // TODO: Migrar a nuevo store con JSON Server
       return { success: true, data: response.data }
     } catch (error) {
       set({ error: error.message, loading: false })

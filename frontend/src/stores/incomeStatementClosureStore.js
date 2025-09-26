@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MockAPI } from '../services/mock/server.js'
+// import { MockAPI } from '../services/mock/server.js' // DESACTIVADO - Migrado a JSON Server
 
 export const useIncomeStatementClosureStore = create((set, get) => ({
   closures: [],
@@ -11,7 +11,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.getIncomeStatementClosures(userId, filters)
+      // const response = await MockAPI.getIncomeStatementClosures(userId, filters) // TODO: Migrar a nuevo store con JSON Server
       console.log('📊 [ClosureStore] Closures fetched successfully:', response.data.length, 'closures')
       
       set({
@@ -46,7 +46,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
 
     try {
-      const response = await MockAPI.createIncomeStatementClosure(closureData)
+      // const response = await MockAPI.createIncomeStatementClosure(closureData) // TODO: Migrar a nuevo store con JSON Server
       const newClosure = response.data
       console.log('💾 [ClosureStore] Closure created successfully:', newClosure.id)
       
@@ -73,7 +73,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.finalizeIncomeStatementClosure(closureId, finalizedBy)
+      // const response = await MockAPI.finalizeIncomeStatementClosure(closureId, finalizedBy) // TODO: Migrar a nuevo store con JSON Server
       const finalizedClosure = response.data
       console.log('🔒 [ClosureStore] Closure finalized successfully:', finalizedClosure.id)
       
@@ -102,7 +102,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.registerClosureInCashFlow(closureId)
+      // const response = await MockAPI.registerClosureInCashFlow(closureId) // TODO: Migrar a nuevo store con JSON Server
       const updatedClosure = response.data
       console.log('💰 [ClosureStore] Closure registered in cash flow:', updatedClosure.id)
       
@@ -131,7 +131,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.updateIncomeStatementClosure(updateData)
+      // const response = await MockAPI.updateIncomeStatementClosure(updateData) // TODO: Migrar a nuevo store con JSON Server
       const updatedClosure = response.data
       console.log('✏️ [ClosureStore] Closure updated successfully:', updatedClosure.id)
       
@@ -160,7 +160,7 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     set({ loading: true, error: null })
     
     try {
-      const response = await MockAPI.deleteIncomeStatementClosure(closureId)
+      // const response = await MockAPI.deleteIncomeStatementClosure(closureId) // TODO: Migrar a nuevo store con JSON Server
       console.log('🗑️ [ClosureStore] Closure deleted successfully:', closureId)
       
       set((state) => ({

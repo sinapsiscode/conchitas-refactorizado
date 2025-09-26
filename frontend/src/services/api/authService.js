@@ -18,7 +18,13 @@ const authService = {
         password,
       });
 
-      // El servidor Express ya devuelve el formato correcto
+      // El servidor retorna {success: true, data: {user, token}}
+      // Necesitamos extraer user y token de la respuesta
+      if (response.success && response.data) {
+        return response.data; // Retornar {user, token}
+      }
+
+      // Si el formato es diferente, intentar con la respuesta directa
       return response;
     } catch (error) {
       // Manejar errores específicos del servidor
