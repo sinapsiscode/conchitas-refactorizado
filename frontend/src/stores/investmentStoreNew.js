@@ -97,11 +97,24 @@ export const useInvestmentStore = create((set, get) => ({
   // Obtener resumen de inversiones
   getInvestmentSummary: () => {
     const investments = get().investments;
+    const totalInvested = investments.reduce((sum, inv) => sum + (inv.amount || 0), 0);
+    const totalReturns = investments.reduce((sum, inv) => sum + (inv.returns || 0), 0);
+    const activeInvestments = investments.filter(inv => inv.status === 'active');
+
+    // Calcular ROI promedio
+    let averageROI = 0;
+    if (totalInvested > 0) {
+      averageROI = ((totalReturns - totalInvested) / totalInvested) * 100;
+    }
+
     return {
-      total: investments.reduce((sum, inv) => sum + inv.amount, 0),
-      active: investments.filter(inv => inv.status === 'active').length,
+      total: investments.length,
+      totalInvested,
+      totalReturns,
+      activeCount: activeInvestments.length,
+      active: activeInvestments.length, // Para compatibilidad
       completed: investments.filter(inv => inv.status === 'completed').length,
-      totalReturns: investments.reduce((sum, inv) => sum + (inv.returns || 0), 0)
+      averageROI: averageROI || 0
     };
   },
 
