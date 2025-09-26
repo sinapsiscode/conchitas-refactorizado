@@ -7,13 +7,29 @@ import StatCard from '../../components/common/StatCard'
 import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import { CONVERSIONS, DEFAULT_PRESENTATIONS, DEFAULT_MEASURES, getAllConversions } from '../../constants/conversions'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const ProjectedPage = () => {
   const { user } = useAuthStore()
   const { sectors, fetchSectors } = useSectorStore()
   const { harvestPlans, pricing, fetchHarvestPlans, fetchPricing, loading } = useHarvestStore()
-  const { expenses, fetchExpenses } = useExpenseStore()
+  const { expenses, fetchExpenses, createExpense } = useExpenseStore()
   const [selectedLot, setSelectedLot] = useState(null)
+  const [showExpenseForm, setShowExpenseForm] = useState(false)
+  const [expenseForm, setExpenseForm] = useState({
+    category: 'operational',
+    type: 'expense',
+    description: '',
+    amount: '',
+    date: new Date().toISOString().split('T')[0],
+    lotId: '',
+    sectorId: '',
+    isRecurring: false,
+    frequency: 'monthly'
+  })
   const [presentations, setPresentations] = useState(() => {
     const savedPresentations = localStorage.getItem('conchas-abanico:presentations')
     if (savedPresentations) {
@@ -85,7 +101,7 @@ const ProjectedPage = () => {
       fetchSectors(user.id)
       fetchPricing()
       fetchHarvestPlans(user.id)
-      fetchExpenses({ userId: user.id })
+      fetchExpenses(user.id)
     }
   }, [user?.id, fetchSectors, fetchPricing, fetchHarvestPlans, fetchExpenses])
 
@@ -428,6 +444,48 @@ const ProjectedPage = () => {
 
   // Enhanced statistics using synchronized calculations
   const totalCurrentQuantity = projectedLots.reduce((sum, lot) => sum + (lot.currentQuantity || lot.initialQuantity || 0), 0)
+
+  // Handle expense creation
+  const handleCreateExpense = async (e) => {
+    e.preventDefault()
+
+    const expenseData = {
+      ...expenseForm,
+      userId: user.id,
+      amount: parseFloat(expenseForm.amount)
+    }
+
+    const result = await createExpense(expenseData)
+
+    if (result.success) {
+      MySwal.fire({
+        icon: 'success',
+        title: 'Gasto registrado',
+        text: 'El gasto se registró exitosamente',
+        timer: 1500,
+        showConfirmButton: false
+      })
+      setExpenseForm({
+        category: 'operational',
+        type: 'expense',
+        description: '',
+        amount: '',
+        date: new Date().toISOString().split('T')[0],
+        lotId: '',
+        sectorId: '',
+        isRecurring: false,
+        frequency: 'monthly'
+      })
+      setShowExpenseForm(false)
+      fetchExpenses(user.id)
+    } else {
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: result.error
+      })
+    }
+  }
 
   if (loading && projectedLots.length === 0) {
     return (
@@ -1125,6 +1183,189 @@ const ProjectedPage = () => {
                 <div className="text-gray-600">Origen</div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Action Button for Registrar Gasto */}
+      <button
+        onClick={() => setShowExpenseForm(true)}
+        className="fixed top-20 right-6 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg shadow-lg transition-colors duration-200 z-40"
+        title="Registrar Gasto"
+      >
+        Registrar Gasto
+      </button>
+
+      {/* Expense Form Modal */}
+      {showExpenseForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3 sm:p-4">
+          <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-4">Registrar Gasto</h2>
+            <form onSubmit={handleCreateExpense} className="space-y-3 sm:space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Categoría *
+                </label>
+                <select
+                  required
+                  className="input-field"
+                  value={expenseForm.category}
+                  onChange={(e) => {
+                    setExpenseForm({...expenseForm, category: e.target.value})
+                  }}
+                >
+                  <option value="operational">Operativo</option>
+                  <option value="harvest">Cosecha</option>
+                  <option value="material">Materiales</option>
+                  <option value="maintenance">Mantenimiento</option>
+                  <option value="other">Otros</option>
+                </select>
+                <button
+                  type="button"
+                  className="mt-2 text-sm text-primary-600 hover:text-primary-700 font-medium"
+                >
+                  + Agregar nueva categoría
+                </button>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Descripción *
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="input-field"
+                  value={expenseForm.description}
+                  onChange={(e) => setExpenseForm({...expenseForm, description: e.target.value})}
+                  placeholder="Descripción del gasto"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Monto (PEN) *
+                </label>
+                <input
+                  type="number"
+                  required
+                  step="0.01"
+                  min="0"
+                  className="input-field"
+                  value={expenseForm.amount}
+                  onChange={(e) => setExpenseForm({...expenseForm, amount: e.target.value})}
+                  placeholder="0.00"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Fecha *
+                </label>
+                <input
+                  type="date"
+                  required
+                  className="input-field"
+                  value={expenseForm.date}
+                  onChange={(e) => setExpenseForm({...expenseForm, date: e.target.value})}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Siembra (Lote) *
+                </label>
+                <select
+                  className="input-field"
+                  value={expenseForm.lotId}
+                  onChange={(e) => {
+                    if (e.target.value === 'company_expenses') {
+                      setExpenseForm({
+                        ...expenseForm,
+                        lotId: 'company_expenses',
+                        sectorId: 'company'
+                      })
+                    } else {
+                      const selectedLot = sectors
+                        .flatMap(sector => sector.lots?.map(lot => ({ ...lot, sectorId: sector.id, sectorName: sector.name })) || [])
+                        .find(lot => lot.id === e.target.value)
+
+                      setExpenseForm({
+                        ...expenseForm,
+                        lotId: e.target.value,
+                        sectorId: selectedLot?.sectorId || ''
+                      })
+                    }
+                  }}
+                  required
+                >
+                  <option value="">Seleccionar siembra</option>
+                  <option value="company_expenses" className="font-semibold bg-blue-50">
+                    🏫 Gastos de la empresa
+                  </option>
+                  <optgroup label="Siembras activas">
+                    {sectors.map(sector =>
+                      sector.lots?.map(lot => (
+                        <option key={lot.id} value={lot.id}>
+                          {sector.name} - {lot.origin} ({new Date(lot.entryDate).toLocaleDateString('es-PE')})
+                        </option>
+                      )) || []
+                    )}
+                  </optgroup>
+                </select>
+              </div>
+
+              <div className="text-sm text-gray-600">
+                El gasto se vinculará específicamente a esta siembra/lote
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="isRecurring"
+                  checked={expenseForm.isRecurring}
+                  onChange={(e) => setExpenseForm({...expenseForm, isRecurring: e.target.checked})}
+                />
+                <label htmlFor="isRecurring" className="text-sm text-gray-700">
+                  Es un gasto recurrente
+                </label>
+              </div>
+
+              {expenseForm.isRecurring && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Frecuencia
+                  </label>
+                  <select
+                    className="input-field"
+                    value={expenseForm.frequency}
+                    onChange={(e) => setExpenseForm({...expenseForm, frequency: e.target.value})}
+                  >
+                    <option value="daily">Diario</option>
+                    <option value="weekly">Semanal</option>
+                    <option value="monthly">Mensual</option>
+                    <option value="yearly">Anual</option>
+                  </select>
+                </div>
+              )}
+
+              <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowExpenseForm(false)}
+                  className="btn-secondary w-full sm:flex-1"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="btn-primary w-full sm:flex-1"
+                  disabled={loading}
+                >
+                  {loading ? <LoadingSpinner size="sm" message="" /> : 'Guardar'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

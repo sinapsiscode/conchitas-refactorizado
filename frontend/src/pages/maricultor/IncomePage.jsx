@@ -48,7 +48,7 @@ const IncomePage = () => {
       fetchSectors(user.id)
       fetchHarvestPlans(user.id)
       fetchPricing()
-      fetchExpenses({ userId: user.id })
+      fetchExpenses(user.id)
       fetchIncomeRecords(user.id)
     }
   }, [user?.id, fetchSectors, fetchHarvestPlans, fetchPricing, fetchExpenses, fetchIncomeRecords])
