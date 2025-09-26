@@ -9,23 +9,29 @@ import LoadingSpinner from '../../components/common/LoadingSpinner'
 
 const InvestorDashboard = ({ onNavigate }) => {
   const { user } = useAuthStore()
-  const { 
-    investments, 
+  const {
+    investments,
     distributions,
     investorReturns,
-    fetchInvestments, 
+    fetchInvestments,
     fetchInvestorReturns,
-    getInvestorSummary, 
-    loading 
+    getInvestorSummary,
+    loading
   } = useInvestmentStore()
   const { sectors, fetchSectors } = useSectorStore()
   const [summary, setSummary] = useState(null)
+  const [investmentStatuses, setInvestmentStatuses] = useState([])
 
   useEffect(() => {
     if (user?.id) {
       fetchInvestments(user.id, 'investor')
       fetchInvestorReturns(user.id) // Fetch distributions and returns
       fetchSectors() // To get lot information
+      // Cargar estados de inversión desde API
+      fetch('http://localhost:4077/investmentStatuses')
+        .then(res => res.json())
+        .then(data => setInvestmentStatuses(data))
+        .catch(err => console.error('Error cargando estados:', err))
     }
   }, [user?.id, fetchInvestments, fetchInvestorReturns, fetchSectors])
 
@@ -57,21 +63,19 @@ const InvestorDashboard = ({ onNavigate }) => {
   }
 
   const getStatusColor = (status) => {
+    // Los estilos se mantienen en el código, no en la BD
     const colors = {
       active: 'bg-green-100 text-green-800',
       completed: 'bg-blue-100 text-blue-800',
       cancelled: 'bg-red-100 text-red-800'
     }
-    return colors[status] || colors.active
+    return colors[status] || 'bg-gray-100 text-gray-800'
   }
 
   const getStatusText = (status) => {
-    const texts = {
-      active: 'Activa',
-      completed: 'Completada',
-      cancelled: 'Cancelada'
-    }
-    return texts[status] || status
+    // Solo los textos vienen de la API
+    const statusData = investmentStatuses.find(s => s.code === status)
+    return statusData?.label || status
   }
 
   // Get lot details for each investment

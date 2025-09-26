@@ -25,6 +25,7 @@ const ExpensesPage = () => {
   const { investments, distributions, fetchInvestments } = useInvestmentStore()
   const [showExpenseForm, setShowExpenseForm] = useState(false)
   const [showCategoryModal, setShowCategoryModal] = useState(false)
+  const [expenseCategoryEnum, setExpenseCategoryEnum] = useState([])
   const [customCategories, setCustomCategories] = useState(() => {
     // Cargar categorías personalizadas desde localStorage
     const saved = localStorage.getItem('customExpenseCategories')
@@ -68,6 +69,11 @@ const ExpensesPage = () => {
       fetchClosures({ userId: user.id })
       fetchIncomeRecords(user.id)
       fetchInvestments(user.id, 'maricultor')
+      // Cargar categorías de gastos desde API
+      fetch('http://localhost:4077/expenseCategoryEnum')
+        .then(res => res.json())
+        .then(data => setExpenseCategoryEnum(data))
+        .catch(err => console.error('Error cargando categorías:', err))
     }
   }, [user?.id, fetchExpenses, fetchSectors, fetchHarvestPlans, fetchPricing, fetchClosures, fetchIncomeRecords, fetchInvestments])
   
@@ -134,12 +140,10 @@ const ExpensesPage = () => {
   }
   
   const getCategoryName = (category) => {
-    const names = {
-      operational: 'Operativo',
-      harvest: 'Cosecha',
-      material: 'Materiales',
-      maintenance: 'Mantenimiento',
-      other: 'Otros'
+    // Buscar en las categorías cargadas desde la API
+    const apiCategory = expenseCategoryEnum.find(cat => cat.code === category)
+    if (apiCategory) {
+      return apiCategory.label
     }
 
     // Verificar si es una categoría personalizada
@@ -150,7 +154,8 @@ const ExpensesPage = () => {
       }
     }
 
-    return names[category] || category
+    // Si no se encuentra, devolver el código tal cual
+    return category
   }
 
   // Get income data from income records (registered in the Income section)

@@ -39,7 +39,10 @@ export const createInvestorInvitation = (data) => {
 }
 
 // Estados de la invitación con descripciones
-export const INVITATION_STATUSES = {
+// MIGRADO A DB.JSON - Usar API: GET /invitationStatuses
+export const INVITATION_STATUSES = {}
+/* Datos movidos a db.json:
+{
   pending: {
     label: 'Pendiente',
     description: 'Esperando respuesta del inversor',
@@ -71,3 +74,4 @@ export const INVITATION_STATUSES = {
     icon: '🚫'
   }
 }
+*/

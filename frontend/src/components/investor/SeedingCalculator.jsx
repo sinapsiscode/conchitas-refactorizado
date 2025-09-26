@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const SeedingCalculator = () => {
+  const [origins, setOrigins] = useState([])
+  const [calcConstants, setCalcConstants] = useState(null)
+  const [loading, setLoading] = useState(true)
+
   const [seedingData, setSeedingData] = useState({
     numberOfBundles: 50,
     pricePerBundle: 15,
-    origin: 'Samanco',
+    origin: 'samanco',
     expectedMortality: 20,
     harvestTime: 6,
     sectorSize: 1000,
@@ -13,12 +17,56 @@ const SeedingCalculator = () => {
 
   const [results, setResults] = useState(null)
 
-  const origins = {
-    'Samanco': { price: 15, quality: 'alta', mortality: 15 },
-    'Casma': { price: 12, quality: 'media', mortality: 20 },
-    'Huarmey': { price: 18, quality: 'premium', mortality: 10 },
-    'Supe': { price: 14, quality: 'media', mortality: 18 }
-  }
+  useEffect(() => {
+    // Load origins and calculator constants from API
+    const loadData = async () => {
+      try {
+        const [originsRes, constantsRes] = await Promise.all([
+          fetch('http://localhost:4077/seedOrigins'),
+          fetch('http://localhost:4077/calculatorConstants')
+        ])
+
+        if (originsRes.ok) {
+          const originsData = await originsRes.json()
+          setOrigins(originsData)
+
+          // Set initial origin data if available
+          if (originsData.length > 0) {
+            const defaultOrigin = originsData.find(o => o.code === 'samanco') || originsData[0]
+            setSeedingData(prev => ({
+              ...prev,
+              origin: defaultOrigin.code,
+              pricePerBundle: defaultOrigin.pricePerBundle || defaultOrigin.price,
+              expectedMortality: defaultOrigin.mortality
+            }))
+          }
+        }
+
+        if (constantsRes.ok) {
+          const constantsData = await constantsRes.json()
+          if (constantsData && constantsData[0]) {
+            const constants = constantsData[0]
+            setCalcConstants(constants)
+            // Update default values with API data
+            setSeedingData(prev => ({
+              ...prev,
+              numberOfBundles: constants.defaultBundles || prev.numberOfBundles,
+              sectorSize: constants.defaultSectorSize || prev.sectorSize,
+              additionalCosts: constants.defaultAdditionalCosts || prev.additionalCosts,
+              harvestTime: constants.defaultHarvestTime || prev.harvestTime,
+              expectedMortality: constants.defaultExpectedMortality || prev.expectedMortality
+            }))
+          }
+        }
+      } catch (error) {
+        console.error('Error loading data from API:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('es-PE', {
@@ -28,21 +76,21 @@ const SeedingCalculator = () => {
   }
 
   const calculateSeeding = () => {
-    const shellsPerBundle = 96
+    const shellsPerBundle = calcConstants?.shellsPerBundle || 96
     const totalShells = seedingData.numberOfBundles * shellsPerBundle
     const bundleCost = seedingData.numberOfBundles * seedingData.pricePerBundle
     const totalInitialCost = bundleCost + seedingData.additionalCosts
-    
-    const originData = origins[seedingData.origin]
-    const adjustedMortality = originData.mortality
+
+    const originData = origins.find(o => o.code === seedingData.origin)
+    const adjustedMortality = originData?.mortality || seedingData.expectedMortality
     const survivingShells = Math.round(totalShells * (1 - adjustedMortality / 100))
-    
+
     const densityPerM2 = totalShells / seedingData.sectorSize
     const survivingDensityPerM2 = survivingShells / seedingData.sectorSize
-    
+
     const costPerShell = totalInitialCost / totalShells
     const costPerSurvivingShell = totalInitialCost / survivingShells
-    
+
     setResults({
       totalShells,
       survivingShells,
@@ -54,17 +102,28 @@ const SeedingCalculator = () => {
       costPerShell,
       costPerSurvivingShell,
       shellsLost: totalShells - survivingShells,
-      originQuality: originData.quality
+      originQuality: originData?.quality || 'standard'
     })
   }
 
-  const handleOriginChange = (origin) => {
-    setSeedingData({
-      ...seedingData,
-      origin,
-      pricePerBundle: origins[origin].price,
-      expectedMortality: origins[origin].mortality
-    })
+  const handleOriginChange = (originCode) => {
+    const origin = origins.find(o => o.code === originCode)
+    if (origin) {
+      setSeedingData({
+        ...seedingData,
+        origin: originCode,
+        pricePerBundle: origin.pricePerBundle || origin.price,
+        expectedMortality: origin.mortality
+      })
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center p-8">
+        <div className="text-gray-500">Cargando datos...</div>
+      </div>
+    )
   }
 
   return (
@@ -73,7 +132,7 @@ const SeedingCalculator = () => {
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Parámetros de Siembra
         </h3>
-        
+
         <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
           <div>
             <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
@@ -86,9 +145,9 @@ const SeedingCalculator = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               min="1"
             />
-            <span className="text-xs text-gray-500">96 conchas por manojo</span>
+            <span className="text-xs text-gray-500">{calcConstants?.shellsPerBundle || 96} conchas por manojo</span>
           </div>
-          
+
           <div>
             <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Tamaño del Sector (m²)
@@ -112,14 +171,14 @@ const SeedingCalculator = () => {
               onChange={(e) => handleOriginChange(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {Object.entries(origins).map(([location, data]) => (
-                <option key={location} value={location}>
-                  {location} - {formatCurrency(data.price)} (Calidad {data.quality})
+              {origins.map((origin) => (
+                <option key={origin.code} value={origin.code}>
+                  {origin.name} - {formatCurrency(origin.pricePerBundle || origin.price)} (Calidad {origin.quality})
                 </option>
               ))}
             </select>
           </div>
-          
+
           <div>
             <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Tiempo de Cosecha (meses)
@@ -241,9 +300,9 @@ const SeedingCalculator = () => {
                 <div className="pt-2 border-t">
                   <div className="text-sm text-gray-600">Recomendación de Densidad:</div>
                   <div className="text-xs text-gray-500 mt-1">
-                    {results.densityPerM2 > 15 ? 
-                      '⚠️ Densidad alta - riesgo de competencia' : 
-                      results.densityPerM2 < 8 ? 
+                    {results.densityPerM2 > 15 ?
+                      '⚠️ Densidad alta - riesgo de competencia' :
+                      results.densityPerM2 < 8 ?
                       '📈 Densidad baja - oportunidad de optimizar' :
                       '✅ Densidad óptima'
                     }
@@ -258,7 +317,9 @@ const SeedingCalculator = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <div className="text-sm text-gray-600">Origen Seleccionado</div>
-                <div className="text-lg font-semibold text-gray-900">{seedingData.origin}</div>
+                <div className="text-lg font-semibold text-gray-900">
+                  {origins.find(o => o.code === seedingData.origin)?.name || seedingData.origin}
+                </div>
               </div>
               <div>
                 <div className="text-sm text-gray-600">Calidad</div>

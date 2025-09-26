@@ -59,7 +59,10 @@ export const ExpenseSchema = {
   }
 }
 
-export const ExpenseTypeSchema = {
+// MIGRADO A DB.JSON - Usar API: GET /expenseTypes
+export const ExpenseTypeSchema = {}
+/* Datos movidos a db.json:
+{
   operational: [
     { id: 'vigilante_salary', name: 'Sueldo de vigilante', defaultAmount: 300 },
     { id: 'vigilante_maintenance', name: 'Mantenimiento del vigilante', defaultAmount: 300 },
@@ -81,6 +84,7 @@ export const ExpenseTypeSchema = {
     { id: 'suspended_system', name: 'Sistema suspendido', defaultAmount: 0 }
   ]
 }
+*/
 
 export const validateExpense = (data) => {
   const errors = []

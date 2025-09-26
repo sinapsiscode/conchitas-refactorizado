@@ -1,15 +1,36 @@
 import { create } from 'zustand';
 import { inventoryService } from '../services/api';
+import configManager from '../config';
 
 export const useInventoryStore = create((set, get) => ({
   // Estado
   inventory: [],
   movements: [],
+  categories: [], // Se cargará desde API
   loading: false,
   error: null,
+  categoriesLoaded: false,
+
+  // Cargar categorías desde API
+  loadCategories: async () => {
+    if (get().categoriesLoaded) return;
+
+    try {
+      const categories = await configManager.getCategories('inventory');
+      set({ categories, categoriesLoaded: true });
+    } catch (error) {
+      console.error('Error loading categories:', error);
+      set({ categories: [], categoriesLoaded: true });
+    }
+  },
 
   // Obtener inventario
   fetchInventory: async (userId) => {
+    // Cargar categorías si no están cargadas
+    if (!get().categoriesLoaded) {
+      await get().loadCategories();
+    }
+
     set({ loading: true, error: null });
     try {
       const inventory = await inventoryService.getAll({ userId });
@@ -164,13 +185,6 @@ export const useInventoryStore = create((set, get) => ({
     }
   },
 
-  // Categorías predefinidas
-  categories: [
-    { id: 1, name: 'Materiales', description: 'Materiales de construcción y mantenimiento' },
-    { id: 2, name: 'Equipos', description: 'Equipos y herramientas' },
-    { id: 3, name: 'Insumos', description: 'Insumos y consumibles' },
-    { id: 4, name: 'Otros', description: 'Otros elementos' }
-  ],
 
   // Limpiar errores
   clearError: () => set({ error: null })

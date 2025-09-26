@@ -117,6 +117,15 @@
       "id": "sectors-1758866283561",
       "createdAt": "2025-09-26T05:58:03.561Z",
       "updatedAt": "2025-09-26T05:58:03.561Z"
+    },
+    {
+      "name": "sdfgdfgdfgh",
+      "location": "Bahía de Sechuraaaa",
+      "hectares": 456,
+      "userId": "maricultor-001",
+      "id": "sectors-1758873727716",
+      "createdAt": "2025-09-26T08:02:07.716Z",
+      "updatedAt": "2025-09-26T08:02:07.716Z"
     }
   ],
   "batteries": [
@@ -348,6 +357,20 @@
     {
       "amount": 600,
       "id": "KCWTgOb"
+    },
+    {
+      "category": "material",
+      "type": "expense",
+      "description": "jsjsjsjsjsj",
+      "amount": 32,
+      "date": "2025-09-26",
+      "lotId": "company_expenses",
+      "sectorId": "company",
+      "isRecurring": true,
+      "frequency": "weekly",
+      "id": "expenses-1758869215435",
+      "createdAt": "2025-09-26T06:46:55.435Z",
+      "updatedAt": "2025-09-26T06:46:55.435Z"
     }
   ],
   "harvests": [
@@ -443,6 +466,19 @@
       "createdAt": "2025-09-26T06:27:49.786Z",
       "updatedAt": "2025-09-26T06:27:49.786Z",
       "id": "investments-1758868069786"
+    },
+    {
+      "investorId": "investor-test-001",
+      "userId": "maricultor-001",
+      "amount": 2323,
+      "status": "active",
+      "description": "Nueva inversión de Carlos Mendoza",
+      "investorEmail": "inversor.prueba@example.com",
+      "investorName": "Carlos Mendoza",
+      "returns": 0,
+      "createdAt": "2025-09-26T08:03:16.357Z",
+      "updatedAt": "2025-09-26T08:03:16.357Z",
+      "id": "investments-1758873796357"
     }
   ],
   "notifications": [
@@ -458,42 +494,1588 @@
   ],
   "seedOrigins": [
     {
-      "id": "7144",
-      "name": "Laboratorio Test",
-      "type": "laboratory",
-      "location": "Piura",
-      "certification": "ISO 9001",
-      "userId": null
+      "id": "origin-001",
+      "code": "samanco",
+      "name": "Samanco",
+      "description": "Semillas de la zona de Samanco",
+      "quality": "alta",
+      "price": 15,
+      "mortality": 15,
+      "monthlyGrowthRate": 3.5,
+      "monthlyMortalityRate": 1.5,
+      "pricePerUnit": 0.16,
+      "pricePerBundle": 15,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
     },
     {
-      "name": "gaa",
-      "monthlyGrowthRate": 12,
+      "id": "origin-002",
+      "code": "casma",
+      "name": "Casma",
+      "description": "Semillas de la zona de Casma",
+      "quality": "media",
+      "price": 12,
+      "mortality": 20,
+      "monthlyGrowthRate": 3.2,
       "monthlyMortalityRate": 2,
-      "pricePerBundle": 22,
-      "bundleSize": 96,
-      "description": "asfasfasf",
+      "pricePerUnit": 0.13,
+      "pricePerBundle": 12,
       "isActive": true,
-      "pricePerUnit": 0.22916666666666666,
-      "createdAt": "2025-09-26T05:01:11.079Z",
-      "updatedAt": "2025-09-26T05:01:11.079Z",
-      "id": "seedOrigins-1758862871079"
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
     },
     {
-      "name": "peruuuuuUUUUUUUUUUU",
-      "monthlyGrowthRate": 2,
+      "id": "origin-003",
+      "code": "huarmey",
+      "name": "Huarmey",
+      "description": "Semillas premium de la zona de Huarmey",
+      "quality": "premium",
+      "price": 18,
+      "mortality": 10,
+      "monthlyGrowthRate": 4,
       "monthlyMortalityRate": 1,
-      "pricePerBundle": 22.99,
-      "bundleSize": 96,
-      "description": "afasfasfasf",
+      "pricePerUnit": 0.19,
+      "pricePerBundle": 18,
       "isActive": true,
-      "pricePerUnit": 0.23947916666666666,
-      "createdAt": "2025-09-26T06:13:42.322Z",
-      "updatedAt": "2025-09-26T06:13:42.322Z",
-      "id": "seedOrigins-1758867222322"
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
+    },
+    {
+      "id": "origin-004",
+      "code": "supe",
+      "name": "Supe",
+      "description": "Semillas de la zona de Supe",
+      "quality": "media",
+      "price": 14,
+      "mortality": 18,
+      "monthlyGrowthRate": 3.3,
+      "monthlyMortalityRate": 1.8,
+      "pricePerUnit": 0.15,
+      "pricePerBundle": 14,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
+    },
+    {
+      "id": "origin-005",
+      "code": "laboratory",
+      "name": "Laboratorio",
+      "description": "Semillas producidas en laboratorio controlado",
+      "quality": "premium",
+      "price": 20,
+      "mortality": 8,
+      "monthlyGrowthRate": 4.2,
+      "monthlyMortalityRate": 0.8,
+      "pricePerUnit": 0.21,
+      "pricePerBundle": 20,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
+    },
+    {
+      "id": "origin-006",
+      "code": "natural",
+      "name": "Natural",
+      "description": "Semillas recolectadas del medio natural",
+      "quality": "standard",
+      "price": 10,
+      "mortality": 25,
+      "monthlyGrowthRate": 3,
+      "monthlyMortalityRate": 2.5,
+      "pricePerUnit": 0.1,
+      "pricePerBundle": 10,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
     }
   ],
   "projections": [],
   "incomeStatementClosures": [],
   "distributions": [],
-  "investorInvitations": []
+  "investorInvitations": [],
+  "categories": [
+    {
+      "id": "cat-expense-001",
+      "type": "expense",
+      "code": "feed",
+      "name": "Alimentación",
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T08:12:10.293Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-002",
+      "type": "expense",
+      "code": "maintenance",
+      "name": "Mantenimiento",
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-003",
+      "type": "expense",
+      "code": "labor",
+      "name": "Mano de obra",
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-004",
+      "type": "expense",
+      "code": "fuel",
+      "name": "Combustible",
+      "isActive": true,
+      "order": 4,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-005",
+      "type": "expense",
+      "code": "equipment",
+      "name": "Equipamiento",
+      "isActive": true,
+      "order": 5,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-006",
+      "type": "expense",
+      "code": "transport",
+      "name": "Transporte",
+      "isActive": true,
+      "order": 6,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-007",
+      "type": "expense",
+      "code": "materials",
+      "name": "Materiales",
+      "isActive": true,
+      "order": 7,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-008",
+      "type": "expense",
+      "code": "services",
+      "name": "Servicios",
+      "isActive": true,
+      "order": 8,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-009",
+      "type": "expense",
+      "code": "taxes",
+      "name": "Impuestos",
+      "isActive": true,
+      "order": 9,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-010",
+      "type": "expense",
+      "code": "insurance",
+      "name": "Seguros",
+      "isActive": true,
+      "order": 10,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-expense-011",
+      "type": "expense",
+      "code": "other",
+      "name": "Otros",
+      "isActive": true,
+      "order": 11,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-inventory-001",
+      "type": "inventory",
+      "code": "materials",
+      "name": "Materiales",
+      "description": "Materiales de construcción y mantenimiento",
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-inventory-002",
+      "type": "inventory",
+      "code": "equipment",
+      "name": "Equipos",
+      "description": "Equipos y herramientas",
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-inventory-003",
+      "type": "inventory",
+      "code": "supplies",
+      "name": "Insumos",
+      "description": "Insumos y consumibles",
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-inventory-004",
+      "type": "inventory",
+      "code": "other",
+      "name": "Otros",
+      "description": "Otros elementos",
+      "isActive": true,
+      "order": 4,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-001",
+      "type": "size",
+      "code": "tiny",
+      "name": "Muy Pequeña",
+      "shortName": "XS",
+      "minSize": 0,
+      "maxSize": 30,
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-002",
+      "type": "size",
+      "code": "small",
+      "name": "Pequeña",
+      "shortName": "S",
+      "minSize": 30,
+      "maxSize": 40,
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-003",
+      "type": "size",
+      "code": "medium",
+      "name": "Mediana",
+      "shortName": "M",
+      "minSize": 40,
+      "maxSize": 50,
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-004",
+      "type": "size",
+      "code": "large",
+      "name": "Grande",
+      "shortName": "L",
+      "minSize": 50,
+      "maxSize": 60,
+      "isActive": true,
+      "order": 4,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-005",
+      "type": "size",
+      "code": "xlarge",
+      "name": "Extra Grande",
+      "shortName": "XL",
+      "minSize": 60,
+      "maxSize": 70,
+      "isActive": true,
+      "order": 5,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-006",
+      "type": "size",
+      "code": "jumbo",
+      "name": "Jumbo",
+      "shortName": "XXL",
+      "minSize": 70,
+      "maxSize": 80,
+      "isActive": true,
+      "order": 6,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-size-007",
+      "type": "size",
+      "code": "colossal",
+      "name": "Colosal",
+      "shortName": "XXXL",
+      "minSize": 80,
+      "maxSize": null,
+      "isActive": true,
+      "order": 7,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-001",
+      "type": "harvest_cost",
+      "code": "harvest_labor",
+      "name": "Mano de obra cosecha",
+      "defaultCost": 50,
+      "isActive": true,
+      "order": 1,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-002",
+      "type": "harvest_cost",
+      "code": "selection",
+      "name": "Selección",
+      "defaultCost": 30,
+      "isActive": true,
+      "order": 2,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-003",
+      "type": "harvest_cost",
+      "code": "packaging",
+      "name": "Embalaje",
+      "defaultCost": 15,
+      "isActive": true,
+      "order": 3,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-004",
+      "type": "harvest_cost",
+      "code": "ice",
+      "name": "Hielo",
+      "defaultCost": 20,
+      "isActive": true,
+      "order": 4,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-005",
+      "type": "harvest_cost",
+      "code": "harvest_transport",
+      "name": "Transporte cosecha",
+      "defaultCost": 25,
+      "isActive": true,
+      "order": 5,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-006",
+      "type": "harvest_cost",
+      "code": "storage",
+      "name": "Almacenamiento",
+      "defaultCost": 10,
+      "isActive": true,
+      "order": 6,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-007",
+      "type": "harvest_cost",
+      "code": "certifications",
+      "name": "Certificaciones",
+      "defaultCost": 15,
+      "isActive": true,
+      "order": 7,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "cat-harvest-008",
+      "type": "harvest_cost",
+      "code": "harvest_other",
+      "name": "Otros costos",
+      "defaultCost": 10,
+      "isActive": true,
+      "order": 8,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    }
+  ],
+  "pricing": [
+    {
+      "id": "price-001",
+      "sizeCategory": "tiny",
+      "sizeName": "Muy Pequeña",
+      "sizeCode": "XS",
+      "pricePerKg": 8,
+      "pricePerUnit": 0.08,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.294Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.294Z",
+      "updatedAt": "2025-09-26T08:12:10.294Z"
+    },
+    {
+      "id": "price-002",
+      "sizeCategory": "small",
+      "sizeName": "Pequeña",
+      "sizeCode": "S",
+      "pricePerKg": 12,
+      "pricePerUnit": 0.12,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    },
+    {
+      "id": "price-003",
+      "sizeCategory": "medium",
+      "sizeName": "Mediana",
+      "sizeCode": "M",
+      "pricePerKg": 18,
+      "pricePerUnit": 0.18,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    },
+    {
+      "id": "price-004",
+      "sizeCategory": "large",
+      "sizeName": "Grande",
+      "sizeCode": "L",
+      "pricePerKg": 25,
+      "pricePerUnit": 0.25,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    },
+    {
+      "id": "price-005",
+      "sizeCategory": "xlarge",
+      "sizeName": "Extra Grande",
+      "sizeCode": "XL",
+      "pricePerKg": 35,
+      "pricePerUnit": 0.35,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    },
+    {
+      "id": "price-006",
+      "sizeCategory": "jumbo",
+      "sizeName": "Jumbo",
+      "sizeCode": "XXL",
+      "pricePerKg": 45,
+      "pricePerUnit": 0.45,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    },
+    {
+      "id": "price-007",
+      "sizeCategory": "colossal",
+      "sizeName": "Colosal",
+      "sizeCode": "XXXL",
+      "pricePerKg": 60,
+      "pricePerUnit": 0.6,
+      "currency": "PEN",
+      "isActive": true,
+      "validFrom": "2025-09-26T08:12:10.295Z",
+      "validUntil": null,
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    }
+  ],
+  "systemSettings": [
+    {
+      "id": "settings-001",
+      "businessName": "Cultivo de Conchas de Abanico",
+      "businessType": "Maricultura",
+      "location": "Piura - Sechura",
+      "country": "Perú",
+      "currency": "PEN",
+      "currencySymbol": "S/",
+      "dateFormat": "DD/MM/YYYY",
+      "timeFormat": "24h",
+      "timeZone": "America/Lima",
+      "language": "es",
+      "maxSectorsPerUser": 10,
+      "maxHectaresPerSector": 10,
+      "maxBatteriesPerSector": 26,
+      "maxLinesPerBattery": 100,
+      "maxSystemsPerLine": 100,
+      "maxFloorsPerSystem": 10,
+      "defaultMortalityRate": 15,
+      "defaultGrowthRate": 5,
+      "harvestMinSize": 50,
+      "harvestOptimalSize": 65,
+      "seedingDensityMin": 50,
+      "seedingDensityMax": 200,
+      "seedingDensityDefault": 100,
+      "waterQuality": {
+        "temperature": {
+          "min": 18,
+          "max": 28,
+          "optimalMin": 22,
+          "optimalMax": 25,
+          "unit": "°C",
+          "criticalLow": 16,
+          "criticalHigh": 30
+        },
+        "ph": {
+          "min": 7.5,
+          "max": 8.5,
+          "optimalMin": 7.8,
+          "optimalMax": 8.2,
+          "unit": "",
+          "criticalLow": 7,
+          "criticalHigh": 9
+        },
+        "salinity": {
+          "min": 34,
+          "max": 36,
+          "optimalMin": 34.5,
+          "optimalMax": 35.5,
+          "unit": "ppt",
+          "criticalLow": 32,
+          "criticalHigh": 38
+        },
+        "oxygen": {
+          "min": 5,
+          "max": 8,
+          "optimalMin": 6,
+          "optimalMax": 7,
+          "unit": "mg/L",
+          "criticalLow": 4,
+          "criticalHigh": 9
+        }
+      },
+      "notificationSettings": {
+        "pollingInterval": 30000,
+        "maxNotifications": 100,
+        "autoMarkAsReadAfter": 7,
+        "enableEmailNotifications": false,
+        "enablePushNotifications": false,
+        "notificationTypes": [
+          "harvest_reminder",
+          "monitoring_alert",
+          "low_stock",
+          "investment_update",
+          "system_maintenance",
+          "quality_alert",
+          "mortality_alert"
+        ]
+      },
+      "reportSettings": {
+        "defaultPeriod": "monthly",
+        "availablePeriods": [
+          "daily",
+          "weekly",
+          "monthly",
+          "quarterly",
+          "yearly",
+          "custom"
+        ],
+        "exportFormats": [
+          "pdf",
+          "excel",
+          "csv"
+        ],
+        "maxExportRows": 10000,
+        "includeCharts": true,
+        "includeSummary": true
+      },
+      "securitySettings": {
+        "sessionTimeout": 3600000,
+        "maxLoginAttempts": 5,
+        "passwordMinLength": 6,
+        "requirePasswordChange": false,
+        "twoFactorEnabled": false
+      },
+      "version": "1.0.0",
+      "lastUpdated": "2025-09-26T08:12:10.295Z",
+      "createdAt": "2025-09-26T08:12:10.295Z",
+      "updatedAt": "2025-09-26T08:12:10.295Z"
+    }
+  ],
+  "invitationStatuses": [
+    {
+      "id": "status-inv-001",
+      "code": "pending",
+      "label": "Pendiente",
+      "description": "Esperando respuesta del inversor",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.522Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-inv-002",
+      "code": "accepted",
+      "label": "Aceptada",
+      "description": "El inversor aceptó la invitación",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-inv-003",
+      "code": "rejected",
+      "label": "Rechazada",
+      "description": "El inversor rechazó la invitación",
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-inv-004",
+      "code": "expired",
+      "label": "Expirada",
+      "description": "La invitación ha expirado",
+      "order": 4,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-inv-005",
+      "code": "cancelled",
+      "label": "Cancelada",
+      "description": "El maricultor canceló la invitación",
+      "order": 5,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    }
+  ],
+  "lotStatuses": [
+    {
+      "id": "status-lot-001",
+      "code": "planned",
+      "label": "Planificado",
+      "description": "Lote planificado pero no iniciado",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-lot-002",
+      "code": "growing",
+      "label": "En Crecimiento",
+      "description": "Lote en proceso de crecimiento",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-lot-003",
+      "code": "ready",
+      "label": "Listo para Cosecha",
+      "description": "Lote listo para ser cosechado",
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-lot-004",
+      "code": "harvested",
+      "label": "Cosechado",
+      "description": "Lote ya cosechado",
+      "order": 4,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "status-lot-005",
+      "code": "cancelled",
+      "label": "Cancelado",
+      "description": "Lote cancelado por algún problema",
+      "order": 5,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    }
+  ],
+  "measurementUnits": [
+    {
+      "id": "unit-001",
+      "code": "kg",
+      "name": "Kilogramos",
+      "symbol": "kg",
+      "type": "weight",
+      "conversionFactor": 1,
+      "isBase": true,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "unit-002",
+      "code": "ton",
+      "name": "Toneladas",
+      "symbol": "t",
+      "type": "weight",
+      "conversionFactor": 1000,
+      "isBase": false,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "unit-003",
+      "code": "units",
+      "name": "Unidades",
+      "symbol": "u",
+      "type": "count",
+      "conversionFactor": 1,
+      "isBase": true,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "unit-004",
+      "code": "millares",
+      "name": "Millares",
+      "symbol": "mil",
+      "type": "count",
+      "conversionFactor": 1000,
+      "isBase": false,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "unit-005",
+      "code": "hectares",
+      "name": "Hectáreas",
+      "symbol": "ha",
+      "type": "area",
+      "conversionFactor": 1,
+      "isBase": true,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    }
+  ],
+  "monitoringTypes": [
+    {
+      "id": "monitoring-001",
+      "code": "water_quality",
+      "name": "Calidad del Agua",
+      "description": "Parámetros de calidad del agua",
+      "icon": "💧",
+      "parameters": [
+        "temperature",
+        "ph",
+        "oxygen",
+        "salinity"
+      ],
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "monitoring-002",
+      "code": "growth",
+      "name": "Crecimiento",
+      "description": "Mediciones de crecimiento",
+      "icon": "📏",
+      "parameters": [
+        "averageSize",
+        "sizeDistribution"
+      ],
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "monitoring-003",
+      "code": "mortality",
+      "name": "Mortalidad",
+      "description": "Registro de mortalidad",
+      "icon": "⚠️",
+      "parameters": [
+        "mortalityCount",
+        "mortalityRate"
+      ],
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "monitoring-004",
+      "code": "feeding",
+      "name": "Alimentación",
+      "description": "Control de alimentación",
+      "icon": "🍽️",
+      "parameters": [
+        "feedAmount",
+        "feedFrequency"
+      ],
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    }
+  ],
+  "notificationTypes": [
+    {
+      "id": "notif-type-001",
+      "code": "harvest_reminder",
+      "name": "Recordatorio de Cosecha",
+      "description": "Notificaciones sobre cosechas próximas",
+      "icon": "🎯",
+      "priority": "high",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "notif-type-002",
+      "code": "monitoring_alert",
+      "name": "Alerta de Monitoreo",
+      "description": "Alertas sobre parámetros fuera de rango",
+      "icon": "⚠️",
+      "priority": "critical",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "notif-type-003",
+      "code": "investment_update",
+      "name": "Actualización de Inversión",
+      "description": "Notificaciones sobre inversiones",
+      "icon": "💰",
+      "priority": "medium",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    },
+    {
+      "id": "notif-type-004",
+      "code": "system_info",
+      "name": "Información del Sistema",
+      "description": "Información general del sistema",
+      "icon": "ℹ️",
+      "priority": "low",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:33:56.523Z",
+      "updatedAt": "2025-09-26T08:33:56.523Z"
+    }
+  ],
+  "expenseTypes": [
+    {
+      "id": "exp-type-001",
+      "category": "operational",
+      "code": "vigilante_salary",
+      "name": "Sueldo de vigilante",
+      "defaultAmount": 300,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.852Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-002",
+      "category": "operational",
+      "code": "vigilante_maintenance",
+      "name": "Mantenimiento del vigilante",
+      "defaultAmount": 300,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-003",
+      "category": "operational",
+      "code": "waste_collection",
+      "name": "Pago de recojo por residuos",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-004",
+      "category": "harvest",
+      "code": "nets",
+      "name": "Mallas",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-005",
+      "category": "harvest",
+      "code": "plant_processing",
+      "name": "Planta (procesamiento)",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-006",
+      "category": "harvest",
+      "code": "divers",
+      "name": "Buzos",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-007",
+      "category": "harvest",
+      "code": "boats",
+      "name": "Embarcaciones",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-008",
+      "category": "harvest",
+      "code": "ice",
+      "name": "Hielo",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-009",
+      "category": "harvest",
+      "code": "net_labels",
+      "name": "Etiqueta para malla",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-010",
+      "category": "material",
+      "code": "buoys_national",
+      "name": "Boyas nacionales",
+      "defaultAmount": 120,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-011",
+      "category": "material",
+      "code": "buoys_imported",
+      "name": "Boyas importadas",
+      "defaultAmount": 45,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-012",
+      "category": "material",
+      "code": "lines",
+      "name": "Líneas",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-013",
+      "category": "material",
+      "code": "bottom_system",
+      "name": "Sistema de fondo",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-type-014",
+      "category": "material",
+      "code": "suspended_system",
+      "name": "Sistema suspendido",
+      "defaultAmount": 0,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "notificationTypeDetails": [
+    {
+      "id": "notif-detail-001",
+      "code": "distribution_received",
+      "label": "Retorno Distribuido",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-002",
+      "code": "harvest_completed",
+      "label": "Cosecha Completada",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-003",
+      "code": "harvest_upcoming",
+      "label": "Cosecha Próxima",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-004",
+      "code": "investment_accepted",
+      "label": "Inversión Aceptada",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-005",
+      "code": "mortality_alert",
+      "label": "Alerta de Mortalidad",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-006",
+      "code": "new_monitoring",
+      "label": "Nuevo Monitoreo",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-007",
+      "code": "lot_status_change",
+      "label": "Cambio de Estado",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-008",
+      "code": "payment_received",
+      "label": "Pago Recibido",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-009",
+      "code": "investment_invitation_received",
+      "label": "Invitación Recibida",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-010",
+      "code": "investment_invitation_accepted",
+      "label": "Invitación Aceptada",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-011",
+      "code": "investment_invitation_rejected",
+      "label": "Invitación Rechazada",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-012",
+      "code": "investment_invitation_cancelled",
+      "label": "Invitación Cancelada",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-detail-013",
+      "code": "system",
+      "label": "Sistema",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "priorityLevels": [
+    {
+      "id": "priority-001",
+      "code": "low",
+      "label": "Baja",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "priority-002",
+      "code": "medium",
+      "label": "Media",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "priority-003",
+      "code": "high",
+      "label": "Alta",
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "priority-004",
+      "code": "urgent",
+      "label": "Urgente",
+      "order": 4,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "frequencies": [
+    {
+      "id": "freq-001",
+      "code": "daily",
+      "label": "Diario",
+      "days": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "freq-002",
+      "code": "weekly",
+      "label": "Semanal",
+      "days": 7,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "freq-003",
+      "code": "monthly",
+      "label": "Mensual",
+      "days": 30,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "freq-004",
+      "code": "yearly",
+      "label": "Anual",
+      "days": 365,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "entityTypes": [
+    {
+      "id": "entity-001",
+      "code": "investment",
+      "label": "Inversión",
+      "icon": "💰",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "entity-002",
+      "code": "harvest",
+      "label": "Cosecha",
+      "icon": "🎯",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "entity-003",
+      "code": "lot",
+      "label": "Lote",
+      "icon": "🌱",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "entity-004",
+      "code": "distribution",
+      "label": "Distribución",
+      "icon": "📊",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "entity-005",
+      "code": "monitoring",
+      "label": "Monitoreo",
+      "icon": "📈",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "expenseCategoryEnum": [
+    {
+      "id": "exp-cat-enum-001",
+      "code": "operational",
+      "label": "Operacional",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-cat-enum-002",
+      "code": "harvest",
+      "label": "Cosecha",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-cat-enum-003",
+      "code": "material",
+      "label": "Material",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-cat-enum-004",
+      "code": "maintenance",
+      "label": "Mantenimiento",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "exp-cat-enum-005",
+      "code": "other",
+      "label": "Otro",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    }
+  ],
+  "notificationStatuses": [
+    {
+      "id": "notif-status-001",
+      "code": "unread",
+      "label": "No leído",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.853Z",
+      "updatedAt": "2025-09-26T08:42:14.853Z"
+    },
+    {
+      "id": "notif-status-002",
+      "code": "read",
+      "label": "Leído",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.854Z",
+      "updatedAt": "2025-09-26T08:42:14.854Z"
+    },
+    {
+      "id": "notif-status-003",
+      "code": "archived",
+      "label": "Archivado",
+      "isActive": true,
+      "createdAt": "2025-09-26T08:42:14.854Z",
+      "updatedAt": "2025-09-26T08:42:14.854Z"
+    }
+  ],
+  "investmentStatuses": [
+    {
+      "id": "inv-status-001",
+      "code": "active",
+      "label": "Activa",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:47:13.813Z",
+      "updatedAt": "2025-09-26T08:47:13.814Z"
+    },
+    {
+      "id": "inv-status-002",
+      "code": "completed",
+      "label": "Completada",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:47:13.814Z",
+      "updatedAt": "2025-09-26T08:47:13.814Z"
+    },
+    {
+      "id": "inv-status-003",
+      "code": "cancelled",
+      "label": "Cancelada",
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:47:13.814Z",
+      "updatedAt": "2025-09-26T08:47:13.814Z"
+    }
+  ],
+  "conversionRates": [
+    {
+      "id": "conversion-rates-001",
+      "conchitasPorKg": 111,
+      "conchitasPorManojo": 96,
+      "manojosPorMalla": 3,
+      "conchitasPorMalla": 288,
+      "kgPorMalla": 2.6,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.503Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    }
+  ],
+  "presentations": [
+    {
+      "id": "presentation-001",
+      "code": "fresh",
+      "name": "Fresco",
+      "editable": true,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "presentation-002",
+      "code": "frozen",
+      "name": "Congelado",
+      "editable": true,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "presentation-003",
+      "code": "halfShell",
+      "name": "Media Valva",
+      "editable": true,
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "presentation-004",
+      "code": "processed",
+      "name": "Procesado",
+      "editable": true,
+      "order": 4,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    }
+  ],
+  "presentationMeasures": [
+    {
+      "id": "measure-001",
+      "presentationCode": "fresh",
+      "code": "small",
+      "name": "Pequeña (60-70mm)",
+      "pricePerKg": 18,
+      "minSize": 60,
+      "maxSize": 70,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-002",
+      "presentationCode": "fresh",
+      "code": "medium",
+      "name": "Mediana (70-80mm)",
+      "pricePerKg": 22,
+      "minSize": 70,
+      "maxSize": 80,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-003",
+      "presentationCode": "fresh",
+      "code": "large",
+      "name": "Grande (80-90mm)",
+      "pricePerKg": 25,
+      "minSize": 80,
+      "maxSize": 90,
+      "order": 3,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-004",
+      "presentationCode": "frozen",
+      "code": "pack10-20",
+      "name": "10-20 piezas/kg",
+      "pricePerKg": 25,
+      "piecesPerKg": "10-20",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-005",
+      "presentationCode": "frozen",
+      "code": "pack20-30",
+      "name": "20-30 piezas/kg",
+      "pricePerKg": 30,
+      "piecesPerKg": "20-30",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-006",
+      "presentationCode": "halfShell",
+      "code": "tray12",
+      "name": "Bandeja 12 unid",
+      "pricePerKg": 35,
+      "unitsPerTray": 12,
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-007",
+      "presentationCode": "halfShell",
+      "code": "bulk",
+      "name": "Granel/kg",
+      "pricePerKg": 45,
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-008",
+      "presentationCode": "processed",
+      "code": "pulp500",
+      "name": "Pulpa 500g",
+      "pricePerKg": 56,
+      "weight": 500,
+      "unit": "g",
+      "order": 1,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    },
+    {
+      "id": "measure-009",
+      "presentationCode": "processed",
+      "code": "pulp1000",
+      "name": "Pulpa 1kg",
+      "pricePerKg": 52,
+      "weight": 1000,
+      "unit": "g",
+      "order": 2,
+      "isActive": true,
+      "createdAt": "2025-09-26T08:53:48.504Z",
+      "updatedAt": "2025-09-26T08:53:48.504Z"
+    }
+  ],
+  "defaultSeedOriginParameters": [
+    {
+      "id": "default-seed-params-001",
+      "monthlyGrowthRate": 3.5,
+      "monthlyMortalityRate": 5,
+      "pricePerUnit": 0.12,
+      "pricePerBundle": 11.52,
+      "initialSize": 12,
+      "description": "Parámetros por defecto para orígenes de semilla no definidos",
+      "isActive": true,
+      "createdAt": "2025-09-26T09:10:12.905Z",
+      "updatedAt": "2025-09-26T09:10:12.907Z"
+    }
+  ],
+  "calculatorConstants": [
+    {
+      "id": "calc-constants-001",
+      "shellsPerBundle": 96,
+      "defaultBundles": 50,
+      "defaultSectorSize": 1000,
+      "defaultAdditionalCosts": 500,
+      "defaultHarvestTime": 6,
+      "defaultExpectedMortality": 20,
+      "isActive": true,
+      "createdAt": "2025-09-26T09:12:13.702Z",
+      "updatedAt": "2025-09-26T09:12:13.702Z"
+    }
+  ]
 }

@@ -1,25 +1,36 @@
 import { create } from 'zustand';
 import { expensesService } from '../services/api';
+import configManager from '../config';
 
 export const useExpenseStore = create((set, get) => ({
   // Estado
   expenses: [],
-  categories: [
-    'Alimentación',
-    'Mantenimiento',
-    'Personal',
-    'Equipos',
-    'Transporte',
-    'Combustible',
-    'Materiales',
-    'Servicios',
-    'Otros'
-  ],
+  categories: [], // Se cargará desde API
   loading: false,
   error: null,
+  categoriesLoaded: false,
+
+  // Cargar categorías desde API
+  loadCategories: async () => {
+    if (get().categoriesLoaded) return;
+
+    try {
+      const categories = await configManager.getCategories('expense');
+      set({ categories, categoriesLoaded: true });
+    } catch (error) {
+      console.error('Error loading categories:', error);
+      // Si falla, usa un array vacío
+      set({ categories: [], categoriesLoaded: true });
+    }
+  },
 
   // Obtener gastos
   fetchExpenses: async (userId) => {
+    // Cargar categorías si no están cargadas
+    if (!get().categoriesLoaded) {
+      await get().loadCategories();
+    }
+
     set({ loading: true, error: null });
     try {
       const expenses = await expensesService.getAll({ userId });

@@ -1,12 +1,39 @@
 // Constantes de conversión para conchas de abanico
-export const CONVERSIONS = {
-  // Conversiones de peso
-  CONCHITAS_POR_KG: 111,           // 111 conchitas = 1 Kg
-  CONCHITAS_POR_MANOJO: 96,        // 1 manojo = 96 conchitas
-  MANOJOS_POR_MALLA: 3,            // 1 malla = 3 manojos
-  CONCHITAS_POR_MALLA: 288,        // 1 malla = 288 conchitas
-  KG_POR_MALLA: 2.6,                // 1 malla = 2.6 Kg
+// NOTA: Los valores ahora se cargan desde la API
+
+// Valores por defecto (se actualizarán desde la API)
+export let CONVERSIONS = {
+  CONCHITAS_POR_KG: 111,
+  CONCHITAS_POR_MANOJO: 96,
+  MANOJOS_POR_MALLA: 3,
+  CONCHITAS_POR_MALLA: 288,
+  KG_POR_MALLA: 2.6,
 }
+
+// Función para actualizar las conversiones desde la API
+export const loadConversionsFromAPI = async () => {
+  try {
+    const response = await fetch('http://localhost:4077/conversionRates')
+    if (response.ok) {
+      const data = await response.json()
+      if (data && data[0]) {
+        const rates = data[0]
+        CONVERSIONS = {
+          CONCHITAS_POR_KG: rates.conchitasPorKg,
+          CONCHITAS_POR_MANOJO: rates.conchitasPorManojo,
+          MANOJOS_POR_MALLA: rates.manojosPorMalla,
+          CONCHITAS_POR_MALLA: rates.conchitasPorMalla,
+          KG_POR_MALLA: rates.kgPorMalla,
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error cargando conversiones desde API:', error)
+  }
+}
+
+// Cargar al iniciar
+loadConversionsFromAPI()
 
 // Función para convertir Kg a unidades de conchitas
 export const kgToConchitas = (kg) => {
@@ -103,31 +130,59 @@ export const getAllConversionsFromMallas = (mallas) => {
   }
 }
 
-// Presentaciones por defecto
-export const DEFAULT_PRESENTATIONS = [
-  { id: 'fresh', name: 'Fresco', editable: true },
-  { id: 'frozen', name: 'Congelado', editable: true },
-  { id: 'halfShell', name: 'Media Valva', editable: true },
-  { id: 'processed', name: 'Procesado', editable: true }
-]
+// Presentaciones y medidas se cargarán desde la API
+export let DEFAULT_PRESENTATIONS = []
+export let DEFAULT_MEASURES = {}
 
-// Medidas por defecto para cada presentación
-export const DEFAULT_MEASURES = {
-  fresh: [
-    { id: 'small', name: 'Pequeña (60-70mm)', pricePerKg: 18 },
-    { id: 'medium', name: 'Mediana (70-80mm)', pricePerKg: 22 },
-    { id: 'large', name: 'Grande (80-90mm)', pricePerKg: 25 }
-  ],
-  frozen: [
-    { id: 'pack10-20', name: '10-20 piezas/kg', pricePerKg: 25 },
-    { id: 'pack20-30', name: '20-30 piezas/kg', pricePerKg: 30 }
-  ],
-  halfShell: [
-    { id: 'tray12', name: 'Bandeja 12 unid', pricePerKg: 35 },
-    { id: 'bulk', name: 'Granel/kg', pricePerKg: 45 }
-  ],
-  processed: [
-    { id: 'pulp500', name: 'Pulpa 500g', pricePerKg: 56 },
-    { id: 'pulp1000', name: 'Pulpa 1kg', pricePerKg: 52 }
-  ]
+// Función para cargar presentaciones desde la API
+export const loadPresentationsFromAPI = async () => {
+  try {
+    const [presentationsRes, measuresRes] = await Promise.all([
+      fetch('http://localhost:4077/presentations'),
+      fetch('http://localhost:4077/presentationMeasures')
+    ])
+
+    if (presentationsRes.ok) {
+      const data = await presentationsRes.json()
+      DEFAULT_PRESENTATIONS = data.map(p => ({
+        id: p.code,
+        name: p.name,
+        editable: p.editable
+      }))
+    }
+
+    if (measuresRes.ok) {
+      const measures = await measuresRes.json()
+      DEFAULT_MEASURES = {}
+
+      measures.forEach(measure => {
+        if (!DEFAULT_MEASURES[measure.presentationCode]) {
+          DEFAULT_MEASURES[measure.presentationCode] = []
+        }
+        DEFAULT_MEASURES[measure.presentationCode].push({
+          id: measure.code,
+          name: measure.name,
+          pricePerKg: measure.pricePerKg
+        })
+      })
+    }
+  } catch (error) {
+    console.error('Error cargando presentaciones desde API:', error)
+    // Valores por defecto si falla la API
+    DEFAULT_PRESENTATIONS = [
+      { id: 'fresh', name: 'Fresco', editable: true },
+      { id: 'frozen', name: 'Congelado', editable: true },
+      { id: 'halfShell', name: 'Media Valva', editable: true },
+      { id: 'processed', name: 'Procesado', editable: true }
+    ]
+    DEFAULT_MEASURES = {
+      fresh: [],
+      frozen: [],
+      halfShell: [],
+      processed: []
+    }
+  }
 }
+
+// Cargar presentaciones al iniciar
+loadPresentationsFromAPI()

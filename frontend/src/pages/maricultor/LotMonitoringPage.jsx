@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthStore } from '../../stores'
-import { useSectorStore } from '../../stores'
-import { useMonitoringStore } from '../../stores'
-import { useSeedOriginStore } from '../../stores'
+import { useAuthStore, useSectorStore, useMonitoringStore, useSeedOriginStore, useSeedingStore } from '../../stores'
+// Fixed: Changed fetchMonitoring to fetchMonitoringRecords
 import { getAllConversionsFromConchitas } from '../../constants/conversions'
 import StatCard from '../../components/common/StatCard'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
@@ -14,8 +12,10 @@ const MySwal = withReactContent(Swal)
 const SeedingMonitoringPage = ({ lotId, onBack }) => {
   const { user } = useAuthStore()
   const { sectors } = useSectorStore()
-  const { monitoringRecords, fetchMonitoring, createMonitoring, updateMonitoring, loading } = useMonitoringStore()
+  const { lots, fetchLots } = useSeedingStore()
+  const { monitoringRecords, fetchMonitoringRecords, createMonitoring, updateMonitoring, loading } = useMonitoringStore()
   const { seedOrigins, fetchSeedOrigins } = useSeedOriginStore()
+  const [defaultParams, setDefaultParams] = useState(null)
   const [showMeasurementForm, setShowMeasurementForm] = useState(false)
   const [measurementForm, setMeasurementForm] = useState({
     date: new Date().toISOString().split('T')[0],
@@ -34,25 +34,35 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
   })
   
   // Encontrar la siembra específica
-  const seeding = sectors.flatMap(s => s.lots || []).find(l => l.id === lotId)
-  const sector = sectors.find(s => s.lots?.some(l => l.id === lotId))
+  const seeding = lots.find(l => l.id === lotId) || sectors.flatMap(s => s.lots || []).find(l => l.id === lotId)
+  const sector = sectors.find(s => s.id === seeding?.sectorId)
   
   useEffect(() => {
     if (lotId) {
-      fetchMonitoring(lotId)
+      fetchMonitoringRecords(lotId)
     }
     fetchSeedOrigins()
-  }, [lotId, fetchMonitoring, fetchSeedOrigins])
+    fetchLots()
+    // Load default parameters from API
+    fetch('http://localhost:4077/defaultSeedOriginParameters')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data[0]) {
+          setDefaultParams(data[0])
+        }
+      })
+      .catch(err => console.error('Error loading default seed parameters:', err))
+  }, [lotId, fetchMonitoringRecords, fetchSeedOrigins, fetchLots])
 
   // Centralized function to get seed origin parameters with validation
   const getSeedOriginParameters = () => {
     if (!seeding || !seeding.origin) {
       console.warn('Seeding or origin not found for parameter calculation')
       return {
-        monthlyGrowthRate: 3.5,
-        monthlyMortalityRate: 5.0,
-        pricePerUnit: 0.12,
-        pricePerBundle: 11.52,
+        monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
+        monthlyMortalityRate: defaultParams?.monthlyMortalityRate || 5.0,
+        pricePerUnit: defaultParams?.pricePerUnit || 0.12,
+        pricePerBundle: defaultParams?.pricePerBundle || 11.52,
         isValidOrigin: false,
         originName: 'No definido'
       }
@@ -63,10 +73,10 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     if (!seedOrigin) {
       console.warn(`Seed origin "${seeding.origin}" not found in seedOrigins database`)
       return {
-        monthlyGrowthRate: 3.5,
-        monthlyMortalityRate: parseFloat(seeding.expectedMonthlyMortality) || 5.0,
-        pricePerUnit: 0.12,
-        pricePerBundle: 11.52,
+        monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
+        monthlyMortalityRate: parseFloat(seeding.expectedMonthlyMortality) || defaultParams?.monthlyMortalityRate || 5.0,
+        pricePerUnit: defaultParams?.pricePerUnit || 0.12,
+        pricePerBundle: defaultParams?.pricePerBundle || 11.52,
         isValidOrigin: false,
         originName: seeding.origin
       }
@@ -83,10 +93,10 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     }
 
     return {
-      monthlyGrowthRate: seedOrigin.monthlyGrowthRate || 3.5,
-      monthlyMortalityRate: seedOrigin.monthlyMortalityRate || 5.0,
-      pricePerUnit: seedOrigin.pricePerUnit || 0.12,
-      pricePerBundle: seedOrigin.pricePerBundle || 11.52,
+      monthlyGrowthRate: seedOrigin.monthlyGrowthRate || defaultParams?.monthlyGrowthRate || 3.5,
+      monthlyMortalityRate: seedOrigin.monthlyMortalityRate || defaultParams?.monthlyMortalityRate || 5.0,
+      pricePerUnit: seedOrigin.pricePerUnit || defaultParams?.pricePerUnit || 0.12,
+      pricePerBundle: seedOrigin.pricePerBundle || defaultParams?.pricePerBundle || 11.52,
       isValidOrigin: true,
       originName: seedOrigin.name,
       description: seedOrigin.description || ''
@@ -95,8 +105,8 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
 
   // Function to get initial size from seeding record (addresses inconsistency #5)
   const getInitialSize = () => {
-    // Priority: 1. seeding.averageSize, 2. default value with warning
-    const initialSize = parseFloat(seeding?.averageSize) || 12
+    // Priority: 1. seeding.averageSize, 2. default from API, 3. fallback value
+    const initialSize = parseFloat(seeding?.averageSize) || defaultParams?.initialSize || 12
 
     if (!seeding?.averageSize) {
       console.warn('Initial size not found in seeding record, using default 12mm')
@@ -109,13 +119,13 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
   const openMeasurementForm = () => {
     // Get the most recent measurement or use initial seeding quantity
     const sortedRecords = [...monitoringRecords].sort((a, b) => new Date(b.date) - new Date(a.date))
-    const previousQuantity = sortedRecords.length > 0 
-      ? sortedRecords[0].currentQuantity 
+    const previousQuantity = sortedRecords.length > 0
+      ? sortedRecords[0].currentQuantity
       : seeding?.initialQuantity || 0
 
     setMeasurementForm(prev => ({
       ...prev,
-      previousQuantity: previousQuantity.toString(),
+      previousQuantity: previousQuantity ? previousQuantity.toString() : '0',
       currentQuantity: ''
     }))
     setShowMeasurementForm(true)

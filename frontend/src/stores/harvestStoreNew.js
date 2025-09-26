@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { harvestsService, sectorsService, lotsService, incomeService } from '../services/api';
+import configManager from '../config';
 
 export const useHarvestStore = create((set, get) => ({
   // Estado
@@ -10,33 +11,50 @@ export const useHarvestStore = create((set, get) => ({
   loading: false,
   error: null,
 
-  // Datos para formularios
-  sizeCategories: ['XS', 'S', 'M', 'L', 'XL'],
-  costCategories: [
-    { id: 'labor', name: 'Mano de obra', defaultCost: 50 },
-    { id: 'equipment', name: 'Equipos', defaultCost: 30 },
-    { id: 'transport', name: 'Transporte', defaultCost: 25 },
-    { id: 'processing', name: 'Procesamiento', defaultCost: 40 },
-    { id: 'packaging', name: 'Empaquetado', defaultCost: 15 },
-    { id: 'other', name: 'Otros', defaultCost: 10 }
-  ],
-  pricing: [
-    { sizeCategory: 'XS', pricePerUnit: 0.50, isActive: true },
-    { sizeCategory: 'S', pricePerUnit: 0.75, isActive: true },
-    { sizeCategory: 'M', pricePerUnit: 1.00, isActive: true },
-    { sizeCategory: 'L', pricePerUnit: 1.25, isActive: true },
-    { sizeCategory: 'XL', pricePerUnit: 1.50, isActive: true }
-  ],
-  pricingData: [
-    { sizeCategory: 'XS', pricePerUnit: 0.50, isActive: true },
-    { sizeCategory: 'S', pricePerUnit: 0.75, isActive: true },
-    { sizeCategory: 'M', pricePerUnit: 1.00, isActive: true },
-    { sizeCategory: 'L', pricePerUnit: 1.25, isActive: true },
-    { sizeCategory: 'XL', pricePerUnit: 1.50, isActive: true }
-  ],
+  // Datos para formularios (se cargarán desde API)
+  sizeCategories: [],
+  costCategories: [],
+  pricing: [],
+  pricingData: [], // Mantener compatibilidad temporal
+  categoriesLoaded: false,
+
+  // Cargar configuraciones desde API
+  loadConfigurations: async () => {
+    if (get().categoriesLoaded) return;
+
+    try {
+      const [sizeCategories, costCategories, pricing] = await Promise.all([
+        configManager.getCategories('size'),
+        configManager.getCategories('harvest_cost'),
+        configManager.getPricing()
+      ]);
+
+      set({
+        sizeCategories,
+        costCategories,
+        pricing,
+        pricingData: pricing, // Mantener compatibilidad
+        categoriesLoaded: true
+      });
+    } catch (error) {
+      console.error('Error loading configurations:', error);
+      set({
+        sizeCategories: [],
+        costCategories: [],
+        pricing: [],
+        pricingData: [],
+        categoriesLoaded: true
+      });
+    }
+  },
 
   // Obtener sectores con lotes para cosecha
   fetchSectorsWithLots: async (userId) => {
+    // Cargar configuraciones si no están cargadas
+    if (!get().categoriesLoaded) {
+      await get().loadConfigurations();
+    }
+
     set({ loading: true, error: null });
     try {
       const sectors = await sectorsService.getAll({ userId });
