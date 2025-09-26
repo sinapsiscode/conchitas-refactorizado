@@ -45,6 +45,20 @@ export const useMonitoringStore = create((set, get) => ({
     }
   },
 
+  // Obtener todos los registros de monitoreo (para inversores)
+  fetchAllMonitoring: async () => {
+    set({ loading: true, error: null });
+    try {
+      // Obtener todos los registros de monitoreo sin filtro
+      const records = await monitoringService.getAll();
+      set({ monitoringRecords: records, loading: false });
+      return { success: true, data: records };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
+  },
+
   // Crear nuevo registro de monitoreo
   createMonitoringRecord: async (recordData) => {
     console.log('🔧 monitoringStore.createMonitoringRecord - Datos recibidos:', recordData);

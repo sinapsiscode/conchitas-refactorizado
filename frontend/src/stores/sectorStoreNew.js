@@ -33,6 +33,29 @@ export const useSectorStore = create((set, get) => ({
     }
   },
 
+  // Función para obtener todos los sectores (alias para compatibilidad)
+  fetchAllSectors: async () => {
+    set({ loading: true, error: null });
+    try {
+      // Obtener todos los sectores sin filtro de usuario
+      const sectors = await sectorsService.getAll();
+
+      // Para cada sector, cargar sus lotes
+      const sectorsWithLots = await Promise.all(
+        sectors.map(async (sector) => {
+          const lots = await lotsService.getAll({ sectorId: sector.id });
+          return { ...sector, lots };
+        })
+      );
+
+      set({ sectors: sectorsWithLots, loading: false });
+      return { success: true, data: sectorsWithLots };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
+  },
+
   createSector: async (sectorData) => {
     set({ loading: true, error: null });
     try {

@@ -4,6 +4,8 @@ import { investmentsService } from '../services/api';
 export const useInvestmentStore = create((set, get) => ({
   // Estado
   investments: [],
+  distributions: [],
+  investorReturns: null,
   loading: false,
   error: null,
 
@@ -92,6 +94,65 @@ export const useInvestmentStore = create((set, get) => ({
 
     const roi = ((investment.returns - investment.amount) / investment.amount) * 100;
     return roi.toFixed(2);
+  },
+
+  // Obtener retornos de inversor
+  fetchInvestorReturns: async (investorId) => {
+    set({ loading: true, error: null });
+    try {
+      // Buscar inversiones del inversor
+      const investments = await investmentsService.getAll({ investorId });
+
+      // Calcular métricas agregadas
+      const totalInvested = investments.reduce((sum, inv) => sum + (inv.amount || 0), 0);
+      const totalReturned = investments.reduce((sum, inv) => sum + (inv.totalDistributed || 0), 0);
+      const activeInvestments = investments.filter(inv => inv.status === 'active').length;
+      const completedInvestments = investments.filter(inv => inv.status === 'completed').length;
+      const netProfit = totalReturned - totalInvested;
+      const averageROI = totalInvested > 0 ? ((totalReturned - totalInvested) / totalInvested) * 100 : 0;
+
+      const investorReturns = {
+        investorId,
+        totalInvested,
+        totalReturned,
+        activeInvestments,
+        completedInvestments,
+        netProfit,
+        averageROI
+      };
+
+      set({ investorReturns, loading: false });
+      return { success: true, data: investorReturns };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
+  },
+
+  // Obtener resumen de inversiones (función compatible)
+  getInvestorSummary: (investorId) => {
+    const investments = get().investments.filter(inv => inv.investorId === investorId);
+    const totalInvested = investments.reduce((sum, inv) => sum + (inv.amount || 0), 0);
+    const totalReturns = investments.reduce((sum, inv) => sum + (inv.totalDistributed || 0), 0);
+    const activeInvestments = investments.filter(inv => inv.status === 'active');
+
+    // Calcular ROI promedio
+    let averageROI = 0;
+    if (totalInvested > 0) {
+      averageROI = ((totalReturns - totalInvested) / totalInvested) * 100;
+    }
+
+    return {
+      total: investments.length,
+      totalInvested,
+      totalReturns,
+      activeCount: activeInvestments.length,
+      activeInvestments: activeInvestments.length,
+      completedInvestments: investments.filter(inv => inv.status === 'completed').length,
+      netProfit: totalReturns - totalInvested,
+      overallROI: averageROI || 0,
+      investments: investments
+    };
   },
 
   // Obtener resumen de inversiones
