@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { inventoryService } from '../services/api';
+import { inventoryService, categoriesService } from '../services/api';
 import configManager from '../config';
 
 export const useInventoryStore = create((set, get) => ({
@@ -16,7 +16,8 @@ export const useInventoryStore = create((set, get) => ({
     if (get().categoriesLoaded) return;
 
     try {
-      const categories = await configManager.getCategories('inventory');
+      // Cargar todas las categorías desde JSON Server
+      const categories = await categoriesService.getAll({ type: 'inventory' });
       set({ categories, categoriesLoaded: true });
     } catch (error) {
       console.error('Error loading categories:', error);
@@ -127,23 +128,68 @@ export const useInventoryStore = create((set, get) => ({
     );
   },
 
-  // Crear categoría (para compatibilidad)
+  // Crear categoría en JSON Server
   createCategory: async (categoryData) => {
-    // Las categorías se manejan como strings en el inventario actual
-    console.log('Category creation not implemented in current system');
-    return { success: true };
+    set({ loading: true, error: null });
+    try {
+      const newCategory = await categoriesService.create({
+        ...categoryData,
+        type: 'inventory',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+
+      set((state) => ({
+        categories: [...state.categories, newCategory],
+        loading: false
+      }));
+
+      return { success: true, data: newCategory };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
   },
 
-  // Actualizar categoría (para compatibilidad)
+  // Actualizar categoría en JSON Server
   updateCategory: async (categoryId, categoryData) => {
-    console.log('Category update not implemented in current system');
-    return { success: true };
+    set({ loading: true, error: null });
+    try {
+      const updatedCategory = await categoriesService.update(categoryId, {
+        ...categoryData,
+        updatedAt: new Date().toISOString()
+      });
+
+      set((state) => ({
+        categories: state.categories.map(cat =>
+          cat.id === categoryId ? updatedCategory : cat
+        ),
+        loading: false
+      }));
+
+      return { success: true, data: updatedCategory };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
   },
 
-  // Eliminar categoría (para compatibilidad)
+  // Eliminar categoría de JSON Server
   deleteCategory: async (categoryId) => {
-    console.log('Category deletion not implemented in current system');
-    return { success: true };
+    set({ loading: true, error: null });
+    try {
+      await categoriesService.delete(categoryId);
+
+      set((state) => ({
+        categories: state.categories.filter(cat => cat.id !== categoryId),
+        loading: false
+      }));
+
+      return { success: true };
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return { success: false, error: error.message };
+    }
   },
 
   // Crear movimiento de inventario

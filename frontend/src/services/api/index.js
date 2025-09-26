@@ -16,6 +16,7 @@ const notificationsService = new BaseService('notifications');
 const seedOriginsService = new BaseService('seedOrigins');
 const projectionsService = new BaseService('projections');
 const incomeStatementClosuresService = new BaseService('incomeStatementClosures');
+const categoriesService = new BaseService('categories');
 
 // Exportar todos los servicios
 export {
@@ -34,6 +35,7 @@ export {
   seedOriginsService,
   projectionsService,
   incomeStatementClosuresService,
+  categoriesService,
 };
 
 // Export default para importación más fácil
@@ -53,4 +55,5 @@ export default {
   seedOrigins: seedOriginsService,
   projections: projectionsService,
   incomeStatementClosures: incomeStatementClosuresService,
+  categories: categoriesService,
 };

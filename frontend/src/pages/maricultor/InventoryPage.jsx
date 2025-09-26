@@ -134,11 +134,11 @@ const InventoryPage = () => {
     }
   }
   
-  const handleCreateCategory = (e) => {
+  const handleCreateCategory = async (e) => {
     e.preventDefault()
-    
+
     if (editingCategory) {
-      const result = updateCategory(editingCategory.id, categoryForm)
+      const result = await updateCategory(editingCategory.id, categoryForm)
       if (result.success) {
         MySwal.fire({
           icon: 'success',
@@ -149,7 +149,7 @@ const InventoryPage = () => {
         })
       }
     } else {
-      const result = createCategory(categoryForm)
+      const result = await createCategory(categoryForm)
       if (result.success) {
         MySwal.fire({
           icon: 'success',
@@ -160,7 +160,7 @@ const InventoryPage = () => {
         })
       }
     }
-    
+
     setCategoryForm({
       name: '',
       description: '',
@@ -169,6 +169,7 @@ const InventoryPage = () => {
     })
     setShowCategoryForm(false)
     setEditingCategory(null)
+    fetchInventory(user.id) // Recargar inventario con categorías actualizadas
   }
   
   const handleDeleteCategory = (category) => {
