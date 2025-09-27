@@ -384,8 +384,9 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
 
   if (!isOpen) return null
 
-  const harvestInventory = inventory.filter(item => 
-    item.category === 'harvest' && item.status === 'available'
+  // Mostrar todo el inventario disponible sin filtrar por categoría específica
+  const harvestInventory = inventory.filter(item =>
+    item.quantity > 0 && (item.status === 'disponible' || item.status === 'available' || !item.status)
   )
 
   return (
@@ -861,7 +862,7 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
                     <option value="">Seleccione un ítem...</option>
                     {harvestInventory.map((item) => (
                       <option key={item.id} value={item.id}>
-                        {item.name} - Stock: {item.quantity} {item.unit} - S/{item.unitCost.toFixed(2)}/{item.unit}
+                        {item.name} - Stock: {item.quantity} {item.unit} - S/{(item.unitCost || 0).toFixed(2)}/{item.unit}
                       </option>
                     ))}
                   </select>
@@ -923,7 +924,7 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
                       <div className="flex-1">
                         <div className="text-sm font-medium text-gray-900">{item.name}</div>
                         <div className="text-xs text-gray-500">
-                          Costo unitario: S/{item.unitCost.toFixed(2)}/{item.unit} | Stock máx: {item.maxQuantity} {item.unit}
+                          Costo unitario: S/{(item.unitCost || 0).toFixed(2)}/{item.unit} | Stock máx: {item.maxQuantity || item.quantity} {item.unit}
                         </div>
                       </div>
                       

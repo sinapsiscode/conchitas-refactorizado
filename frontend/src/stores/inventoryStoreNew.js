@@ -25,18 +25,28 @@ export const useInventoryStore = create((set, get) => ({
     }
   },
 
-  // Obtener inventario
+  // Obtener inventario - SIMPLIFICADO
   fetchInventory: async (userId) => {
-    // Cargar categorías si no están cargadas
-    if (!get().categoriesLoaded) {
-      await get().loadCategories();
-    }
-
+    console.log('📦 [InventoryStore] Cargando inventario compartido...');
     set({ loading: true, error: null });
+
     try {
-      const inventory = await inventoryService.getAll({ userId });
-      set({ inventory, loading: false });
-      return { success: true, data: inventory };
+      // Traer TODO el inventario sin filtrar por usuario
+      // El inventario es un recurso compartido en la operación
+      const response = await fetch('http://localhost:4077/inventory');
+      const data = await response.json();
+
+      console.log('📦 [InventoryStore] Datos recibidos:', data);
+
+      // Guardar en el estado
+      set({
+        inventory: data || [],
+        loading: false,
+        error: null
+      });
+
+      console.log('✅ [InventoryStore] Inventario cargado:', data?.length || 0, 'items');
+      return { success: true, data: data || [] };
     } catch (error) {
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };

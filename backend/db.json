@@ -5071,6 +5071,45 @@
       "type": "plan",
       "createdAt": "2025-09-26T17:16:35.167Z",
       "updatedAt": "2025-09-26T17:16:35.167Z"
+    },
+    {
+      "sectorId": "sector-001",
+      "lotId": "lot-001",
+      "plannedDate": "2025-09-30",
+      "estimatedQuantity": 22000,
+      "estimatedMortality": 15,
+      "notes": "af",
+      "plannedCosts": {
+        "cat-harvest-008": {
+          "quantity": "22",
+          "unitCost": "2"
+        }
+      },
+      "inventoryToUse": [],
+      "status": "planned",
+      "survivalQuantity": 18700,
+      "totalPlannedCost": 44,
+      "type": "plan",
+      "id": "harvests-1758942524280",
+      "createdAt": "2025-09-27T03:08:44.280Z",
+      "updatedAt": "2025-09-27T03:08:44.280Z"
+    },
+    {
+      "sectorId": "sector-001",
+      "lotId": "lot-002",
+      "plannedDate": "2025-09-30",
+      "estimatedQuantity": 3168,
+      "estimatedMortality": 15,
+      "notes": "",
+      "plannedCosts": {},
+      "inventoryToUse": [],
+      "status": "planned",
+      "survivalQuantity": 2692,
+      "totalPlannedCost": 0,
+      "type": "plan",
+      "id": "harvests-1758942830312",
+      "createdAt": "2025-09-27T03:13:50.312Z",
+      "updatedAt": "2025-09-27T03:13:50.312Z"
     }
   ],
   "income": [],
