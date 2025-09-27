@@ -18,7 +18,7 @@ const RegisterPage = ({ onBackToLogin, onRegistrationSuccess }) => {
     phone: '',
     location: '',
     totalHectares: '',
-    role: 'maricultor'
+    role: 'investor'
   })
   
   useEffect(() => {
@@ -58,7 +58,7 @@ const RegisterPage = ({ onBackToLogin, onRegistrationSuccess }) => {
     
     const userData = {
       ...formData,
-      totalHectares: formData.totalHectares ? parseFloat(formData.totalHectares) : null
+      totalHectares: 0
     }
     delete userData.confirmPassword
     
@@ -97,10 +97,10 @@ const RegisterPage = ({ onBackToLogin, onRegistrationSuccess }) => {
         <div className="text-center">
           <div className="mx-auto h-10 w-10 text-3xl sm:h-12 sm:w-12 sm:text-4xl">🐚</div>
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900 sm:mt-6 sm:text-3xl">
-            Registro de Maricultor
+            Registro de Inversor
           </h2>
           <p className="mt-2 text-xs text-gray-600 sm:text-sm">
-            Completa tus datos para comenzar tu cultivo
+            Completa tus datos para comenzar a invertir
           </p>
         </div>
         
@@ -225,26 +225,6 @@ const RegisterPage = ({ onBackToLogin, onRegistrationSuccess }) => {
                 />
               </div>
               
-              <div>
-                <label htmlFor="totalHectares" className="block text-xs font-medium text-gray-700 mb-1 sm:text-sm">
-                  Total de Hectáreas Disponibles
-                </label>
-                <input
-                  id="totalHectares"
-                  name="totalHectares"
-                  type="number"
-                  step="0.1"
-                  min="0"
-                  className="input-field"
-                  placeholder="Ej: 15.5"
-                  value={formData.totalHectares}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                <p className="text-xs text-gray-500 mt-1">
-                  Ingresa el total de hectáreas disponibles para cultivo
-                </p>
-              </div>
             </div>
             
             <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">

@@ -40,6 +40,10 @@ cd frontend
 # Instalar dependencias (versiones exactas - Node.js 22.14.0, npm 10.9.2)
 npm install
 
+# Configurar variables de entorno
+# Editar .env para cambiar VITE_API_URL si necesario
+# Por defecto: http://localhost:4077
+
 # Iniciar servidor de desarrollo (puerto 3000)
 npm start
 # o

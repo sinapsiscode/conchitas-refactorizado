@@ -13,19 +13,20 @@ const MySwal = withReactContent(Swal)
 const InventoryPage = () => {
   const { user } = useAuthStore()
   const { sectors, fetchSectors } = useSectorStore()
-  const { 
-    inventory, 
-    categories, 
-    fetchInventory, 
-    createInventoryItem, 
+  const {
+    inventory,
+    categories,
+    fetchInventory,
+    loadCategories,
+    createInventoryItem,
     updateInventoryItem,
-    createMovement, 
+    createMovement,
     createCategory,
     updateCategory,
     deleteCategory,
-    getTotalValue, 
-    getLowStockItems, 
-    loading 
+    getTotalValue,
+    getLowStockItems,
+    loading
   } = useInventoryStore()
   
   const [showItemForm, setShowItemForm] = useState(false)
@@ -78,11 +79,12 @@ const InventoryPage = () => {
   })
   
   useEffect(() => {
+    loadCategories()
     fetchInventory()
     if (user?.id) {
       fetchSectors(user.id)
     }
-  }, [fetchInventory, fetchSectors, user?.id])
+  }, [loadCategories, fetchInventory, fetchSectors, user?.id])
   
   const handleCreateItem = async (e) => {
     e.preventDefault()
@@ -1151,7 +1153,7 @@ const InventoryPage = () => {
                   <option value="">Seleccionar categoría</option>
                   {categories.map(cat => (
                     <option key={cat.id} value={cat.id}>
-                      {cat.icon} {cat.name}
+                      {cat.icon || '📦'} {cat.name}
                     </option>
                   ))}
                 </select>

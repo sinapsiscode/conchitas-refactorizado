@@ -3,7 +3,6 @@ import { useAuthStore, useSectorStore } from '../../stores' // Importación cent
 import { UI_TEXTS } from '../../constants/ui'
 import { calculateMetrics } from '../../utils/metrics'
 import StatCard from '../../components/common/StatCard'
-import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 
 const DashboardPage = ({ onNavigate }) => {
@@ -126,22 +125,6 @@ const DashboardPage = ({ onNavigate }) => {
           ))}
         </div>
       </div>
-      
-      {sectors.length === 0 && !loading && (
-        <EmptyState
-          title="¡Comienza tu cultivo!"
-          message="No tienes sectores registrados. Crea tu primer sector para comenzar a gestionar tu cultivo de conchas de abanico."
-          icon="🌊"
-          action={
-            <button
-              onClick={() => onNavigate('sectors')}
-              className="btn-primary"
-            >
-              Crear primer sector
-            </button>
-          }
-        />
-      )}
     </div>
   )
 }

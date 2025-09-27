@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthStore, useSectorStore, useSeedOriginStore, useInventoryStore, useSeedingStore } from '../../stores'
 // import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
-import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import SystemSelector from '../../components/seeding/SystemSelector'
 import { getAllConversionsFromConchitas } from '../../constants/conversions'
@@ -847,40 +846,8 @@ const SeedingPage = () => {
           </div>
         )}
       </div>
-      
-      {sectors.length === 0 ? (
-        <EmptyState
-          title="No hay sectores disponibles"
-          message="Necesitas crear sectores antes de poder realizar siembras. Ve a la sección de Sectores para crear tu primer sector."
-          icon="🏭"
-          action={
-            <button className="btn-primary" disabled>
-              Crear sectores primero
-            </button>
-          }
-        />
-      ) : allSeedings.length === 0 ? (
-        <EmptyState
-          title="No hay siembras registradas"
-          message="Comienza registrando tu primera siembra en cualquiera de tus sectores disponibles."
-          icon="🌱"
-          action={
-            <button
-              onClick={() => {
-                if (sectors.length === 1) {
-                  handleStartSeeding(sectors[0])
-                } else {
-                  document.getElementById('sector-dropdown').classList.toggle('hidden')
-                }
-              }}
-              className="btn-primary"
-            >
-              Crear Primera Siembra
-            </button>
-          }
-        />
-      ) : (
-        <div className="space-y-6">
+
+      <div className="space-y-6">
           {/* Filters Section */}
           <div className="card">
             <div className="flex items-center justify-between mb-4">
@@ -1614,10 +1581,10 @@ const SeedingPage = () => {
                                   step="0.01"
                                   min="0"
                                   className="w-24 px-2 py-1 text-xs border rounded bg-white text-blue-900 font-medium"
-                                  value={seedingForm.customPricePerUnit || selectedOrigin.pricePerUnit?.toFixed(2) || '0.00'}
+                                  value={seedingForm.customPricePerUnit || (selectedOrigin.pricePerUnit || 0).toFixed(2)}
                                   onChange={(e) => setSeedingForm({...seedingForm, customPricePerUnit: e.target.value})}
                                   onWheel={(e) => e.target.blur()}
-                                  placeholder={selectedOrigin.pricePerUnit?.toFixed(2) || '0.00'}
+                                  placeholder={(selectedOrigin.pricePerUnit || 0).toFixed(2)}
                                 />
                                 <span className="text-gray-500">/{seedingForm.priceType === 'bundle' ? 'manojo' : 'und'}</span>
                               </div>
@@ -1626,7 +1593,7 @@ const SeedingPage = () => {
                                   = S/ {((seedingForm.customPricePerUnit || selectedOrigin.pricePerUnit || 0) / 96).toFixed(4)}/und
                                 </div>
                               )}
-                              {seedingForm.customPricePerUnit && seedingForm.customPricePerUnit !== selectedOrigin.pricePerUnit?.toFixed(2) && (
+                              {seedingForm.customPricePerUnit && seedingForm.customPricePerUnit !== (selectedOrigin.pricePerUnit || 0).toFixed(2) && (
                                 <div className="mt-1">
                                   <span className="text-xs text-yellow-600">✏️ Precio modificado</span>
                                   <button
@@ -1737,12 +1704,12 @@ const SeedingPage = () => {
                       seedingForm.priceType === 'bundle' ? 
                         `Costo total: ${Math.floor(seedingForm.initialQuantity / 96).toLocaleString()} manojos × S/ ${(() => {
                           const price = seedingForm.customPricePerUnit || 
-                            seedOrigins.find(o => o.name === seedingForm.origin)?.pricePerUnit?.toFixed(2) || '0.00'
+                            (seedOrigins.find(o => o.name === seedingForm.origin)?.pricePerUnit || 0).toFixed(2)
                           return price
                         })()} = S/ ${seedingForm.cost}` :
                         `Costo total: ${seedingForm.initialQuantity?.toLocaleString()} conchas × S/ ${(() => {
                           const price = seedingForm.customPricePerUnit || 
-                            seedOrigins.find(o => o.name === seedingForm.origin)?.pricePerUnit?.toFixed(2) || '0.00'
+                            (seedOrigins.find(o => o.name === seedingForm.origin)?.pricePerUnit || 0).toFixed(2)
                           return price
                         })()} = S/ ${seedingForm.cost}`
                     ) : `Precio base del origen. Ingrese cantidad para calcular costo total.`
@@ -2089,7 +2056,7 @@ const SeedingPage = () => {
                         <option value="">Seleccione un ítem...</option>
                         {inventory.filter(item => item.quantity > 0).map((item) => (
                           <option key={item.id} value={item.id}>
-                            {item.name} - Stock: {item.quantity} {item.unit} - S/{item.unitCost.toFixed(2)}/{item.unit}
+                            {item.name} - Stock: {item.quantity} {item.unit} - S/{(item.unitCost || 0).toFixed(2)}/{item.unit}
                           </option>
                         ))}
                       </select>
@@ -2150,7 +2117,7 @@ const SeedingPage = () => {
                         <div className="flex-1">
                           <div className="text-sm font-medium text-gray-900">{item.name}</div>
                           <div className="text-xs text-gray-500">
-                            Costo unitario: S/{item.unitCost.toFixed(2)}/{item.unit} | Stock máx: {item.maxQuantity} {item.unit}
+                            Costo unitario: S/{(item.unitCost || 0).toFixed(2)}/{item.unit} | Stock máx: {item.maxQuantity} {item.unit}
                           </div>
                         </div>
 
@@ -2279,7 +2246,7 @@ const SeedingPage = () => {
                     {(() => {
                       const origin = seedOrigins.find(o => o.name === selectedSeeding.origin)
                       return origin && origin.pricePerUnit && typeof origin.pricePerUnit === 'number' 
-                        ? `S/ ${origin.pricePerUnit.toFixed(2)}/und` 
+                        ? `S/ ${(origin.pricePerUnit || 0).toFixed(2)}/und` 
                         : 'N/A'
                     })()}
                   </div>

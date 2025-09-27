@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthStore, useSectorStore } from '../../stores' // Importación centralizada
 import { UI_TEXTS } from '../../constants/ui'
-import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import Modal from '../../components/common/Modal'
 import CultivationLineManager from '../../components/sectors/CultivationLineManager'
@@ -192,23 +191,8 @@ const SectorsPage = () => {
           {UI_TEXTS.sectors.addSector}
         </button>
       </div>
-      
-      {sectors.length === 0 ? (
-        <EmptyState
-          title="No hay sectores registrados"
-          message="Crea tu primer sector para comenzar a gestionar tus lotes de cultivo de conchas de abanico."
-          icon="🏭"
-          action={
-            <button
-              onClick={() => setShowSectorForm(true)}
-              className="btn-primary"
-            >
-              {UI_TEXTS.sectors.addSector}
-            </button>
-          }
-        />
-      ) : (
-        <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {sectors.map((sector) => {
             const batteries = sectorBatteries[sector.id] || []
             const isExpanded = expandedSectors[sector.id]

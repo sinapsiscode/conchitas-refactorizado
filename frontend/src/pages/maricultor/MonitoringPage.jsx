@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useAuthStore, useSectorStore, useSeedingStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import StatCard from '../../components/common/StatCard'
-import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -150,20 +149,8 @@ const MonitoringPage = ({ onNavigateToLot }) => {
           )
         })}
       </div>
-      
-      {activeLots.length === 0 ? (
-        <EmptyState
-          title={pageConfig?.noDataTitle || "No hay siembras para monitorear"}
-          message={pageConfig?.noDataMessage || "Crea siembras en la sección de Siembras para comenzar el monitoreo y seguimiento."}
-          icon={pageConfig?.noDataIcon || "🔍"}
-          action={
-            <button className="btn-secondary" disabled>
-              Ir a Siembras
-            </button>
-          }
-        />
-      ) : (
-        <div className="card">
+
+      <div className="card">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">{pageConfig?.tableTitle || "Tabla de Siembras por Sector"}</h2>
             <p className="text-sm text-gray-600">
@@ -324,7 +311,6 @@ const MonitoringPage = ({ onNavigateToLot }) => {
             </table>
           </div>
         </div>
-      )}
     </div>
   )
 }

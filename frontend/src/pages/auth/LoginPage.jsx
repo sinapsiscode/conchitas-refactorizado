@@ -213,7 +213,7 @@ const LoginPage = ({ onLoginSuccess }) => {
               onClick={() => onLoginSuccess('register')}
               className="text-primary-600 hover:text-primary-800 text-xs font-medium underline sm:text-sm"
             >
-              Regístrate como maricultor
+              Regístrate como inversor
             </button>
           </div>
           

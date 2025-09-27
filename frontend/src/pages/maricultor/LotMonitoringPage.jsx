@@ -805,20 +805,8 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
             <h2 className="text-lg font-semibold text-gray-900">📈 Historial de Mediciones Reales (Promedios)</h2>
             <p className="text-sm text-gray-600">Promedios calculados a partir de múltiples pisos muestreados</p>
           </div>
-          
+
           <div>
-            {monitoringRecords.length === 0 && (
-              <div className="text-center py-4 mb-4 bg-yellow-50 rounded-lg">
-                <div className="text-2xl mb-2">📋</div>
-                <p className="text-gray-600 text-sm">No hay mediciones registradas aún</p>
-                <button
-                  onClick={openMeasurementForm}
-                  className="btn-secondary mt-2 text-sm px-3 py-1"
-                >
-                  Registrar primera medición
-                </button>
-              </div>
-            )}
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-green-50">

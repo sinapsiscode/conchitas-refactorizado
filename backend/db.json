@@ -69,6 +69,20 @@
       "createdAt": "2025-09-26T06:27:49.702Z",
       "updatedAt": "2025-09-26T06:27:49.702Z",
       "id": "O-6Ns4_"
+    },
+    {
+      "id": "user-1758920327471",
+      "firstName": "gian",
+      "lastName": "Terrazas",
+      "email": "adminasdasfdffgefefge@barberia.com",
+      "password": "123456",
+      "phone": "955444333",
+      "location": "assdfsdf",
+      "totalHectares": 222,
+      "role": "maricultor",
+      "status": "pending",
+      "createdAt": "2025-09-26T20:58:47.471Z",
+      "updatedAt": "2025-09-26T20:58:47.471Z"
     }
   ],
   "sectors": [
@@ -135,6 +149,15 @@
       "userId": "maricultor-001",
       "createdAt": "2025-09-26T15:25:15.065Z",
       "updatedAt": "2025-09-26T15:25:15.065Z"
+    },
+    {
+      "name": "CARLOS",
+      "location": "ATE",
+      "hectares": 2,
+      "userId": "maricultor-001",
+      "id": "sectors-1758930589712",
+      "createdAt": "2025-09-26T23:49:49.712Z",
+      "updatedAt": "2025-09-26T23:49:49.712Z"
     }
   ],
   "batteries": [
@@ -193,6 +216,94 @@
       "totalLines": 0,
       "createdAt": "2025-09-26T15:25:41.474Z",
       "updatedAt": "2025-09-26T15:25:41.474Z"
+    },
+    {
+      "sectorId": "sectors-1758873727716",
+      "letter": "A",
+      "name": "Batería A",
+      "description": "asdfasf",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930467599",
+      "createdAt": "2025-09-26T23:47:47.599Z",
+      "updatedAt": "2025-09-26T23:47:47.599Z"
+    },
+    {
+      "sectorId": "sectors-1758873727716",
+      "letter": "B",
+      "name": "Batería B",
+      "description": "asfasf",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930485038",
+      "createdAt": "2025-09-26T23:48:05.038Z",
+      "updatedAt": "2025-09-26T23:48:05.038Z"
+    },
+    {
+      "sectorId": "sectors-1758873727716",
+      "letter": "C",
+      "name": "Batería C",
+      "description": "asfasf",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930491751",
+      "createdAt": "2025-09-26T23:48:11.751Z",
+      "updatedAt": "2025-09-26T23:48:11.751Z"
+    },
+    {
+      "sectorId": "sectors-1758873727716",
+      "letter": "D",
+      "name": "Batería D",
+      "description": "asfasf",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930498566",
+      "createdAt": "2025-09-26T23:48:18.566Z",
+      "updatedAt": "2025-09-26T23:48:18.566Z"
+    },
+    {
+      "sectorId": "sectors-1758930589712",
+      "letter": "A",
+      "name": "Batería A",
+      "description": "aasdafafafwfawf",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930613775",
+      "createdAt": "2025-09-26T23:50:13.775Z",
+      "updatedAt": "2025-09-26T23:50:13.775Z"
+    },
+    {
+      "sectorId": "sectors-1758930589712",
+      "letter": "B",
+      "name": "Batería B",
+      "description": "",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930619246",
+      "createdAt": "2025-09-26T23:50:19.246Z",
+      "updatedAt": "2025-09-26T23:50:19.246Z"
+    },
+    {
+      "sectorId": "sectors-1758930589712",
+      "letter": "C",
+      "name": "Batería C",
+      "description": "",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1758930623431",
+      "createdAt": "2025-09-26T23:50:23.431Z",
+      "updatedAt": "2025-09-26T23:50:23.431Z"
+    },
+    {
+      "sectorId": "sectors-1758930589712",
+      "letter": "D",
+      "name": "Batería D",
+      "description": "",
+      "status": "active",
+      "totalLines": 1,
+      "id": "batteries-1758930626870",
+      "createdAt": "2025-09-26T23:50:26.870Z",
+      "updatedAt": "2025-09-26T23:50:40.754Z"
     }
   ],
   "cultivationLines": [
@@ -995,6 +1106,21 @@
       "isActive": true,
       "createdAt": "2025-09-26T13:50:45.704Z",
       "updatedAt": "2025-09-26T13:50:45.704Z"
+    },
+    {
+      "sectorId": "sectors-1758930589712",
+      "batteryId": "batteries-1758930626870",
+      "name": "D-4",
+      "batteryLetter": "D",
+      "lineNumber": 4,
+      "totalSystems": 100,
+      "floorsPerSystem": 10,
+      "occupiedSystems": [],
+      "status": "available",
+      "description": "",
+      "id": "cultivationLines-1758930640719",
+      "createdAt": "2025-09-26T23:50:40.719Z",
+      "updatedAt": "2025-09-26T23:50:40.719Z"
     }
   ],
   "lots": [
@@ -3822,6 +3948,877 @@
           ]
         }
       ]
+    },
+    {
+      "origin": "parissssssss",
+      "initialQuantity": 96000,
+      "initialBundles": "1000",
+      "expectedMonthlyMortality": 2,
+      "cost": 23000,
+      "customPricePerUnit": "",
+      "priceType": "unit",
+      "entryDate": "2025-09-26",
+      "projectedHarvestDate": "2026-09-26",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "",
+      "lineId": "",
+      "systems": [],
+      "averageSize": "34",
+      "minSize": "12",
+      "maxSize": "32",
+      "theoreticalDensity": "325",
+      "actualDensity": "342",
+      "nextThiningDate": "2025-10-30",
+      "inventoryItems": [],
+      "sectorId": "sectors-1758930589712",
+      "batteryId": "batteries-1758930626870",
+      "buoysUsed": 0,
+      "multipleLines": [
+        {
+          "id": "1758930913158",
+          "lineId": "cultivationLines-1758930640719",
+          "lineName": "D-4",
+          "systems": [
+            {
+              "systemNumber": 1,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 2,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 3,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 4,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 5,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 6,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 7,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 8,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 9,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 10,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 11,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 12,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 13,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 14,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 15,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 16,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 17,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 18,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 19,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 20,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            }
+          ]
+        }
+      ],
+      "status": "seeded",
+      "currentQuantity": 96000,
+      "mortalityRate": 0,
+      "createdAt": "2025-09-26T23:55:55.271Z",
+      "updatedAt": "2025-09-26T23:55:55.271Z",
+      "id": "lots-1758930955271"
+    },
+    {
+      "origin": "Samanco",
+      "initialQuantity": 2112,
+      "initialBundles": "22",
+      "expectedMonthlyMortality": 1.5,
+      "cost": 337.92,
+      "customPricePerUnit": "",
+      "priceType": "unit",
+      "entryDate": "2025-10-01",
+      "projectedHarvestDate": "2025-09-30",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "",
+      "lineId": "",
+      "systems": [],
+      "averageSize": "23",
+      "minSize": "233",
+      "maxSize": "2323",
+      "theoreticalDensity": "222",
+      "actualDensity": "233",
+      "nextThiningDate": "2025-09-30",
+      "inventoryItems": [],
+      "sectorId": "sectors-1758930589712",
+      "batteryId": "batteries-1758930613775",
+      "buoysUsed": 0,
+      "multipleLines": [],
+      "status": "seeded",
+      "currentQuantity": 2112,
+      "mortalityRate": 0,
+      "createdAt": "2025-09-27T00:30:20.768Z",
+      "updatedAt": "2025-09-27T00:30:20.768Z",
+      "id": "lots-1758933020768"
+    },
+    {
+      "origin": "parissssssss",
+      "initialQuantity": 96000,
+      "initialBundles": "1000",
+      "expectedMonthlyMortality": 2,
+      "cost": 23000,
+      "customPricePerUnit": "",
+      "priceType": "unit",
+      "entryDate": "2025-09-27",
+      "projectedHarvestDate": "2026-09-26",
+      "cultivationSystem": "Cultivo suspendido",
+      "lineName": "",
+      "lineId": "",
+      "systems": [],
+      "averageSize": "15",
+      "minSize": "10",
+      "maxSize": "20",
+      "theoreticalDensity": "400",
+      "actualDensity": "450",
+      "nextThiningDate": "2025-10-26",
+      "inventoryItems": [
+        {
+          "id": "inventory-1758931097335",
+          "name": "Boyas nacionales",
+          "quantity": 50,
+          "unit": "units",
+          "unitCost": 120,
+          "maxQuantity": 100
+        }
+      ],
+      "sectorId": "sectors-1758930589712",
+      "batteryId": "batteries-1758930626870",
+      "buoysUsed": 50,
+      "multipleLines": [
+        {
+          "id": "1758933191519",
+          "lineId": "cultivationLines-1758930640719",
+          "lineName": "D-4",
+          "systems": [
+            {
+              "systemNumber": 1,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 2,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 3,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 4,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 5,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 6,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 7,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 8,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 9,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 10,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 11,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 12,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 13,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 14,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 15,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 16,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 17,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 18,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 19,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 20,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 21,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 22,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 23,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 24,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 25,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 26,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 27,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 28,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 29,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "systemNumber": 30,
+              "floors": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            }
+          ]
+        }
+      ],
+      "status": "seeded",
+      "currentQuantity": 96000,
+      "mortalityRate": 0,
+      "createdAt": "2025-09-27T00:33:51.336Z",
+      "updatedAt": "2025-09-27T00:33:51.336Z",
+      "id": "lots-1758933231336"
     }
   ],
   "monitoring": [
@@ -4086,7 +5083,7 @@
       "unit": "metros",
       "minimumStock": 50,
       "location": "Bodega Principal",
-      "userId": null
+      "userId": "maricultor-001"
     },
     {
       "category": "2",
@@ -4107,7 +5104,66 @@
       "totalValue": 6,
       "id": "inventory-1758867799626",
       "createdAt": "2025-09-26T06:23:19.626Z",
-      "updatedAt": "2025-09-26T06:23:19.626Z"
+      "updatedAt": "2025-09-26T06:23:19.626Z",
+      "userId": "maricultor-001"
+    },
+    {
+      "category": "categories-1758909530189",
+      "name": "ujygiyuf",
+      "description": "xc",
+      "origin": "imported",
+      "quantity": 22,
+      "unit": "meters",
+      "unitCost": 32,
+      "minStock": 22,
+      "location": "2adasfasf",
+      "supplier": "asfafwfawsf",
+      "lastPurchaseDate": "2025-10-01",
+      "status": "disponible",
+      "assignedTo": "",
+      "assignmentDate": "",
+      "assignmentNotes": "",
+      "totalValue": 704,
+      "id": "inventory-1758930820895",
+      "createdAt": "2025-09-26T23:53:40.895Z",
+      "updatedAt": "2025-09-26T23:53:40.895Z",
+      "userId": "maricultor-001"
+    },
+    {
+      "category": "categories-1758930996631",
+      "name": "Boyas nacionales",
+      "description": "",
+      "origin": "national",
+      "quantity": 100,
+      "unit": "units",
+      "unitCost": 120,
+      "minStock": 20,
+      "location": "fgnfghgffghn",
+      "supplier": "yhtfghhngghnthng",
+      "lastPurchaseDate": "2025-09-18",
+      "status": "disponible",
+      "assignedTo": "",
+      "assignmentDate": "",
+      "assignmentNotes": "",
+      "totalValue": 12000,
+      "id": "inventory-1758931097335",
+      "createdAt": "2025-09-26T23:58:17.335Z",
+      "updatedAt": "2025-09-26T23:58:17.335Z",
+      "userId": "maricultor-001"
+    },
+    {
+      "name": "Test Item",
+      "category": "Test",
+      "quantity": 10,
+      "unit": "units",
+      "unitCost": 5,
+      "minStock": 2,
+      "location": "Test Location",
+      "supplier": "Test Supplier",
+      "status": "disponible",
+      "totalValue": 50,
+      "id": "r5zVsKj",
+      "userId": "maricultor-001"
     }
   ],
   "investments": [
@@ -4637,6 +5693,16 @@
       "createdAt": "2025-09-26T17:58:50.189Z",
       "updatedAt": "2025-09-26T17:58:50.189Z",
       "id": "categories-1758909530189"
+    },
+    {
+      "name": "FLOTACIÓN",
+      "description": "",
+      "icon": "🔵",
+      "color": "#3B82F6",
+      "type": "inventory",
+      "createdAt": "2025-09-26T23:56:36.631Z",
+      "updatedAt": "2025-09-26T23:56:43.383Z",
+      "id": "categories-1758930996631"
     }
   ],
   "pricing": [

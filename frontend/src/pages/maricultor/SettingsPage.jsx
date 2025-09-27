@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useAuthStore } from '../../stores'
 import { useSeedOriginStore } from '../../stores'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
-import EmptyState from '../../components/common/EmptyState'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -189,22 +188,7 @@ const SettingsPage = () => {
             </button>
           </div>
 
-          {seedOrigins.length === 0 ? (
-            <EmptyState
-              title="No hay orígenes configurados"
-              message="Comienza creando tu primer origen de semillas con sus parámetros específicos de crecimiento y mortalidad."
-              icon="🌱"
-              action={
-                <button
-                  onClick={() => setShowOriginForm(true)}
-                  className="btn-primary"
-                >
-                  Crear Primer Origen
-                </button>
-              }
-            />
-          ) : (
-            <div className="overflow-x-auto">
+          <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
