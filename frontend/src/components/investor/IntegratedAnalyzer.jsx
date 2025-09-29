@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useSeedOriginStore } from '../../stores/seedOriginStore.js'
-import { useSectorStore } from '../../stores/sectorStore.js'
-import { useHarvestStore } from '../../stores/harvestStore.js'
+import { useSeedOriginStore } from '../../stores/seedOriginStoreNew.js'
+import { useSectorStore } from '../../stores/sectorStoreNew.js'
+import { useHarvestStore } from '../../stores/harvestStoreNew.js'
 
 const IntegratedAnalyzer = () => {
   const { seedOrigins, fetchSeedOrigins, loading: seedOriginsLoading } = useSeedOriginStore()

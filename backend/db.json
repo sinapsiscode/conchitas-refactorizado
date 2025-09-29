@@ -304,6 +304,28 @@
       "id": "batteries-1758930626870",
       "createdAt": "2025-09-26T23:50:26.870Z",
       "updatedAt": "2025-09-26T23:50:40.754Z"
+    },
+    {
+      "sectorId": "sectors-1758900315065",
+      "letter": "A",
+      "name": "Batería A",
+      "description": "",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1759167102841",
+      "createdAt": "2025-09-29T17:31:42.841Z",
+      "updatedAt": "2025-09-29T17:31:42.841Z"
+    },
+    {
+      "sectorId": "sectors-1758900315065",
+      "letter": "B",
+      "name": "Batería B",
+      "description": "",
+      "status": "active",
+      "totalLines": 0,
+      "id": "batteries-1759167105977",
+      "createdAt": "2025-09-29T17:31:45.977Z",
+      "updatedAt": "2025-09-29T17:31:45.977Z"
     }
   ],
   "cultivationLines": [

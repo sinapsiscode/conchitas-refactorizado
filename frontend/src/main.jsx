@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './styles/index.css'
-import './utils/cleanupStorage' // Limpiar localStorage viejo al iniciar
+// Cleanup storage ya no necesario - migrado a JSON Server
 
 // Función global para limpiar localStorage (útil para debugging)
 window.clearAuth = () => {
