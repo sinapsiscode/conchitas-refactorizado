@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import { UI_TEXTS } from '../../constants/ui'
-// import { INVITATION_STATUSES } from '../../services/mock/schemas/investorInvitation' // DESACTIVADO - Migrado a JSON Server
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'
 

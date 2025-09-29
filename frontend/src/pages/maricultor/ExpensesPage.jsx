@@ -6,7 +6,6 @@ import { useHarvestStore } from '../../stores'
 import { useIncomeStatementClosureStore } from '../../stores'
 import { useIncomeStore } from '../../stores'
 import { useInvestmentStore } from '../../stores'
-// import { ExpenseTypeSchema } from '../../services/mock/schemas/expense' // DESACTIVADO - Migrado a JSON Server
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import EmptyState from '../../components/common/EmptyState'
 import StatCard from '../../components/common/StatCard'

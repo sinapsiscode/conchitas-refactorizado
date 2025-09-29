@@ -414,8 +414,8 @@ const SectorsPage = () => {
                 )}
               </div>
             </div>
-            )
-          })}
+          )
+        })}
         </div>
       )}
       

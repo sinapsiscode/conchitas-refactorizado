@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthStore, useSectorStore, useSeedOriginStore, useInventoryStore, useSeedingStore } from '../../stores'
-// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import SystemSelector from '../../components/seeding/SystemSelector'
 import { getAllConversionsFromConchitas } from '../../constants/conversions'
@@ -1494,7 +1493,7 @@ const SeedingPage = () => {
             </div>
           )}
         </div>
-      )}
+      }
       
       {showSeedingForm && selectedSector && (selectedBattery || editingSeeding) && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3 sm:p-4">

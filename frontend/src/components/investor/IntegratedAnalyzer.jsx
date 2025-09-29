@@ -1287,7 +1287,7 @@ const IntegratedAnalyzer = () => {
                 )
               }
               return null
-            })()}}
+            })()}
           </div>
 
         </div>

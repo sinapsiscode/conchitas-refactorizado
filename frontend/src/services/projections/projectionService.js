@@ -1,8 +1,15 @@
-import { ProjectionParametersSchema } from '../mock/schemas/projection'
+// ProjectionParametersSchema eliminado con MockAPI - ahora parametros por defecto
+const DEFAULT_PROJECTION_PARAMETERS = {
+  monthlyGrowthRate: 0.15,
+  monthlyMortalityRate: 0.05,
+  harvestSizeMin: 60,
+  harvestSizeMax: 80,
+  pricePerKg: 12.5
+}
 
 export class ProjectionService {
   constructor() {
-    this.parameters = ProjectionParametersSchema
+    this.parameters = DEFAULT_PROJECTION_PARAMETERS
   }
 
   // Calculate complete projection

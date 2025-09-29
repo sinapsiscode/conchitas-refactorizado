@@ -3,7 +3,6 @@ import { useAuthStore } from '../../stores'
 import { useInvestmentStore } from '../../stores'
 import { useSectorStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
-// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import StatCard from '../common/StatCard'
 import EmptyState from '../common/EmptyState'
 import LoadingSpinner from '../common/LoadingSpinner'

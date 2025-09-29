@@ -11,7 +11,6 @@ import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 import { exportToPDF } from '../../utils/exportPDF'
 import * as XLSX from 'xlsx'
-// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 
 const ReportsPage = () => {
   const { user } = useAuthStore()

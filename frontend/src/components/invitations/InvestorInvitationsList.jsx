@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthStore } from '../../stores'
-// import { mockAPI } from '../../services/mock/server' // DESACTIVADO - Migrado a JSON Server
 import { UI_TEXTS } from '../../constants/ui'
 import InvestmentInvitationCard from './InvestmentInvitationCard'
 import LoadingSpinner from '../common/LoadingSpinner'
