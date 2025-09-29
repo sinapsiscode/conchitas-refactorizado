@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Read(//c/Users/usu/Documents/conchitas-refactorizado/frontend/**)",
+      "Bash(dir)",
+      "Bash(git log:*)",
+      "Bash(npm ls:*)",
+      "Bash(findstr:*)",
+      "Bash(for file in checkCollections.js seedConfigurations.js populateConfigurations.js addMoreConfigurations.js)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(head:*)",
+      "Bash(done)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Read(//c/Users/usu/Documents/conchitas-refactorizado/**)",
+      "Bash(cat:*)",
+      "Bash(node:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npm run build:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -283,7 +283,6 @@ const SettingsPage = () => {
                 </tbody>
               </table>
             </div>
-          }
         </div>
       </div>
 

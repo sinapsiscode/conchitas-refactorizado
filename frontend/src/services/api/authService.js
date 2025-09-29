@@ -93,6 +93,19 @@ const authService = {
   },
 
   /**
+   * Obtener todos los usuarios
+   * @returns {Promise} Lista de usuarios
+   */
+  async getAllUsers() {
+    try {
+      const users = await apiClient.get('/users');
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  /**
    * Cerrar sesión
    */
   logout() {

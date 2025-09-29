@@ -17,6 +17,7 @@ export { useIncomeStore } from './incomeStoreNew';
 
 export { useInventoryStore } from './inventoryStoreNew';
 export { useInvestmentStore } from './investmentStoreNew';
+export { useInvestmentInvitationStore } from './investmentInvitationStoreNew';
 export { useNotificationStore } from './notificationStoreNew';
 export { useSeedOriginStore } from './seedOriginStoreNew';
 export { useProjectionStore } from './projectionStoreNew';

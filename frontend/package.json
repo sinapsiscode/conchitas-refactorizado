@@ -12,8 +12,7 @@
     "dev:full": "concurrently \"json-server ../backend/db.json --port 4077\" \"vite\""
   },
   "dependencies": {
-    "@react-pdf/renderer": "3.4.4",
-    "chart.js": "^4.5.0",
+    "axios": "^1.12.2",
     "file-saver": "^2.0.5",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
@@ -27,7 +26,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.1",
     "autoprefixer": "10.4.17",
-    "axios": "^1.12.2",
     "concurrently": "^9.2.1",
     "json-server": "^1.0.0-beta.3",
     "postcss": "8.4.35",

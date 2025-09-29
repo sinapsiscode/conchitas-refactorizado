@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { UI_TEXTS } from '../../constants/ui'
+import { INVITATION_STATUSES } from '../../constants/invitations'
+import { useInvestmentInvitationStore } from '../../stores'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'
 
 const InvestmentInvitationCard = ({ invitation, onResponse }) => {
+  const { respondToInvitation } = useInvestmentInvitationStore()
   const [responding, setResponding] = useState(false)
   const [showResponseForm, setShowResponseForm] = useState(false)
   const [responseData, setResponseData] = useState({
@@ -77,8 +80,8 @@ const InvestmentInvitationCard = ({ invitation, onResponse }) => {
         message: responseData.message.trim()
       }
 
-      // const result = await mockAPI.respondToInvestorInvitation(invitation.id, response) // TODO: Migrar a nuevo store con JSON Server
-      
+      const result = await respondToInvitation(invitation.id, response)
+
       if (result.success) {
         const statusText = responseData.status === 'accepted' 
           ? UI_TEXTS.investorInvitations.invitationAccepted

@@ -416,8 +416,7 @@ const SectorsPage = () => {
             </div>
           )
         })}
-        </div>
-      )}
+      </div>
       
       <Modal
         isOpen={showSectorForm}

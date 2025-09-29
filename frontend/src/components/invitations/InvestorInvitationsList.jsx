@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthStore } from '../../stores'
+import { useAuthStore, useInvestmentInvitationStore } from '../../stores'
 import { UI_TEXTS } from '../../constants/ui'
 import InvestmentInvitationCard from './InvestmentInvitationCard'
 import LoadingSpinner from '../common/LoadingSpinner'
@@ -7,6 +7,7 @@ import EmptyState from '../common/EmptyState'
 
 const InvestorInvitationsList = () => {
   const { user } = useAuthStore()
+  const { fetchInvestorInvitations } = useInvestmentInvitationStore()
   const [invitations, setInvitations] = useState([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all') // all, pending, responded
@@ -20,7 +21,7 @@ const InvestorInvitationsList = () => {
   const fetchInvitations = async () => {
     setLoading(true)
     try {
-      // const result = await mockAPI.getInvestorInvitations(user.id, 'investor') // TODO: Migrar a nuevo store con JSON Server
+      const result = await fetchInvestorInvitations(user.id)
       if (result.success) {
         setInvitations(result.data)
       }

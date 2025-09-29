@@ -12,6 +12,7 @@ const harvestsService = new BaseService('harvests');
 const incomeService = new BaseService('income');
 const inventoryService = new BaseService('inventory');
 const investmentsService = new BaseService('investments');
+const investmentInvitationsService = new BaseService('investmentInvitations');
 const notificationsService = new BaseService('notifications');
 const seedOriginsService = new BaseService('seedOrigins');
 const projectionsService = new BaseService('projections');
@@ -31,6 +32,7 @@ export {
   incomeService,
   inventoryService,
   investmentsService,
+  investmentInvitationsService,
   notificationsService,
   seedOriginsService,
   projectionsService,
@@ -51,6 +53,7 @@ export default {
   income: incomeService,
   inventory: inventoryService,
   investments: investmentsService,
+  investmentInvitations: investmentInvitationsService,
   notifications: notificationsService,
   seedOrigins: seedOriginsService,
   projections: projectionsService,

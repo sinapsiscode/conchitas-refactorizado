@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { UI_TEXTS } from '../../constants/ui'
+import { useInvestmentInvitationStore } from '../../stores'
+import { authService } from '../../services/api'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Swal from 'sweetalert2'
 
 const InvestorInvitation = ({ seedingData, onInvitationSent, skipActualSending = false }) => {
+  const { createInvitation } = useInvestmentInvitationStore()
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState(null)
   const [searching, setSearching] = useState(false)
@@ -21,12 +24,18 @@ const InvestorInvitation = ({ seedingData, onInvitationSent, skipActualSending =
 
     setSearching(true)
     try {
-      const result = await mockAPI.searchInvestor(searchTerm.trim())
-      setSearchResults(result.data)
-      
-      if (result.data.found) {
-        setSelectedInvestor(result.data.investor)
+      // Buscar inversor por email en la colección de usuarios
+      const users = await authService.getAllUsers()
+      const investor = users.find(u =>
+        u.role === 'investor' &&
+        u.email.toLowerCase() === searchTerm.trim().toLowerCase()
+      )
+
+      if (investor) {
+        setSearchResults({ found: true, investor })
+        setSelectedInvestor(investor)
       } else {
+        setSearchResults({ found: false })
         setSelectedInvestor(null)
       }
     } catch (error) {
@@ -108,15 +117,15 @@ const InvestorInvitation = ({ seedingData, onInvitationSent, skipActualSending =
           maricultorName: seedingData.maricultorName,
           investorId: selectedInvestor.id,
           investorEmail: selectedInvestor.email,
-          investorName: selectedInvestor.name,
+          investorName: `${selectedInvestor.firstName} ${selectedInvestor.lastName}`,
           sectorName: seedingData.sectorName,
           invitedAmount: invitationData.invitedAmount ? parseFloat(invitationData.invitedAmount) : null,
           invitedPercentage: invitationData.invitedPercentage ? parseFloat(invitationData.invitedPercentage) : null,
           message: invitationData.message.trim()
         }
 
-        const result = await mockAPI.createInvestorInvitation(invitationPayload)
-        
+        const result = await createInvitation(invitationPayload)
+
         if (result.success) {
           Swal.fire({
             icon: 'success',

@@ -6,6 +6,7 @@ import { useExpenseStore } from '../../stores'
 import { useInvestmentStore } from '../../stores'
 import { useMonitoringStore } from '../../stores'
 import { useSeedOriginStore } from '../../stores'
+import { batteriesService, cultivationLinesService } from '../../services/api'
 import StatCard from '../../components/common/StatCard'
 import EmptyState from '../../components/common/EmptyState'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
@@ -71,8 +72,8 @@ const ReportsPage = () => {
           await Promise.all(promises)
 
           // Cargar siembras (lotes), baterías y líneas de cultivo
-          // const sectorsWithLotsResponse = await mockAPI.getAllSectors() // TODO: Migrar a nuevo store con JSON Server
-          const sectorsWithLots = sectorsWithLotsResponse.data || []
+          // Los sectores ya están disponibles en el store
+          const sectorsWithLots = sectors || []
 
           // Extraer todos los lotes (siembras) de todos los sectores
           const allSeedings = sectorsWithLots.flatMap(sector =>
@@ -89,14 +90,14 @@ const ReportsPage = () => {
 
           for (const sector of sectorsWithLots) {
             try {
-              // const batteriesResponse = await mockAPI.getBatteries(sector.id) // TODO: Migrar a nuevo store con JSON Server
-              if (batteriesResponse.data) {
-                allBatteries.push(...batteriesResponse.data)
+              const batteriesResponse = await batteriesService.getAll({ sectorId: sector.id })
+              if (batteriesResponse) {
+                allBatteries.push(...batteriesResponse)
               }
 
-              // const linesResponse = await mockAPI.getCultivationLines(sector.id) // TODO: Migrar a nuevo store con JSON Server
-              if (linesResponse.data) {
-                allCultivationLines.push(...linesResponse.data)
+              const linesResponse = await cultivationLinesService.getAll({ sectorId: sector.id })
+              if (linesResponse) {
+                allCultivationLines.push(...linesResponse)
               }
             } catch (error) {
               console.warn(`Error loading batteries/lines for sector ${sector.id}:`, error)

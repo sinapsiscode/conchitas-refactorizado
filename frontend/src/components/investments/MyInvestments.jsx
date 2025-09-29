@@ -180,11 +180,9 @@ const MyInvestments = ({ onNavigate }) => {
 
     // Obtener distribuciones para mostrar información de cosecha específica del lote
     try {
-      // const distributionsResponse = await mockAPI.getDistributions({ lotId: investment.lotId }) // TODO: Migrar a nuevo store con JSON Server
-      const distributions = distributionsResponse.data || []
-
+      // Las distribuciones ya están disponibles en el store
       // Filtrar solo las distribuciones de esta inversión específica
-      const investmentDistributions = distributions.filter(dist => dist.investmentId === investment.id)
+      const investmentDistributions = (distributions || []).filter(dist => dist.investmentId === investment.id)
 
       // Obtener la distribución más reciente para mostrar información de esa cosecha
       const latestDistribution = investmentDistributions.sort((a, b) =>
