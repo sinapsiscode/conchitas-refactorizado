@@ -51,7 +51,9 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
           setDefaultParams(data[0])
         }
       })
-      .catch(err => console.error('Error loading default seed parameters:', err))
+      .catch(err => {
+        // Error silently handled
+      })
   }, [lotId, fetchMonitoringRecords, fetchSeedOrigins, fetchLots])
 
   // Centralized function to get seed origin parameters with validation
@@ -59,8 +61,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     if (!seeding || !seeding.origin) {
       // Only warn if it's a real issue, not during initial load
       if (seeding) {
-        console.warn('Seeding or origin not found for parameter calculation')
-      }
+        }
       return {
         monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
         monthlyMortalityRate: defaultParams?.monthlyMortalityRate || 5.0,
@@ -76,8 +77,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     if (!seedOrigin) {
       // Only warn if seedOrigins has been loaded (not empty)
       if (seedOrigins.length > 0) {
-        console.warn(`Seed origin "${seeding.origin}" not found in seedOrigins database`)
-      }
+        }
       return {
         monthlyGrowthRate: defaultParams?.monthlyGrowthRate || 3.5,
         monthlyMortalityRate: parseFloat(seeding.expectedMonthlyMortality) || defaultParams?.monthlyMortalityRate || 5.0,
@@ -95,7 +95,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     )
 
     if (missingParams.length > 0) {
-      console.warn(`Seed origin "${seeding.origin}" missing parameters: ${missingParams.join(', ')}`)
+      // Missing parameters, will use defaults
     }
 
     return {
@@ -115,8 +115,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
     const initialSize = parseFloat(seeding?.averageSize) || defaultParams?.initialSize || 12
 
     if (!seeding?.averageSize) {
-      console.warn('Initial size not found in seeding record, using default 12mm')
-    }
+      }
 
     return initialSize
   }
@@ -370,10 +369,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
       }
     }
     
-    console.log('🚀 Enviando datos de medición:', measurementData)
     const result = await createMonitoring(measurementData)
-    console.log('📊 Resultado de createMonitoring:', result)
-
     if (result.success) {
       MySwal.fire({
         icon: 'success',
@@ -599,11 +595,11 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                     {line.systems && line.systems.length > 0 && (
                       <span className="ml-2 text-gray-600">
                         Sistemas {
-                          line.systems.length === 1 
+                          line.systems.length === 1
                             ? line.systems[0].systemNumber
                             : line.systems.length <= 5
                               ? line.systems.map(s => s.systemNumber).join(', ')
-                              : `${line.systems[0].systemNumber}-${line.systems[line.systems.length - 1].systemNumber} (${line.systems.length} total)`
+                              : line.systems[0].systemNumber + '-' + line.systems[line.systems.length - 1].systemNumber + ' (' + line.systems.length + ' total)'
                         }
                       </span>
                     )}
@@ -618,11 +614,11 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                 {seeding.systems && seeding.systems.length > 0 && (
                   <span className="ml-2 text-gray-600">
                     Sistemas {
-                      seeding.systems.length === 1 
+                      seeding.systems.length === 1
                         ? seeding.systems[0].systemNumber
                         : seeding.systems.length <= 5
                           ? seeding.systems.map(s => s.systemNumber).join(', ')
-                          : `${seeding.systems[0].systemNumber}-${seeding.systems[seeding.systems.length - 1].systemNumber} (${seeding.systems.length} total)`
+                          : seeding.systems[0].systemNumber + '-' + seeding.systems[seeding.systems.length - 1].systemNumber + ' (' + seeding.systems.length + ' total)'
                     }
                   </span>
                 )}
@@ -840,13 +836,13 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                           </div>
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-900">
-                          {record.averageSize ? `${parseFloat(record.averageSize).toFixed(2)}mm` : '-'}
+                          {record.averageSize ? parseFloat(record.averageSize).toFixed(2) + 'mm' : '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-900">
-                          {record.maxSize ? `${parseFloat(record.maxSize).toFixed(2)}mm` : '-'}
+                          {record.maxSize ? parseFloat(record.maxSize).toFixed(2) + 'mm' : '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-900">
-                          {record.minSize ? `${parseFloat(record.minSize).toFixed(2)}mm` : '-'}
+                          {record.minSize ? parseFloat(record.minSize).toFixed(2) + 'mm' : '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-900">
                           <div className="text-center">
@@ -914,13 +910,13 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                             </div>
                           </td>
                           <td className="px-4 py-3 text-sm text-gray-900">
-                            {seeding.averageSize ? `${parseFloat(seeding.averageSize).toFixed(2)}mm` : '-'}
+                            {seeding.averageSize ? parseFloat(seeding.averageSize).toFixed(2) + 'mm' : '-'}
                           </td>
                           <td className="px-4 py-3 text-sm text-gray-900">
-                            {seeding.maxSize ? `${parseFloat(seeding.maxSize).toFixed(2)}mm` : '-'}
+                            {seeding.maxSize ? parseFloat(seeding.maxSize).toFixed(2) + 'mm' : '-'}
                           </td>
                           <td className="px-4 py-3 text-sm text-gray-900">
-                            {seeding.minSize ? `${parseFloat(seeding.minSize).toFixed(2)}mm` : '-'}
+                            {seeding.minSize ? parseFloat(seeding.minSize).toFixed(2) + 'mm' : '-'}
                           </td>
                           <td className="px-4 py-3 text-sm text-gray-900">
                             <div className="text-center">
@@ -966,13 +962,13 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                         </div>
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-900">
-                        {seeding.averageSize ? `${parseFloat(seeding.averageSize).toFixed(2)}mm` : '-'}
+                        {seeding.averageSize ? parseFloat(seeding.averageSize).toFixed(2) + 'mm' : '-'}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-900">
-                        {seeding.maxSize ? `${parseFloat(seeding.maxSize).toFixed(2)}mm` : '-'}
+                        {seeding.maxSize ? parseFloat(seeding.maxSize).toFixed(2) + 'mm' : '-'}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-900">
-                        {seeding.minSize ? `${parseFloat(seeding.minSize).toFixed(2)}mm` : '-'}
+                        {seeding.minSize ? parseFloat(seeding.minSize).toFixed(2) + 'mm' : '-'}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-900">
                         <div className="text-center">
@@ -1266,7 +1262,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                       <div className="font-medium">
                         {(() => {
                           const conversions = getAllConversionsFromConchitas(parseInt(measurementForm.previousQuantity) || 0)
-                          return `${conversions.manojos.toLocaleString()} manojos • ${conversions.mallas} mallas`
+                          return conversions.manojos.toLocaleString() + ' manojos • ' + conversions.mallas + ' mallas'
                         })()}
                       </div>
                       <div className="text-gray-500">De la medición anterior</div>
@@ -1350,9 +1346,9 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                               const selectedLineName = point.lineName
                               
                               // Buscar la línea seleccionada (más flexible)
-                              const selectedLine = availableLines.find(l => 
-                                l.lineName === selectedLineName || 
-                                l.lineName === `Línea ${selectedLineName}` ||
+                              const selectedLine = availableLines.find(l =>
+                                l.lineName === selectedLineName ||
+                                l.lineName === 'Línea ' + selectedLineName ||
                                 l.name === selectedLineName
                               )
                               
@@ -1511,7 +1507,7 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                               <div className="text-xs font-normal text-gray-600 mt-1">
                                 {(() => {
                                   const conversions = getAllConversionsFromConchitas(parseInt(measurementForm.previousQuantity) || 0)
-                                  return `${conversions.manojos.toLocaleString()} manojos`
+                                  return conversions.manojos.toLocaleString() + ' manojos'
                                 })()}
                               </div>
                             )}
@@ -1609,15 +1605,15 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-green-50 rounded-lg">
                 <div className="text-center">
                   <div className="text-sm text-gray-600">Talla Promedio</div>
-                  <div className="font-semibold text-green-800">{selectedRecord.averageSize ? `${selectedRecord.averageSize.toFixed(2)}mm` : 'N/A'}</div>
+                  <div className="font-semibold text-green-800">{selectedRecord.averageSize ? selectedRecord.averageSize.toFixed(2) + 'mm' : 'N/A'}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm text-gray-600">Talla Máxima</div>
-                  <div className="font-semibold text-green-800">{selectedRecord.maxSize ? `${selectedRecord.maxSize.toFixed(2)}mm` : 'N/A'}</div>
+                  <div className="font-semibold text-green-800">{selectedRecord.maxSize ? selectedRecord.maxSize.toFixed(2) + 'mm' : 'N/A'}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm text-gray-600">Talla Mínima</div>
-                  <div className="font-semibold text-green-800">{selectedRecord.minSize ? `${selectedRecord.minSize.toFixed(2)}mm` : 'N/A'}</div>
+                  <div className="font-semibold text-green-800">{selectedRecord.minSize ? selectedRecord.minSize.toFixed(2) + 'mm' : 'N/A'}</div>
                 </div>
               </div>
             </div>
@@ -1792,9 +1788,9 @@ const SeedingMonitoringPage = ({ lotId, onBack }) => {
                               const selectedLineName = point.lineName
                               
                               // Buscar la línea seleccionada (más flexible)
-                              const selectedLine = availableLines.find(l => 
-                                l.lineName === selectedLineName || 
-                                l.lineName === `Línea ${selectedLineName}` ||
+                              const selectedLine = availableLines.find(l =>
+                                l.lineName === selectedLineName ||
+                                l.lineName === 'Línea ' + selectedLineName ||
                                 l.name === selectedLineName
                               )
                               

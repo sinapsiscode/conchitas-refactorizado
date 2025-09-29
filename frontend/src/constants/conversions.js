@@ -28,7 +28,7 @@ export const loadConversionsFromAPI = async () => {
       }
     }
   } catch (error) {
-    console.error('Error cargando conversiones desde API:', error)
+    // Error silently handled, using default values
   }
 }
 
@@ -167,7 +167,6 @@ export const loadPresentationsFromAPI = async () => {
       })
     }
   } catch (error) {
-    console.error('Error cargando presentaciones desde API:', error)
     // Valores por defecto si falla la API
     DEFAULT_PRESENTATIONS = [
       { id: 'fresh', name: 'Fresco', editable: true },

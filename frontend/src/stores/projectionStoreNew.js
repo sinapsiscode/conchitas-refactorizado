@@ -118,11 +118,6 @@ export const useProjectionStore = create((set, get) => ({
     };
   },
 
-  // Obtener proyección por ID
-  getProjectionById: (projectionId) => {
-    return get().projections.find(proj => proj.id === projectionId);
-  },
-
   // Limpiar errores
   clearError: () => set({ error: null })
 }));

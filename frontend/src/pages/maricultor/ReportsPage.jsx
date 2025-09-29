@@ -100,7 +100,7 @@ const ReportsPage = () => {
                 allCultivationLines.push(...linesResponse)
               }
             } catch (error) {
-              console.warn(`Error loading batteries/lines for sector ${sector.id}:`, error)
+              // Error loading sector data, continue with next sector
             }
           }
 
@@ -108,7 +108,7 @@ const ReportsPage = () => {
           setBatteries(allBatteries)
           setCultivationLines(allCultivationLines)
         } catch (error) {
-          console.error('Error loading report data:', error)
+          // Error loading data
         } finally {
           setLoading(false)
         }
@@ -267,7 +267,6 @@ const ReportsPage = () => {
       XLSX.writeFile(wb, fileName)
 
     } catch (error) {
-      console.error('Error exporting to Excel:', error)
       alert('Error al exportar el reporte a Excel. Por favor, inténtalo nuevamente.')
     }
   }
@@ -527,7 +526,6 @@ const ReportsPage = () => {
       document.body.removeChild(link)
       
     } catch (error) {
-      console.error('Error exporting to CSV:', error)
       alert('Error al exportar el reporte a CSV. Por favor, inténtalo nuevamente.')
     }
   }

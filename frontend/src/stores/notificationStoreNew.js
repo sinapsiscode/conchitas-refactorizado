@@ -34,7 +34,6 @@ export const useNotificationStore = create((set, get) => ({
       set({ unreadCount });
       return { success: true, count: unreadCount };
     } catch (error) {
-      console.error('Error fetching unread count:', error);
       return { success: false, error: error.message };
     }
   },

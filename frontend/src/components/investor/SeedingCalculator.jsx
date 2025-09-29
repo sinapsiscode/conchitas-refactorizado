@@ -59,7 +59,7 @@ const SeedingCalculator = () => {
           }
         }
       } catch (error) {
-        console.error('Error loading data from API:', error)
+        // Error silently handled
       } finally {
         setLoading(false)
       }

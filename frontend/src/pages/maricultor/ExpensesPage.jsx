@@ -72,7 +72,9 @@ const ExpensesPage = () => {
       fetch('http://localhost:4077/expenseCategoryEnum')
         .then(res => res.json())
         .then(data => setExpenseCategoryEnum(data))
-        .catch(err => console.error('Error cargando categorías:', err))
+        .catch(err => {
+          // Error silently handled
+        })
     }
   }, [user?.id, fetchExpenses, fetchSectors, fetchHarvestPlans, fetchPricing, fetchClosures, fetchIncomeRecords, fetchInvestments])
   
@@ -202,11 +204,6 @@ const ExpensesPage = () => {
       type: 'expense'
     }))
 
-    console.log('📊 [ExpensesPage] getAllCashFlowData:')
-    console.log('   - Incomes with categories:', incomes.map(i => ({ id: i.id, category: i.category, type: i.type })))
-    console.log('   - Investor incomes:', investorIncomes.map(i => ({ id: i.id, category: i.category, type: i.type, investorName: i.investorName })))
-    console.log('   - Expenses with categories:', expensesData.map(e => ({ id: e.id, category: e.category, type: e.type })))
-
     return [...incomes, ...investorIncomes, ...expensesData]
   }
 
@@ -257,10 +254,6 @@ const ExpensesPage = () => {
   // Apply all filters with useMemo for optimization
   const filteredCashFlowData = useMemo(() => {
     let data = getAllCashFlowData()
-    console.log('🔍 [ExpensesPage] Filtering cash flow data:')
-    console.log('   - Total data before filters:', data.length)
-    console.log('   - Current filters:', filters)
-
     // Apply date filters
     const dateRange = getDateRange(filters.period)
     if (dateRange.from || dateRange.to) {
@@ -270,35 +263,26 @@ const ExpensesPage = () => {
         if (dateRange.to && itemDate > dateRange.to) return false
         return true
       })
-      console.log('   - After date filter:', data.length)
-    }
+      }
 
     // Apply type filter
     if (filters.type) {
-      const beforeCount = data.length
       data = data.filter(item => item.type === filters.type)
-      console.log(`   - After type filter (${filters.type}): ${data.length} (was ${beforeCount})`)
     }
 
     // Apply category filter
     if (filters.category) {
-      const beforeCount = data.length
       data = data.filter(item => {
         const matches = item.category === filters.category
-        console.log(`     - Item category: ${item.category}, filter: ${filters.category}, matches: ${matches}`)
         return matches
       })
-      console.log(`   - After category filter (${filters.category}): ${data.length} (was ${beforeCount})`)
     }
 
     // Apply lot filter
     if (filters.lotId) {
-      const beforeCount = data.length
       data = data.filter(item => item.lotId === filters.lotId)
-      console.log(`   - After lot filter (${filters.lotId}): ${data.length} (was ${beforeCount})`)
     }
 
-    console.log('   - Final filtered data count:', data.length)
     return data
   }, [expenses, harvestPlans, incomeRecords, investments, closures, filters, sectors])
 
@@ -524,12 +508,6 @@ const ExpensesPage = () => {
               className={`input-field ${!filters.type ? 'border-blue-300 ring-1 ring-blue-200' : ''}`}
               value={filters.type}
               onChange={(e) => {
-                console.log('🏷️ [ExpensesPage] Type filter changed:', {
-                  previousType: filters.type,
-                  newType: e.target.value,
-                  resettingCategory: filters.category,
-                  availableCategoriesForNewType: getCategoriesForType(e.target.value)
-                })
                 setFilters(prev => ({
                   ...prev,
                   type: e.target.value,
@@ -557,12 +535,6 @@ const ExpensesPage = () => {
               className={`input-field ${!filters.type ? 'bg-gray-100 cursor-not-allowed' : ''}`}
               value={filters.category}
               onChange={(e) => {
-                console.log('🏷️ [ExpensesPage] Category filter changed:', {
-                  previousCategory: filters.category,
-                  newCategory: e.target.value,
-                  type: filters.type,
-                  availableCategories: getCategoriesForType(filters.type)
-                })
                 setFilters(prev => ({...prev, category: e.target.value}))
               }}
               disabled={!filters.type}

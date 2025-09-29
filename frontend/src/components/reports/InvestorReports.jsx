@@ -49,7 +49,6 @@ const InvestorReports = () => {
         confirmButtonColor: '#3b82f6'
       })
     } catch (error) {
-      console.error('Error generating PDF:', error)
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -83,7 +82,6 @@ const InvestorReports = () => {
         confirmButtonColor: '#3b82f6'
       })
     } catch (error) {
-      console.error('Error generating Excel:', error)
       Swal.fire({
         icon: 'error',
         title: 'Error',

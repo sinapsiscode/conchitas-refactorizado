@@ -37,21 +37,18 @@ const InvestorsPage = () => {
   }, [investments])
 
   const loadData = async () => {
-    console.log('📊 [InvestorsPage] Loading data for user:', user.id)
-
     // Cargar inversiones
     const investmentsResult = await fetchInvestments(user.id)
     if (investmentsResult.success) {
-      console.log('✅ [InvestorsPage] Investments loaded:', investmentsResult.data.length)
+      // Investments loaded successfully
     }
 
     // Cargar usuarios para mapear nombres
     try {
       const response = await axios.get(`${API_URL}/users`)
       setAllUsers(response.data)
-      console.log('✅ [InvestorsPage] Users loaded:', response.data.length)
     } catch (error) {
-      console.error('❌ [InvestorsPage] Error loading users:', error)
+      // Error silently handled
     }
   }
 
@@ -88,7 +85,6 @@ const InvestorsPage = () => {
     })
 
     const investorsList = Object.values(investorMap)
-    console.log('📊 [InvestorsPage] Processed investors:', investorsList.length)
     setInvestors(investorsList)
   }
 
@@ -216,8 +212,6 @@ const InvestorsPage = () => {
           updatedAt: new Date().toISOString()
         })
 
-        console.log('✅ [InvestorsPage] Investor created:', newInvestor.data)
-
         // Si hay un monto inicial, crear la inversión
         if (formValues.amount > 0) {
           const investmentResult = await createInvestment({
@@ -231,8 +225,7 @@ const InvestorsPage = () => {
           })
 
           if (investmentResult.success) {
-            console.log('✅ [InvestorsPage] Initial investment created')
-          }
+            }
         }
 
         // Recargar datos
@@ -244,7 +237,6 @@ const InvestorsPage = () => {
           text: `Se ha creado el inversor ${formValues.firstName} ${formValues.lastName} exitosamente${formValues.amount > 0 ? ' con una inversión inicial de ' + formatCurrency(formValues.amount) : ''}.`
         })
       } catch (error) {
-        console.error('❌ [InvestorsPage] Error creating investor:', error)
         MySwal.fire({
           icon: 'error',
           title: 'Error',
@@ -295,7 +287,6 @@ const InvestorsPage = () => {
           })
         }
       } catch (error) {
-        console.error('❌ [InvestorsPage] Error adding investment:', error)
         MySwal.fire({
           icon: 'error',
           title: 'Error',
@@ -337,7 +328,6 @@ const InvestorsPage = () => {
           'success'
         )
       } catch (error) {
-        console.error('❌ [InvestorsPage] Error deleting investor:', error)
         MySwal.fire({
           icon: 'error',
           title: 'Error',

@@ -29,31 +29,20 @@ const HarvestPage = () => {
   
   useEffect(() => {
     if (user?.id) {
-      console.log('🏗️ [HarvestPage] Loading data for user:', user.id)
       fetchSectorsWithLots(user.id)
       fetchHarvestPlans(user.id)
       fetchPricing()
     } else {
-      console.warn('⚠️ [HarvestPage] No user ID available for data loading')
-    }
+      }
   }, [user?.id, fetchSectorsWithLots, fetchHarvestPlans, fetchPricing])
 
   // Log de cambios en estados principales
   useEffect(() => {
-    console.log('📊 [HarvestPage] State updated:', {
-      harvestSectorsCount: harvestSectors?.length || 0,
-      harvestPlansCount: harvestPlans?.length || 0,
-      pricingCount: pricing?.length || 0,
-      loading,
-      activeTab
-    })
-  }, [harvestSectors?.length || 0, harvestPlans?.length || 0, pricing?.length || 0, loading, activeTab])
+    }, [harvestSectors?.length || 0, harvestPlans?.length || 0, pricing?.length || 0, loading, activeTab])
   
   
   // Obtener líneas con sistemas listos para cosecha basado en talla mínima
   const readyLines = useMemo(() => {
-    console.log('🏭 [HarvestPage] Calculating ready lines with min size:', minSizeThreshold)
-
     const linesWithSystems = [];
 
     if (!harvestSectors) return [];
@@ -116,7 +105,6 @@ const HarvestPage = () => {
       })
     })
     
-    console.log('📍 [HarvestPage] Found', linesWithSystems.length, 'lines ready for harvest')
     return linesWithSystems
   }, [harvestSectors, minSizeThreshold]) // Recalcular cuando cambien los sectores o el umbral de talla
 
@@ -127,51 +115,29 @@ const HarvestPage = () => {
     new Date(plan.plannedDate) >= new Date()
   ).slice(0, 5)
 
-  // Debug detallado para próximas cosechas
-  console.log('🔍 [HarvestPage] Debug upcomingHarvests:', upcomingHarvests.map(plan => ({
-    id: plan.id,
-    plannedDate: plan.plannedDate,
-    estimatedQuantity: plan.estimatedQuantity,
-    estimatedQuantityType: typeof plan.estimatedQuantity,
-    parseFloatResult: parseFloat(plan.estimatedQuantity),
-    isNaN: isNaN(parseFloat(plan.estimatedQuantity)),
-    rawPlan: plan
-  })))
-  
-  // Debug logs
-  console.log('🔍 [HarvestPage] Debug - All harvest plans:', harvestPlans.map(p => ({id: p.id, status: p.status, plannedDate: p.plannedDate})))
-  console.log('🔍 [HarvestPage] Debug - Planned harvests:', plannedHarvests.map(p => ({id: p.id, status: p.status, plannedDate: p.plannedDate})))
-  console.log('🔍 [HarvestPage] Debug - Upcoming harvests:', upcomingHarvests.map(p => ({id: p.id, status: p.status, plannedDate: p.plannedDate})))
-  console.log('🔍 [HarvestPage] Debug - Current date:', new Date().toISOString())
-  
   const completedHarvests = harvestPlans.filter(plan => plan.status === 'completed')
   
   // Manejar la apertura del modal de selección de lotes
   const handleOpenLotSelection = () => {
-    console.log('🎯 [HarvestPage] Opening lot selection modal')
     setShowLotSelectionModal(true)
   }
 
   // Manejar el cierre del modal de selección de lotes
   const handleCloseLotSelection = () => {
-    console.log('❌ [HarvestPage] Closing lot selection modal')
     setShowLotSelectionModal(false)
   }
 
   // Manejar la selección de un lote específico
   const handleLotSelect = (lot) => {
-    console.log('📦 [HarvestPage] Lot selected for harvest planning:', lot)
     setSelectedLot(lot)
     setShowLotSelectionModal(false)
     setShowPlanningModal(true)
   }
 
   const handleClosePlanningModal = () => {
-    console.log('❌ [HarvestPage] Closing planning modal')
     setSelectedLot(null)
     setShowPlanningModal(false)
     // Refrescar la lista de planes
-    console.log('🔄 [HarvestPage] Refreshing harvest plans after modal close')
     fetchHarvestPlans(user.id)
   }
 
@@ -200,8 +166,6 @@ const HarvestPage = () => {
 
 
   const handleDeletePlan = async (plan) => {
-    console.log('🗑️ [HarvestPage] Initiating delete for plan:', plan.id)
-    
     const result = await MySwal.fire({
       title: '¿Eliminar planificación?',
       text: `Se eliminará permanentemente la planificación del lote ${plan.lotId}`,
@@ -213,14 +177,9 @@ const HarvestPage = () => {
       cancelButtonText: 'Cancelar'
     })
 
-    console.log('🗑️ [HarvestPage] Delete confirmation result:', result.isConfirmed)
-
     if (result.isConfirmed) {
       try {
-        console.log('🗑️ [HarvestPage] Executing delete for plan:', plan.id)
         const deleteResult = await deleteHarvestPlan(plan.id)
-        
-        console.log('🗑️ [HarvestPage] Delete result:', deleteResult)
         
         if (deleteResult.success) {
           MySwal.fire({
@@ -230,11 +189,9 @@ const HarvestPage = () => {
             timer: 2000,
             showConfirmButton: false
           })
-          console.log('🔄 [HarvestPage] Refreshing plans after delete')
           fetchHarvestPlans(user.id)
         }
       } catch (error) {
-        console.error('❌ [HarvestPage] Error deleting plan:', error)
         MySwal.fire({
           icon: 'error',
           title: 'Error',
@@ -500,15 +457,6 @@ const HarvestPage = () => {
                                   const rawQuantity = plan.estimatedQuantity || plan.survivalQuantity || 0
                                   const quantity = parseFloat(rawQuantity) || 0
 
-                                  console.log('🔍 [HarvestPage] Tabla - Plan quantity debug:', {
-                                    planId: plan.id,
-                                    rawEstimatedQuantity: plan.estimatedQuantity,
-                                    survivalQuantity: plan.survivalQuantity,
-                                    finalRawQuantity: rawQuantity,
-                                    parsedQuantity: quantity,
-                                    isValidNumber: !isNaN(quantity) && quantity > 0
-                                  })
-
                                   if (quantity > 0) {
                                     const manojos = Math.round(quantity / 96)
                                     return `${manojos.toLocaleString()} manojos`
@@ -518,7 +466,6 @@ const HarvestPage = () => {
                                     const lot = sector?.lots?.find(l => l.id === plan.lotId)
                                     if (lot?.currentQuantity > 0) {
                                       const fallbackManojos = Math.round(lot.currentQuantity / 96)
-                                      console.log('🔍 [HarvestPage] Using fallback quantity from lot:', lot.currentQuantity)
                                       return `~${fallbackManojos.toLocaleString()} manojos (est.)`
                                     }
                                     return 'Cantidad no definida'

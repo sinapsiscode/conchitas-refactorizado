@@ -106,22 +106,6 @@ export const useIncomeStatementClosureStore = create((set, get) => ({
     });
   },
 
-  // Obtener resumen de cierres
-  getClosuresSummary: () => {
-    const closures = get().closures;
-    const finalized = closures.filter(c => c.status === 'finalized');
-
-    return {
-      total: closures.length,
-      draft: closures.filter(c => c.status === 'draft').length,
-      finalized: finalized.length,
-      totalNetProfit: finalized.reduce((sum, c) => sum + (c.netProfit || 0), 0),
-      avgNetProfit: finalized.length > 0
-        ? finalized.reduce((sum, c) => sum + (c.netProfit || 0), 0) / finalized.length
-        : 0
-    };
-  },
-
   // Limpiar errores
   clearError: () => set({ error: null })
 }));

@@ -42,12 +42,10 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
 
   useEffect(() => {
     if (isOpen && user?.id) {
-      console.log('📝 [HarvestPlanningModal] Modal opened, loading data for user:', user.id)
       loadConfigurations()
       fetchInventory(user.id)
     } else {
-      console.log('📝 [HarvestPlanningModal] Modal closed or no user ID')
-    }
+      }
   }, [isOpen, user?.id, loadConfigurations, fetchInventory])
 
   useEffect(() => {
@@ -59,7 +57,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
 
   useEffect(() => {
     if (selectedLot) {
-      console.log('📦 [HarvestPlanningModal] Selected lot changed:', selectedLot)
       const currentQuantity = selectedLot.currentQuantity || 0
 
       setPlanForm(prev => ({
@@ -81,24 +78,16 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
             kg: conversions.kg || 0
           }
           setDisplayConversions(safeConversions)
-          console.log('📦 [HarvestPlanningModal] Initialized with quantity:', {
-            currentQuantity,
-            conversions: safeConversions,
-            estimatedQuantity: currentQuantity.toString()
-          })
         } catch (error) {
-          console.error('Error al inicializar conversiones:', error)
           setDisplayConversions({ manojos: 0, conchas: 0, mallas: 0, kg: 0 })
         }
       } else {
         setDisplayConversions({ manojos: 0, conchas: 0, mallas: 0, kg: 0 })
-        console.log('⚠️ [HarvestPlanningModal] No current quantity available for lot')
       }
     }
   }, [selectedLot])
 
   const handleCostChange = (categoryId, field, value) => {
-    console.log('💰 [HarvestPlanningModal] Cost changed:', { categoryId, field, value })
     setPlanForm(prev => ({
       ...prev,
       plannedCosts: {
@@ -166,8 +155,7 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
 
   const handleCostCategoriesUpdate = (updatedCategories) => {
     setCustomCostCategories(updatedCategories)
-    console.log('🔄 [HarvestPlanningModal] Cost categories updated:', updatedCategories.length, 'categories')
-  }
+    }
 
   // Funciones para edición inline de categorías de costos
   const handleUpdateCategoryName = (categoryId, newName) => {
@@ -203,7 +191,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
   }
 
   const handleQuantityChange = (value, unit) => {
-    console.log('🔄 [HarvestPlanningModal] handleQuantityChange called:', { value, unit })
     const quantity = parseFloat(value) || 0
     let conversions = { manojos: 0, conchas: 0, mallas: 0, kg: 0 }
     let estimatedQuantityInConchas = 0
@@ -215,29 +202,14 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
             conversions = getAllConversionsFromManojos(quantity)
             // Convertir a conchas para el almacenamiento interno (compatibilidad)
             estimatedQuantityInConchas = conversions.conchitas || 0
-            console.log('🔄 [HarvestPlanningModal] Converting from manojos:', {
-              quantity,
-              conversions,
-              estimatedQuantityInConchas,
-              conchas: conversions.conchas,
-              conchitas: conversions.conchitas
-            })
             break
           case 'conchas':
             conversions = getAllConversionsFromConchitas(quantity)
             estimatedQuantityInConchas = quantity
-            console.log('🔄 [HarvestPlanningModal] Setting conchas directly:', { quantity })
             break
           case 'mallas':
             conversions = getAllConversionsFromMallas(quantity)
             estimatedQuantityInConchas = conversions.conchitas || 0
-            console.log('🔄 [HarvestPlanningModal] Converting from mallas:', {
-              quantity,
-              conversions,
-              estimatedQuantityInConchas,
-              conchas: conversions.conchas,
-              conchitas: conversions.conchitas
-            })
             break
           default:
             break
@@ -251,7 +223,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
           kg: conversions.kg || 0
         }
       } catch (error) {
-        console.error('Error en conversiones:', error)
         conversions = { manojos: 0, conchas: 0, mallas: 0, kg: 0 }
         estimatedQuantityInConchas = 0
       }
@@ -264,11 +235,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
     }))
 
     setDisplayConversions(conversions)
-    console.log('📊 [HarvestPlanningModal] Final values:', {
-      estimatedQuantityInConchas,
-      conversions,
-      formValue: estimatedQuantityInConchas.toString()
-    })
   }
 
   const calculateTotalCost = () => {
@@ -286,24 +252,15 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
 
     // Validar que los valores sean números válidos
     if (isNaN(mortality) || isNaN(estimated) || estimated <= 0) {
-      console.log('⚠️ [HarvestPlanningModal] Invalid values for survival calculation:', { mortality, estimated })
       return 0
     }
 
     const result = Math.floor(estimated * (1 - mortality / 100))
-    console.log('📊 [HarvestPlanningModal] Survival calculation:', { estimated, mortality, result })
     return result
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    console.log('💾 [HarvestPlanningModal] Submitting harvest plan')
-    console.log('📊 [HarvestPlanningModal] Form data:', {
-      estimatedQuantity: planForm.estimatedQuantity,
-      estimatedMortality: planForm.estimatedMortality,
-      quantityUnit
-    })
 
     // Validación adicional
     const estimatedQty = parseFloat(planForm.estimatedQuantity) || 0
@@ -313,18 +270,11 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
         title: 'Cantidad requerida',
         text: 'Debe especificar una cantidad estimada válida para la cosecha'
       })
-      console.log('⚠️ [HarvestPlanningModal] Validation failed - no valid estimated quantity')
       return
     }
 
     const survivalQuantity = calculateSurvivalQuantity()
     const totalCost = calculateTotalCost()
-
-    console.log('🧮 [HarvestPlanningModal] Calculated values:', {
-      survivalQuantity,
-      totalCost,
-      originalEstimated: planForm.estimatedQuantity
-    })
 
     // Asegurar que tenemos una cantidad estimada válida
     const finalEstimatedQuantity = parseFloat(planForm.estimatedQuantity) || selectedLot?.currentQuantity || 0
@@ -340,26 +290,10 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
       inventoryToUse: planForm.inventoryToUse
     }
 
-    console.log('💾 [HarvestPlanningModal] DETAILED PLAN DATA BEFORE SUBMIT:')
-    console.log('💾 Raw planForm.estimatedQuantity:', planForm.estimatedQuantity, 'type:', typeof planForm.estimatedQuantity)
-    console.log('💾 selectedLot.currentQuantity:', selectedLot?.currentQuantity)
-    console.log('💾 finalEstimatedQuantity:', finalEstimatedQuantity)
-    console.log('💾 Parsed estimatedQuantity:', parseFloat(planForm.estimatedQuantity), 'isNaN:', isNaN(parseFloat(planForm.estimatedQuantity)))
-    console.log('💾 Final planData.estimatedQuantity:', planData.estimatedQuantity)
-    console.log('💾 Complete planData:', planData)
-
-    console.log('💾 [HarvestPlanningModal] Plan data to submit:', planData)
-
     try {
       const result = await createHarvestPlan(planData)
 
-      console.log('💾 [HarvestPlanningModal] Create harvest plan result:', result)
-
       if (result.success) {
-        console.log('✅ [HarvestPlanningModal] SUCCESS - Plan created successfully!')
-        console.log('✅ [HarvestPlanningModal] Created plan result:', result)
-        console.log('✅ [HarvestPlanningModal] Saved plan data:', result.data)
-
         MySwal.fire({
           icon: 'success',
           title: 'Planificación creada',
@@ -367,13 +301,11 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
           timer: 2000,
           showConfirmButton: false
         })
-        console.log('❌ [HarvestPlanningModal] Closing modal after successful creation')
         onClose()
       } else {
         throw new Error(result.error || 'Error al crear planificación')
       }
     } catch (error) {
-      console.error('❌ [HarvestPlanningModal] Error creating harvest plan:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error',
@@ -578,12 +510,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
                         // Mantener la cantidad en conchas y convertir a la nueva unidad
                         if (planForm.estimatedQuantity) {
                           const conchas = parseFloat(planForm.estimatedQuantity) || 0
-                          console.log('🔄 [HarvestPlanningModal] Unit change:', {
-                            oldUnit: quantityUnit,
-                            newUnit: e.target.value,
-                            conchas,
-                            estimatedQuantity: planForm.estimatedQuantity
-                          })
                           if (conchas > 0) {
                             try {
                               const conversions = getAllConversionsFromConchitas(conchas)
@@ -595,7 +521,6 @@ const HarvestPlanningModal = ({ isOpen, onClose, selectedLot, user }) => {
                               }
                               setDisplayConversions(safeConversions)
                             } catch (error) {
-                              console.error('Error al cambiar unidad:', error)
                               setDisplayConversions({ manojos: 0, conchas: 0, mallas: 0, kg: 0 })
                             }
                           }

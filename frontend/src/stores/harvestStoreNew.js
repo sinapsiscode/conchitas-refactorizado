@@ -37,7 +37,6 @@ export const useHarvestStore = create((set, get) => ({
         categoriesLoaded: true
       });
     } catch (error) {
-      console.error('Error loading configurations:', error);
       set({
         sizeCategories: [],
         costCategories: [],
@@ -185,11 +184,6 @@ export const useHarvestStore = create((set, get) => ({
     return { success: true, data: get().pricing };
   },
 
-  // Obtener sectores (alias para fetchSectorsWithLots)
-  fetchSectors: async (userId) => {
-    return get().fetchSectorsWithLots(userId);
-  },
-
   // Actualizar plan de cosecha
   updateHarvestPlan: async (planId, planData) => {
     set({ loading: true, error: null });
@@ -222,19 +216,6 @@ export const useHarvestStore = create((set, get) => ({
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
-  },
-
-  // Calcular ingresos esperados
-  calculateExpectedIncome: (sizeDistribution, pricingData) => {
-    if (!sizeDistribution || !pricingData) return 0;
-
-    return Object.entries(sizeDistribution).reduce((total, [size, quantity]) => {
-      const pricing = pricingData.find(p => p.sizeCategory === size && p.isActive);
-      if (pricing && quantity > 0) {
-        total += quantity * pricing.pricePerUnit;
-      }
-      return total;
-    }, 0);
   },
 
   // Limpiar errores

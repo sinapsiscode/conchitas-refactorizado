@@ -31,7 +31,9 @@ const InvestorDashboard = ({ onNavigate }) => {
       fetch('http://localhost:4077/investmentStatuses')
         .then(res => res.json())
         .then(data => setInvestmentStatuses(data))
-        .catch(err => console.error('Error cargando estados:', err))
+        .catch(err => {
+          // Error silently handled
+        })
     }
   }, [user?.id, fetchInvestments, fetchInvestorReturns, fetchSectors])
 

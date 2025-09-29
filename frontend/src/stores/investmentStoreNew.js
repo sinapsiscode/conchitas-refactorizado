@@ -87,15 +87,6 @@ export const useInvestmentStore = create((set, get) => ({
     }
   },
 
-  // Calcular retorno de inversión
-  calculateROI: (investmentId) => {
-    const investment = get().investments.find(inv => inv.id === investmentId);
-    if (!investment) return null;
-
-    const roi = ((investment.returns - investment.amount) / investment.amount) * 100;
-    return roi.toFixed(2);
-  },
-
   // Obtener retornos de inversor
   fetchInvestorReturns: async (investorId) => {
     set({ loading: true, error: null });

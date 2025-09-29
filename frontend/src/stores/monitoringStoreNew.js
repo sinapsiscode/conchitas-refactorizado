@@ -61,19 +61,15 @@ export const useMonitoringStore = create((set, get) => ({
 
   // Crear nuevo registro de monitoreo
   createMonitoringRecord: async (recordData) => {
-    console.log('🔧 monitoringStore.createMonitoringRecord - Datos recibidos:', recordData);
     set({ loading: true, error: null });
     try {
-      console.log('📡 Llamando a monitoringService.create...');
       const newRecord = await monitoringService.create(recordData);
-      console.log('✅ Registro creado exitosamente:', newRecord);
       set((state) => ({
         monitoringRecords: [...state.monitoringRecords, newRecord],
         loading: false
       }));
       return { success: true, data: newRecord };
     } catch (error) {
-      console.error('❌ Error en createMonitoringRecord:', error);
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
@@ -116,16 +112,6 @@ export const useMonitoringStore = create((set, get) => ({
   // Seleccionar lote
   selectLot: (lot) => {
     set({ selectedLot: lot });
-  },
-
-  // Obtener un lote específico
-  fetchLotById: async (lotId) => {
-    try {
-      const lot = await lotsService.getById(lotId);
-      return { success: true, data: lot };
-    } catch (error) {
-      return { success: false, error: error.message };
-    }
   },
 
   // Crear nuevo lote

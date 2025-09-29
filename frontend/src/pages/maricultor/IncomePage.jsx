@@ -152,7 +152,6 @@ const IncomePage = () => {
           // Si no hay filtros pero hay cosechas, usar el rango de fechas de las cosechas
           const harvestDates = completedHarvests.map(h => {
             const dateStr = h.actualDate || h.plannedDate
-            console.log('🔍 DEBUG - Harvest date:', h.id, dateStr)
             return new Date(dateStr)
           })
 
@@ -162,14 +161,6 @@ const IncomePage = () => {
 
           startDate = minDate.toISOString().split('T')[0]
           endDate = maxDate.toISOString().split('T')[0]
-
-          console.log('🔍 DEBUG - Harvest dates range:', {
-            harvestDates: harvestDates.map(d => d.toISOString()),
-            minDate: minDate.toISOString(),
-            maxDate: maxDate.toISOString(),
-            startDate,
-            endDate
-          })
         } else {
           // Si no hay filtros ni cosechas, usar la fecha de hoy
           const today = new Date().toISOString().split('T')[0]
@@ -183,17 +174,6 @@ const IncomePage = () => {
         const finalEndDate = new Date(endDate) < new Date(startDate)
           ? startDate
           : endDate
-
-        // Debug: log the dates before sending
-        console.log('🔍 DEBUG - Final dates being sent:', {
-          startDate,
-          endDate,
-          finalEndDate,
-          startDateObj: new Date(startDate),
-          finalEndDateObj: new Date(finalEndDate),
-          comparison: new Date(startDate) <= new Date(finalEndDate),
-          areEqual: startDate === finalEndDate
-        })
 
         // Create closure data for current state
         const closureData = {
@@ -257,7 +237,6 @@ const IncomePage = () => {
         }
       }
     } catch (error) {
-      console.error('Error saving income statement:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error al guardar',
@@ -519,7 +498,6 @@ const IncomePage = () => {
         throw new Error(result.error || 'Error al crear el cierre')
       }
     } catch (error) {
-      console.error('Error creating closure:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error al generar cierre',
@@ -572,7 +550,6 @@ const IncomePage = () => {
         throw new Error(registerResult.error || 'Error al registrar en flujo de caja')
       }
     } catch (error) {
-      console.error('Error finalizing closure:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error al finalizar cierre',
@@ -826,7 +803,6 @@ const IncomePage = () => {
       })
       
     } catch (error) {
-      console.error('❌ Error saving distribution:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error al guardar',
@@ -2001,7 +1977,6 @@ const IncomePage = () => {
                     fetchHarvestPlans(user.id)
                     fetchIncomeRecords(user.id)
                   } catch (error) {
-                    console.error('Error saving presentation distribution:', error)
                     MySwal.fire({
                       icon: 'error',
                       title: 'Error',

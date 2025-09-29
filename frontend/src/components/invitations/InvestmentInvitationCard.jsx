@@ -102,7 +102,6 @@ const InvestmentInvitationCard = ({ invitation, onResponse }) => {
         }
       }
     } catch (error) {
-      console.error('Error responding to invitation:', error)
       Swal.fire({
         icon: 'error',
         title: 'Error',

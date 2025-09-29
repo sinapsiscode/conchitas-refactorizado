@@ -39,7 +39,6 @@ const InvestorInvitation = ({ seedingData, onInvitationSent, skipActualSending =
         setSelectedInvestor(null)
       }
     } catch (error) {
-      console.error('Error searching investor:', error)
       Swal.fire({
         icon: 'error',
         title: 'Error de Búsqueda',
@@ -151,7 +150,6 @@ const InvestorInvitation = ({ seedingData, onInvitationSent, skipActualSending =
         }
       }
     } catch (error) {
-      console.error('Error processing invitation:', error)
       Swal.fire({
         icon: 'error',
         title: UI_TEXTS.investorInvitations.invitationError,

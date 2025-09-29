@@ -9,7 +9,6 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const SeedingPage = () => {
-  console.log('🚨 SEEDING PAGE SE ESTÁ EJECUTANDO 🚨')
   const { user } = useAuthStore()
   const {
     sectors,
@@ -22,10 +21,8 @@ const SeedingPage = () => {
   } = useSectorStore()
 
   // Debug: monitorear cambios en cultivationLines
-  console.log('🔧 cultivationLines en SeedingPage:', cultivationLines?.length || 0, cultivationLines)
   const { seedOrigins, fetchSeedOrigins } = useSeedOriginStore()
   const { inventory, fetchInventory, loading: inventoryLoading } = useInventoryStore()
-  console.log('📦 [SeedingPage] Current inventory:', inventory?.length || 0, 'items')
   const {
     lots,
     fetchLots,
@@ -84,16 +81,12 @@ const SeedingPage = () => {
   const [inventoryQuantity, setInventoryQuantity] = useState('')
   
   useEffect(() => {
-    console.log('🎯 [SeedingPage] Main useEffect - user:', user?.id)
     if (user?.id) {
       fetchSectors(user.id)
       // Llamar fetchInventory y ver qué pasa
-      console.log('🎯 [SeedingPage] Calling fetchInventory...')
       fetchInventory(user.id).then(result => {
-        console.log('✅ [SeedingPage] Inventory loaded:', result)
-      }).catch(err => {
-        console.error('❌ [SeedingPage] Inventory error:', err)
-      })
+        }).catch(err => {
+        })
     }
     fetchSeedOrigins()
   }, [user?.id, fetchSectors, fetchSeedOrigins, fetchInventory])
@@ -109,8 +102,7 @@ const SeedingPage = () => {
 
         // Cargar TODAS las líneas de cultivo sin filtros para el select
         const result = await fetchCultivationLines()
-        console.log('🔍 Líneas cargadas:', result)
-      }
+        }
     }
 
     loadAllBatteriesAndLines()
@@ -1841,7 +1833,6 @@ const SeedingPage = () => {
                               >
                                 <option value="">Seleccionar línea</option>
                                 {(() => {
-                                  console.log('🔍 Renderizando select con líneas:', cultivationLines?.length || 0)
                                   return cultivationLines.map(line => {
                                   const occupied = line.occupiedSystems?.length || 0
                                   const total = line.totalSystems || 100
@@ -2060,7 +2051,6 @@ const SeedingPage = () => {
                         onChange={(e) => setSelectedInventoryItem(e.target.value)}
                       >
                         <option value="">Seleccione un ítem...</option>
-                        {console.log('🎯 Rendering inventory select, items:', inventory?.length, inventory)}
                         {inventory && inventory.length > 0 ? (
                           inventory.filter(item => item.quantity > 0).map((item) => (
                             <option key={item.id} value={item.id}>
@@ -2068,7 +2058,7 @@ const SeedingPage = () => {
                             </option>
                           ))
                         ) : (
-                          console.log('⚠️ No inventory items to show')
+                          <option value="">Sin stock disponible</option>
                         )}
                       </select>
                     </div>

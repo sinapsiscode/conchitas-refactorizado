@@ -18,7 +18,6 @@ class BaseService {
     try {
       return await apiClient.get(`/${this.endpoint}`, { params });
     } catch (error) {
-      console.error(`Error fetching ${this.endpoint}:`, error);
       throw error;
     }
   }
@@ -32,7 +31,6 @@ class BaseService {
     try {
       return await apiClient.get(`/${this.endpoint}/${id}`);
     } catch (error) {
-      console.error(`Error fetching ${this.endpoint}/${id}:`, error);
       throw error;
     }
   }
@@ -52,7 +50,6 @@ class BaseService {
       };
       return await apiClient.post(`/${this.endpoint}`, newRecord);
     } catch (error) {
-      console.error(`Error creating ${this.endpoint}:`, error);
       throw error;
     }
   }
@@ -71,7 +68,6 @@ class BaseService {
       };
       return await apiClient.patch(`/${this.endpoint}/${id}`, updatedData);
     } catch (error) {
-      console.error(`Error updating ${this.endpoint}/${id}:`, error);
       throw error;
     }
   }
@@ -85,7 +81,6 @@ class BaseService {
     try {
       return await apiClient.delete(`/${this.endpoint}/${id}`);
     } catch (error) {
-      console.error(`Error deleting ${this.endpoint}/${id}:`, error);
       throw error;
     }
   }
@@ -106,7 +101,6 @@ class BaseService {
       });
       return await apiClient.get(`/${this.endpoint}`, { params });
     } catch (error) {
-      console.error(`Error searching ${this.endpoint}:`, error);
       throw error;
     }
   }
@@ -121,7 +115,6 @@ class BaseService {
       const promises = records.map(record => this.create(record));
       return await Promise.all(promises);
     } catch (error) {
-      console.error(`Error creating batch ${this.endpoint}:`, error);
       throw error;
     }
   }
@@ -136,7 +129,6 @@ class BaseService {
       const promises = updates.map(({ id, data }) => this.update(id, data));
       return await Promise.all(promises);
     } catch (error) {
-      console.error(`Error updating batch ${this.endpoint}:`, error);
       throw error;
     }
   }

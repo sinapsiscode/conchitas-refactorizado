@@ -18,7 +18,6 @@ export const useExpenseStore = create((set, get) => ({
       const categories = await configManager.getCategories('expense');
       set({ categories, categoriesLoaded: true });
     } catch (error) {
-      console.error('Error loading categories:', error);
       // Si falla, usa un array vacío
       set({ categories: [], categoriesLoaded: true });
     }

@@ -162,7 +162,6 @@ const HarvestExecutionModal = ({ isOpen, onClose, selectedPlan, user }) => {
         throw new Error(result.error || 'Error al registrar cosecha')
       }
     } catch (error) {
-      console.error('Error updating harvest plan:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error',

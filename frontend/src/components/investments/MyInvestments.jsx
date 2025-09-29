@@ -213,7 +213,6 @@ const MyInvestments = ({ onNavigate }) => {
         }
       }
     } catch (error) {
-      console.warn('Error obteniendo distribuciones:', error)
       detailedInvestment.harvestData = {
         harvestRevenue: 0,
         harvestExpenses: 0,

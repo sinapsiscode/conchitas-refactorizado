@@ -42,24 +42,18 @@ apiClient.interceptors.response.use(
           window.location.href = '/';
           break;
         case 403:
-          console.error('Acceso denegado');
           break;
         case 404:
-          console.error('Recurso no encontrado');
           break;
         case 500:
-          console.error('Error del servidor');
           break;
         default:
-          console.error('Error en la respuesta:', error.response.data);
-      }
+          }
     } else if (error.request) {
       // La petición fue hecha pero no se recibió respuesta
-      console.error('No se recibió respuesta del servidor');
-    } else {
+      } else {
       // Algo sucedió al configurar la petición
-      console.error('Error al configurar la petición:', error.message);
-    }
+      }
     return Promise.reject(error);
   }
 );

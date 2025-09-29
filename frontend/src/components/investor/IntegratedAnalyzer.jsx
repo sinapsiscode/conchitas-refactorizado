@@ -62,7 +62,7 @@ const IntegratedAnalyzer = () => {
       try {
         return JSON.parse(savedPresentations)
       } catch (e) {
-        console.error('Error loading saved presentations:', e)
+        // Error parsing, use defaults
       }
     }
     return [

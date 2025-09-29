@@ -242,8 +242,7 @@ const NotificationCenter = ({ isOpen, onClose }) => {
                                 className="mt-2 text-xs text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
                                 onClick={() => {
                                   // Handle navigation to action URL
-                                  console.log('Navigate to:', notification.actionUrl)
-                                }}
+                                  }}
                               >
                                 {notification.actionText || 'Ver más'} →
                               </button>

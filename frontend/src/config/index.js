@@ -32,7 +32,7 @@ class ConfigManager {
         return data;
       }
     } catch (error) {
-      console.error('Error cargando categorías desde API:', error);
+      // Error silently handled
     }
 
     // Si falla, retornar array vacío
@@ -61,7 +61,7 @@ class ConfigManager {
         return data;
       }
     } catch (error) {
-      console.error('Error cargando pricing desde API:', error);
+      // Error silently handled
     }
 
     // Si falla, retornar array vacío
@@ -89,7 +89,7 @@ class ConfigManager {
         return data;
       }
     } catch (error) {
-      console.error('Error cargando settings desde API:', error);
+      // Error silently handled
     }
 
     // Si falla, retornar objeto vacío
@@ -109,10 +109,8 @@ class ConfigManager {
   setApiMode(enabled) {
     this.apiEnabled = enabled;
     if (enabled) {
-      console.log('ConfigManager: Modo API habilitado');
-    } else {
-      console.log('ConfigManager: Usando configuración local');
-    }
+      } else {
+      }
   }
 }
 

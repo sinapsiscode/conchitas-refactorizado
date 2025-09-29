@@ -88,18 +88,6 @@ export const useIncomeStore = create((set, get) => ({
     return filtered.reduce((total, record) => total + (record.amount || 0), 0);
   },
 
-  // Obtener ingresos por mes
-  getIncomeByMonth: () => {
-    const { incomeRecords } = get();
-    return incomeRecords.reduce((acc, record) => {
-      if (record.date) {
-        const month = record.date.substring(0, 7); // YYYY-MM
-        acc[month] = (acc[month] || 0) + (record.amount || 0);
-      }
-      return acc;
-    }, {});
-  },
-
   // Limpiar errores
   clearError: () => {
     set({ error: null });

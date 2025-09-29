@@ -26,7 +26,7 @@ const InvestorInvitationsList = () => {
         setInvitations(result.data)
       }
     } catch (error) {
-      console.error('Error fetching invitations:', error)
+      // Error silently handled
     } finally {
       setLoading(false)
     }

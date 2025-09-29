@@ -20,14 +20,12 @@ export const useInventoryStore = create((set, get) => ({
       const categories = await categoriesService.getAll({ type: 'inventory' });
       set({ categories, categoriesLoaded: true });
     } catch (error) {
-      console.error('Error loading categories:', error);
       set({ categories: [], categoriesLoaded: true });
     }
   },
 
   // Obtener inventario - SIMPLIFICADO
   fetchInventory: async (userId) => {
-    console.log('📦 [InventoryStore] Cargando inventario compartido...');
     set({ loading: true, error: null });
 
     try {
@@ -36,8 +34,6 @@ export const useInventoryStore = create((set, get) => ({
       const response = await fetch('http://localhost:4077/inventory');
       const data = await response.json();
 
-      console.log('📦 [InventoryStore] Datos recibidos:', data);
-
       // Guardar en el estado
       set({
         inventory: data || [],
@@ -45,7 +41,6 @@ export const useInventoryStore = create((set, get) => ({
         error: null
       });
 
-      console.log('✅ [InventoryStore] Inventario cargado:', data?.length || 0, 'items');
       return { success: true, data: data || [] };
     } catch (error) {
       set({ error: error.message, loading: false });
@@ -101,23 +96,6 @@ export const useInventoryStore = create((set, get) => ({
       set({ error: error.message, loading: false });
       return { success: false, error: error.message };
     }
-  },
-
-  // Actualizar stock de un item
-  updateStock: async (itemId, quantity, type = 'add') => {
-    const item = get().inventory.find(i => i.id === itemId);
-    if (!item) {
-      return { success: false, error: 'Item no encontrado' };
-    }
-
-    const newQuantity = type === 'add'
-      ? item.quantity + quantity
-      : Math.max(0, item.quantity - quantity);
-
-    return await get().updateInventoryItem(itemId, {
-      quantity: newQuantity,
-      updatedAt: new Date().toISOString()
-    });
   },
 
   // Obtener valor total del inventario

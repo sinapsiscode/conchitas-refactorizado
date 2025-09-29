@@ -155,27 +155,6 @@ export const useSeedingStore = create((set, get) => ({
     return get().lots.find(lot => lot.id === lotId);
   },
 
-  // Obtener resumen de siembras
-  getSeedingSummary: () => {
-    const lots = get().lots;
-    const activeLots = lots.filter(lot =>
-      lot.status === 'seeded' || lot.status === 'growing'
-    );
-
-    return {
-      total: lots.length,
-      active: activeLots.length,
-      harvested: lots.filter(lot => lot.status === 'harvested').length,
-      totalQuantity: activeLots.reduce((sum, lot) =>
-        sum + (lot.currentQuantity || 0), 0
-      ),
-      averageMortality: activeLots.length > 0
-        ? activeLots.reduce((sum, lot) =>
-            sum + (lot.mortalityRate || 0), 0) / activeLots.length
-        : 0
-    };
-  },
-
   // Limpiar errores
   clearError: () => set({ error: null })
 }));

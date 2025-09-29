@@ -697,7 +697,6 @@ export const exportToPDF = ({
     doc.save(fileName)
 
   } catch (error) {
-    console.error('Error exportando a PDF:', error)
     alert('Error al exportar el reporte a PDF. Por favor, inténtalo nuevamente.')
   }
 }

@@ -40,7 +40,9 @@ const MonitoringPage = ({ onNavigateToLot }) => {
       setStatCards(cards.filter(c => c.isActive).sort((a, b) => a.order - b.order))
       setStatusColors(colors.filter(c => c.isActive))
     })
-    .catch(err => console.error('Error loading monitoring configuration:', err))
+    .catch(err => {
+      // Error silently handled
+    })
   }, [user?.id, fetchSectors, fetchLots])
   
   // Obtener todos los lotes del store de seeding y agregar información de sector

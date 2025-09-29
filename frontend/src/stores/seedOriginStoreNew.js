@@ -84,12 +84,6 @@ export const useSeedOriginStore = create((set, get) => ({
     }
   },
 
-  // Obtener origen de semilla por ID
-  getSeedOriginById: (seedOriginId) => {
-    const seedOrigin = get().seedOrigins.find(so => so.id === seedOriginId);
-    return seedOrigin || null;
-  },
-
   // Limpiar errores
   clearError: () => set({ error: null })
 }));

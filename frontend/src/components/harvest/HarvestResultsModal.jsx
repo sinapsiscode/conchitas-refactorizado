@@ -26,7 +26,7 @@ const HarvestResultsModal = ({ isOpen, onClose, harvestPlan, sector, pricing }) 
       try {
         return JSON.parse(savedPresentations)
       } catch (e) {
-        console.error('Error parsing saved presentations:', e)
+        // Error parsing, use defaults
       }
     }
     // Si no hay presentaciones guardadas, usar las por defecto
@@ -62,7 +62,7 @@ const HarvestResultsModal = ({ isOpen, onClose, harvestPlan, sector, pricing }) 
             const parsed = JSON.parse(savedPresentations)
             setPresentations(parsed)
           } catch (e) {
-            console.error('Error loading saved presentations:', e)
+            // Error parsing, keep current presentations
           }
         }
       }
@@ -368,18 +368,6 @@ const HarvestResultsModal = ({ isOpen, onClose, harvestPlan, sector, pricing }) 
         const startDate = new Date(harvestDate).toISOString().split('T')[0]
         const endDate = new Date(harvestDate).toISOString().split('T')[0]
 
-        console.log('🔍 Date debugging:', {
-          plannedDate: harvestPlan.plannedDate,
-          actualDate: harvestPlan.actualDate,
-          harvestDate,
-          startDate,
-          endDate,
-          startDateObj: new Date(startDate),
-          endDateObj: new Date(endDate),
-          isStartBeforeEnd: new Date(startDate) <= new Date(endDate),
-          areEqual: startDate === endDate
-        })
-        
         const closureData = {
           userId: user.id,
           closureType: 'custom',
@@ -463,7 +451,6 @@ const HarvestResultsModal = ({ isOpen, onClose, harvestPlan, sector, pricing }) 
         }
       }
     } catch (error) {
-      console.error('Error saving harvest income statement:', error)
       MySwal.fire({
         icon: 'error',
         title: 'Error al guardar',

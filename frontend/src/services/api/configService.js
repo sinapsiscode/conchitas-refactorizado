@@ -41,7 +41,6 @@ class ConfigService {
         const response = await axios.get(`${API_URL}/categories`, { params });
         return response.data;
       } catch (error) {
-        console.error('Error fetching categories:', error);
         return [];
       }
     });
@@ -84,7 +83,6 @@ class ConfigService {
         const response = await axios.get(`${API_URL}/pricing`);
         return response.data;
       } catch (error) {
-        console.error('Error fetching pricing:', error);
         return [];
       }
     });
@@ -99,7 +97,6 @@ class ConfigService {
         const response = await axios.get(`${API_URL}/systemSettings`);
         return response.data;
       } catch (error) {
-        console.error('Error fetching settings:', error);
         return {};
       }
     });
@@ -121,7 +118,6 @@ class ConfigService {
 
       return response.data;
     } catch (error) {
-      console.error('Error creating category:', error);
       throw error;
     }
   }
@@ -141,7 +137,6 @@ class ConfigService {
 
       return response.data;
     } catch (error) {
-      console.error('Error updating category:', error);
       throw error;
     }
   }
@@ -158,7 +153,6 @@ class ConfigService {
 
       return true;
     } catch (error) {
-      console.error('Error deleting category:', error);
       throw error;
     }
   }
@@ -178,7 +172,6 @@ class ConfigService {
 
       return response.data;
     } catch (error) {
-      console.error('Error updating pricing:', error);
       throw error;
     }
   }
@@ -202,8 +195,6 @@ class ConfigService {
    * Precalentar cache al iniciar la aplicación
    */
   async warmupCache() {
-    console.log('Warming up configuration cache...');
-
     // Cargar todas las configuraciones críticas
     await Promise.all([
       this.getCategories(),
@@ -211,8 +202,7 @@ class ConfigService {
       this.getSystemSettings()
     ]);
 
-    console.log('Configuration cache ready');
-  }
+    }
 }
 
 export const configService = new ConfigService();
